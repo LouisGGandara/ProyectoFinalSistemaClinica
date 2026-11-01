@@ -2,13 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="553c02d9-41cf-4eff-b8cc-46ff8d3dabe7" name="Changes" comment="Primer análisis subida">
+      <change afterPath="$PROJECT_DIR$/docs/entrega2_diseno/classes.puml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Primera entrega_ análisis del sistema de turnos.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/docs/Primera entrega_ análisis del sistema de turnos.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/Primera entrega_ análisis del sistema de turnos.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -38,16 +47,22 @@
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/crazy/PycharmProjects/ProyectoFinalSistemaClinica/docs"
+    "last_opened_file_path": "C:/Users/crazy/PycharmProjects/ProyectoFinalSistemaClinica/docs",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\crazy\PycharmProjects\ProyectoFinalSistemaClinica\docs" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\crazy\PycharmProjects\ProyectoFinalSistemaClinica\docs\entrega2_diseno" />
     </key>
   </component>
   <component name="SharedIndexes">

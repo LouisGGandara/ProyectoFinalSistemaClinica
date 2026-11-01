@@ -1,0 +1,17 @@
+# PyCharm
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+
+# Entornos virtuales
+venv/
+.venv/
+
+# Registro de errores
+errors.log
+
+# Archivos temporales y copias de archivos dañados que escribe JsonRepository
+data/*.tmp
+data/*.corrupted-*.json
