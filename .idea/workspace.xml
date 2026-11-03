@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="553c02d9-41cf-4eff-b8cc-46ff8d3dabe7" name="Changes" comment="Primer análisis subida">
-      <change afterPath="$PROJECT_DIR$/docs/entrega2_diseno/classes.puml" afterDir="false" />
+    <list default="true" id="553c02d9-41cf-4eff-b8cc-46ff8d3dabe7" name="Changes" comment="2da entrega y esqueleto del programa">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/Primera entrega_ análisis del sistema de turnos.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/actions.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/actions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/care_record.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/care_record.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/care_type.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/care_type.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/patient.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/patient.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/permissions.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/permissions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/person.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/person.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/ticket.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/ticket.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/ticket_status.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/ticket_status.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/persistence/json_repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/persistence/json_repository.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/action_history.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/action_history.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/clinic_system.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/clinic_system.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/patient_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/patient_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/stats.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/stats.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/ticket_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/ticket_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/services/user_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/user_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/structures/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/structures/stack.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/structures/ticket_queue.py" beforeDir="false" afterPath="$PROJECT_DIR$/structures/ticket_queue.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/dates.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/dates.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/exceptions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/validator.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,20 +62,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/crazy/PycharmProjects/ProyectoFinalSistemaClinica/docs",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/crazy/PycharmProjects/ProyectoFinalSistemaClinica/docs&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\crazy\PycharmProjects\ProyectoFinalSistemaClinica\docs" />
@@ -104,7 +123,15 @@
       <option name="project" value="LOCAL" />
       <updated>1793323345415</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="2da entrega y esqueleto del programa">
+      <option name="closed" value="true" />
+      <created>1793577407146</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1793577407147</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -130,6 +157,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Iniciar" />
     <MESSAGE value="Primer análisis subida" />
-    <option name="LAST_COMMIT_MESSAGE" value="Primer análisis subida" />
+    <MESSAGE value="2da entrega y esqueleto del programa" />
+    <option name="LAST_COMMIT_MESSAGE" value="2da entrega y esqueleto del programa" />
   </component>
 </project>
