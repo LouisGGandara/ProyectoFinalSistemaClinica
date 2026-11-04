@@ -68,8 +68,10 @@ class App(tk.Tk):
 
         self.show_login()
         if self._system.warnings:
-            # after_idle waits until the login is drawn, so the warning
-            # appears on top of it.
+            # update_idletasks puts the login on screen now. Without it, the
+            # warning ran first and showed up with nothing behind it (E1,
+            # CP-27). after_idle then opens it once mainloop starts.
+            self.update_idletasks()
             self.after_idle(self._show_load_warnings)
 
     def _configure_style(self) -> None:

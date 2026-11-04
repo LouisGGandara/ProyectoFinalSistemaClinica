@@ -30,6 +30,9 @@ class Validator:
     NAME_MAX_LENGTH = 80
     AGE_MIN = 0
     AGE_MAX = 120
+    # Digits only. int() also takes "1_0", "+30", "-0" and digits from other
+    # alphabets (test E2-03), so age() checks the text against this as well.
+    AGE_PATTERN = r"[0-9]{1,3}"
     REASON_MIN_LENGTH = 5
     REASON_MAX_LENGTH = 200
     PASSWORD_MIN_LENGTH = 6
@@ -97,6 +100,8 @@ class Validator:
                 number = int(text)
             except ValueError as error:
                 raise ValidationError(message) from error
+            if not re.fullmatch(Validator.AGE_PATTERN, text):
+                raise ValidationError(message)
         if not Validator.AGE_MIN <= number <= Validator.AGE_MAX:
             raise ValidationError(message)
         return number

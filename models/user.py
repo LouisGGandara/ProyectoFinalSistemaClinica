@@ -158,7 +158,9 @@ def user_from_dict(data: dict) -> User:
     which can only happen when someone edits the file by hand.
     """
     role = data.get("role")
-    user_class = ROLES.get(role)
+    # str() because a hand-edited file may hold a list or an object here,
+    # and a dictionary lookup with those raises TypeError.
+    user_class = ROLES.get(str(role))
     if user_class is None:
         raise ValidationError(f"El rol «{role}» no existe. Revisa users.json.")
     try:

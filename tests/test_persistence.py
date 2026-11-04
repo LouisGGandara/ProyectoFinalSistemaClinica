@@ -112,6 +112,20 @@ class TestEncoding(RepositoryTestCase):
         self.assertEqual(JsonRepository.ENCODING, "utf-8")
 
 
+    def test_utf8_file_with_bom_loads_normally(self):
+        # Notepad's "UTF-8 con BOM" (test E2-26). It is still UTF-8.
+        path = self.folder / "patients.json"
+        text = json.dumps(PATIENTS, indent=4, ensure_ascii=False)
+        path.write_bytes(b"\xef\xbb\xbf" + text.encode("utf-8"))
+        self.assertEqual(self.repo.load("patients.json"), PATIENTS)
+        self.assertEqual(list(self.folder.glob("*.corrupted-*")), [])
+
+    def test_save_does_not_write_a_bom(self):
+        self.repo.save("patients.json", PATIENTS)
+        content = (self.folder / "patients.json").read_bytes()
+        self.assertFalse(content.startswith(b"\xef\xbb\xbf"))
+
+
 class TestMissingFile(RepositoryTestCase):
     def test_missing_file_returns_empty_list(self):
         self.assertEqual(self.repo.load("care_records.json"), [])
@@ -172,6 +186,16 @@ class TestCorruptedFile(RepositoryTestCase):
         with self.assertRaises(CorruptedFileError):
             self.repo.load("users.json")
         self.assertEqual(len(self.corrupted_copies("users")), 1)
+
+    def test_list_with_items_that_are_not_objects_is_treated_as_corrupted(self):
+        # Valid JSON with the wrong shape (test E2-27). The error has to
+        # name the file so the user knows what to fix.
+        for content in (b"[1, 2]", b"[null]", b'["hola"]', b'[{"a": 1}, 2]'):
+            with self.subTest(content=content):
+                self.write_raw("patients.json", content)
+                with self.assertRaises(CorruptedFileError) as context:
+                    self.repo.load("patients.json")
+                self.assertEqual(context.exception.filename, "patients.json")
 
     def test_save_after_corruption_writes_a_clean_file(self):
         self.write_raw("tickets.json", b"{roto")

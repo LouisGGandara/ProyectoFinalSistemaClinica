@@ -64,6 +64,49 @@ def bind_enter(widget: tk.Misc, action: Callable[[], None]) -> None:
         widget.bind(key, handler)
 
 
+def add_form_entry(
+    form: tk.Misc,
+    row: int,
+    label: str,
+    variable: tk.StringVar,
+    width: int,
+    fill: bool = True,
+    show: str = "",
+) -> ttk.Entry:
+    """Put a label and its Entry on one row of a form and return the Entry.
+
+    Registro and Usuarios build their forms with this, so the spacing of a
+    row is written once. With fill=False the Entry keeps its width instead
+    of stretching, which suits a short field like the age. show hides what
+    is typed, as in the password fields (RNF-06).
+    """
+    ttk.Label(form, text=label).grid(
+        row=row, column=0, sticky="w", pady=SMALL_GAP, padx=(0, GAP)
+    )
+    entry = ttk.Entry(form, textvariable=variable, width=width, show=show)
+    entry.grid(row=row, column=1, sticky="ew" if fill else "w", pady=SMALL_GAP)
+    return entry
+
+
+def add_table_frame(
+    parent: tk.Misc,
+    columns: Sequence[tuple[str, str, int]],
+    height: int,
+    title: str = "",
+) -> tuple[ttk.LabelFrame, "DataTable"]:
+    """Build a LabelFrame with a DataTable that fills it, and return both.
+
+    The caller places the frame with grid and can add buttons under the
+    table in row 1. The table sits in row 0, the only one that grows.
+    """
+    frame = ttk.LabelFrame(parent, text=title, padding=FRAME_PADDING)
+    frame.columnconfigure(0, weight=1)
+    frame.rowconfigure(0, weight=1)
+    table = DataTable(frame, columns, height=height)
+    table.grid(row=0, column=0, sticky="nsew")
+    return frame, table
+
+
 def show_error(
     message: str, parent: tk.Misc | None = None, title: str = ERROR_TITLE
 ) -> None:

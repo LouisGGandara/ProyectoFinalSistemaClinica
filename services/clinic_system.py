@@ -85,18 +85,25 @@ class ClinicSystem:
                 self._patient_manager.patients_by_code()
             ),
         )
+        damaged: list[str] = []
         for load in loaders:
             try:
                 load()
             except CorruptedFileError as error:
                 self._warnings.append(error.message)
+                damaged.append(error.filename)
             except ValidationError as error:
                 # A damaged patients.json often shows up later as a ticket
-                # whose patient is missing, so the earlier warnings travel
-                # with the error to explain where it came from.
-                raise ValidationError(
-                    " ".join([*self._warnings, error.message])
-                ) from error
+                # whose patient is missing, so the damaged files travel with
+                # the error to explain where it came from. The warning texts
+                # are not reused: they say the system went on, and here it
+                # stops (observation 1 of E2).
+                notes = [
+                    f"El archivo {name} está dañado o no está en UTF-8. "
+                    "Se guardó una copia."
+                    for name in damaged
+                ]
+                raise ValidationError(" ".join([*notes, error.message])) from error
 
     # ------------------------------------------------- session and permissions
 

@@ -45,6 +45,8 @@ class BaseTab(ttk.Frame, ABC):
         super().__init__(parent, padding=self.PADDING)
         self._system = system
         self._on_change = on_change
+        # True while _run is working, message boxes included. See _run.
+        self._busy = False
 
     @abstractmethod
     def refresh(self) -> None:
@@ -94,8 +96,28 @@ class BaseTab(ttk.Frame, ABC):
 
         A button handler then fits in one line:
             self._run(self._system.call_next, on_success=self._show_called)
+
+        A second call that arrives while the first one is still running is
+        ignored. Tk keeps handling keys while a message box is open, so a
+        quick second Enter or Space used to repeat the operation, and its
+        error message covered the success message of the first (test E2-12).
         """
-        message_parent = parent or self
+        if self._busy:
+            return
+        self._busy = True
+        try:
+            self._run_once(operation, args, on_success, parent or self)
+        finally:
+            self._busy = False
+
+    def _run_once(
+        self,
+        operation: Callable[..., Any],
+        args: tuple[Any, ...],
+        on_success: Callable[[Any], None] | None,
+        message_parent: tk.Misc,
+    ) -> None:
+        """The body of _run, without the guard against a repeated call."""
         try:
             result = operation(*args)
         except StorageError as error:

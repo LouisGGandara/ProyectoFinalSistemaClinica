@@ -19,7 +19,8 @@ from ui.widgets import (
     GAP,
     HINT_COLOR,
     SMALL_GAP,
-    DataTable,
+    add_form_entry,
+    add_table_frame,
     bind_enter,
     confirm,
     show_info,
@@ -110,11 +111,20 @@ class UsersTab(BaseTab):
         form.grid(row=0, column=0, sticky="ew")
         form.columnconfigure(1, weight=1)
 
-        self._name_entry = self._add_entry(form, 0, self.NAME_LABEL, self._full_name)
-        username_entry = self._add_entry(form, 1, self.USERNAME_LABEL, self._username)
+        self._name_entry = add_form_entry(
+            form, 0, self.NAME_LABEL, self._full_name, ENTRY_WIDTH
+        )
+        username_entry = add_form_entry(
+            form, 1, self.USERNAME_LABEL, self._username, ENTRY_WIDTH
+        )
         # show hides the characters on screen, like in the login (RNF-06).
-        password_entry = self._add_entry(
-            form, 2, self.PASSWORD_LABEL, self._password, show=self.PASSWORD_MASK
+        password_entry = add_form_entry(
+            form,
+            2,
+            self.PASSWORD_LABEL,
+            self._password,
+            ENTRY_WIDTH,
+            show=self.PASSWORD_MASK,
         )
 
         ttk.Label(form, text=self.ROLE_LABEL).grid(
@@ -155,22 +165,6 @@ class UsersTab(BaseTab):
         ):
             bind_enter(widget, self._create_user)
 
-    @staticmethod
-    def _add_entry(
-        form: ttk.Frame,
-        row: int,
-        label: str,
-        variable: tk.StringVar,
-        show: str = "",
-    ) -> ttk.Entry:
-        """Put a label and its Entry on one row of the form and return the Entry."""
-        ttk.Label(form, text=label).grid(
-            row=row, column=0, sticky="w", pady=SMALL_GAP, padx=(0, GAP)
-        )
-        entry = ttk.Entry(form, textvariable=variable, width=ENTRY_WIDTH, show=show)
-        entry.grid(row=row, column=1, sticky="ew", pady=SMALL_GAP)
-        return entry
-
     def _build_permissions(self, parent: ttk.Frame) -> None:
         """List of what the selected user may do, refreshed on each selection."""
         box = ttk.LabelFrame(parent, text=self.PERMISSIONS_TITLE, padding=FRAME_PADDING)
@@ -196,13 +190,10 @@ class UsersTab(BaseTab):
 
     def _build_table(self) -> None:
         """Right side: the users, the delete button and the note about one's own account."""
-        frame = ttk.LabelFrame(self, text=self.TABLE_TITLE, padding=FRAME_PADDING)
+        frame, self._table = add_table_frame(
+            self, self.COLUMNS, height=16, title=self.TABLE_TITLE
+        )
         frame.grid(row=0, column=1, sticky="nsew")
-        frame.columnconfigure(0, weight=1)
-        frame.rowconfigure(0, weight=1)
-
-        self._table = DataTable(frame, self.COLUMNS, height=16)
-        self._table.grid(row=0, column=0, sticky="nsew")
         self._table.on_select(self._on_user_selected)
 
         bottom = ttk.Frame(frame)

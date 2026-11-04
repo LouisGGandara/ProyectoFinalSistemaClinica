@@ -276,6 +276,67 @@ class LoadTests(TicketManagerTestCase):
         ticket = reloaded.create_ticket(self.patient(4), NormalCare(), "Control general")
         self.assertEqual(ticket.number, "N-003")
 
+    def test_counter_file_is_saved_with_the_next_sequence(self):
+        self.create(1)
+        self.create(2)
+        self.assertEqual(
+            self.read_json(TicketManager.COUNTER_FILE), [{"next_sequence": 3}]
+        )
+
+    def test_counter_file_keeps_numbers_when_tickets_file_is_damaged(self):
+        # Pending tickets lost with a damaged tickets.json left no care
+        # record behind, so only the counter file remembers their numbers.
+        self.create(1)
+        self.create(2)
+        (self.folder / TicketManager.TICKETS_FILE).write_text(
+            "{esto no es json", encoding="utf-8"
+        )
+        manager = TicketManager(self.repo)
+        with self.assertRaises(CorruptedFileError):
+            manager.load(dict(self.patients))
+        ticket = manager.create_ticket(self.patient(1), NormalCare(), "Control general")
+        self.assertEqual(ticket.number, "N-003")
+
+    def test_missing_counter_file_uses_the_tickets(self):
+        # A data folder from before this file existed still works.
+        self.write_json(TicketManager.TICKETS_FILE, [ticket_row("N-004", "PAC-0001")])
+        manager = self.new_manager()
+        ticket = manager.create_ticket(self.patient(2), NormalCare(), "Control general")
+        self.assertEqual(ticket.number, "N-005")
+
+    def test_counter_lower_than_the_tickets_is_ignored(self):
+        self.write_json(TicketManager.TICKETS_FILE, [ticket_row("N-004", "PAC-0001")])
+        self.write_json(TicketManager.COUNTER_FILE, [{"next_sequence": 2}])
+        manager = self.new_manager()
+        ticket = manager.create_ticket(self.patient(2), NormalCare(), "Control general")
+        self.assertEqual(ticket.number, "N-005")
+
+    def test_invalid_counter_stops_the_load(self):
+        for rows in (
+            [{"next_sequence": "7"}],
+            [{"next_sequence": 0}],
+            [{"next_sequence": True}],
+            [{"otro": 3}],
+            [{"next_sequence": 3}, {"next_sequence": 4}],
+        ):
+            with self.subTest(rows=rows):
+                self.write_json(TicketManager.COUNTER_FILE, rows)
+                with self.assertRaises(ValidationError) as context:
+                    self.new_manager()
+                self.assertIn(TicketManager.COUNTER_FILE, context.exception.message)
+
+    def test_repeated_number_does_not_create_the_counter_file(self):
+        # A start that stops on a hand-edited tickets.json leaves the data
+        # folder as it was (test E2-28). setUp already loaded once, which
+        # created the file, so it is removed first.
+        (self.folder / TicketManager.COUNTER_FILE).unlink()
+        self.write_json(TicketManager.TICKETS_FILE, [
+            ticket_row("N-001", "PAC-0001"), ticket_row("N-001", "PAC-0002"),
+        ])
+        with self.assertRaises(ValidationError):
+            self.new_manager()
+        self.assertFalse((self.folder / TicketManager.COUNTER_FILE).exists())
+
     def test_loaded_ticket_points_to_the_same_patient(self):
         self.create(1)
         reloaded = self.new_manager()
@@ -643,6 +704,17 @@ class UndoHelperTests(TicketManagerTestCase):
         self.create(1)
         self.manager.remove_pending_ticket("N-001")
         self.assertEqual(self.create(1).number, "N-002")
+
+    def test_removed_number_is_not_given_again_after_reopening(self):
+        # Test E2-30: the number of a ticket removed by undo must not come
+        # back when the program is opened again (RN-04).
+        self.create(1)
+        self.create(2)
+        self.manager.remove_pending_ticket("N-002")
+        self.manager.remove_pending_ticket("N-001")
+        reloaded = self.new_manager()
+        ticket = reloaded.create_ticket(self.patient(1), NormalCare(), "Control general")
+        self.assertEqual(ticket.number, "N-003")
 
     def test_remove_pending_ticket_keeps_order_of_the_others(self):
         self.create(1)

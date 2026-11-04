@@ -216,7 +216,9 @@ class Ticket:
                 f"Falta el dato «{error.args[0]}» de un turno en tickets.json."
             ) from error
 
-        patient = patients_by_code.get(patient_code)
+        # str() for the same reason as user_from_dict: a list or an object
+        # written by hand would make the lookup raise TypeError.
+        patient = patients_by_code.get(str(patient_code))
         if patient is None:
             raise ValidationError(
                 f"El turno {number} es del paciente {patient_code}, "

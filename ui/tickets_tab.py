@@ -21,6 +21,7 @@ from ui.widgets import (
     HINT_COLOR,
     STRONG_FONT,
     DataTable,
+    add_table_frame,
     bind_enter,
     confirm,
     show_error,
@@ -207,13 +208,9 @@ class TicketsTab(BaseTab):
         self, parent: ttk.Frame, column: int
     ) -> tuple[ttk.LabelFrame, DataTable]:
         """Create the frame and the table of one queue. refresh() sets the title."""
-        frame = ttk.LabelFrame(parent, padding=FRAME_PADDING)
+        frame, table = add_table_frame(parent, self.COLUMNS, height=10)
         padx = (0, GAP) if column == 0 else 0
         frame.grid(row=0, column=column, sticky="nsew", padx=padx)
-        frame.columnconfigure(0, weight=1)
-        frame.rowconfigure(0, weight=1)
-        table = DataTable(frame, self.COLUMNS, height=10)
-        table.grid(row=0, column=0, sticky="nsew")
         return frame, table
 
     def _build_status_query(self) -> None:

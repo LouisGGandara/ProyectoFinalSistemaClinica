@@ -71,7 +71,7 @@ class SystemTestCase(unittest.TestCase):
 class TestStart(SystemTestCase):
     def test_first_start_creates_files_and_default_users(self):
         for name in ("users.json", "patients.json", "tickets.json",
-                     "care_records.json"):
+                     "care_records.json", "ticket_counter.json"):
             self.assertTrue((self.folder / name).is_file(), name)
         self.assertEqual(self.system.warnings, [])
         self.assertIsNone(self.system.current_user)
@@ -88,6 +88,57 @@ class TestStart(SystemTestCase):
         self.assertEqual(len(copies), 1)
         system.login(*ADMIN)
         self.assertEqual(system.list_care_records(), [])
+
+    def test_wrong_shape_becomes_a_warning_that_names_the_file(self):
+        # Test E2-27: valid JSON such as [1, 2] used to end in a general
+        # error that named no file.
+        (self.folder / "patients.json").write_text("[1, 2]", encoding="utf-8")
+        system = self.reopen()
+        self.assertEqual(len(system.warnings), 1)
+        self.assertIn("patients.json", system.warnings[0])
+
+    def test_file_with_bom_starts_without_warnings(self):
+        # Test E2-26: Notepad's "UTF-8 con BOM" is still UTF-8.
+        self.login_admin()
+        self.register("PAC-0001", "José Peña")
+        for name in ("users.json", "patients.json"):
+            path = self.folder / name
+            path.write_bytes(b"\xef\xbb\xbf" + path.read_bytes())
+        system = self.reopen()
+        self.assertEqual(system.warnings, [])
+        system.login(*ADMIN)
+        self.assertEqual(system.list_patients()[0].full_name, "José Peña")
+
+    def test_undone_ticket_number_is_not_reused_after_reopening(self):
+        # Test E2-30 (RN-04): the counter survives closing the program.
+        self.login_admin()
+        self.register("PAC-0001", "Ana López")
+        self.system.undo()
+        system = self.reopen()
+        system.login(*ADMIN)
+        ticket = system.register_patient(
+            "PAC-0001", "Pedro Gómez", 40, "55550000", "Control general", "Normal"
+        )
+        self.assertEqual(ticket.number, "N-002")
+
+    def test_list_or_object_in_a_field_stops_with_a_clear_message(self):
+        # Found while checking E2-27: a list or an object where the role or
+        # the patient code goes used to raise TypeError.
+        self.login_admin()
+        self.register("PAC-0001", "Ana López")
+        for filename, key in (("users.json", "role"), ("tickets.json", "patient_code")):
+            for value in ([], {}):
+                with self.subTest(filename=filename, value=value):
+                    path = self.folder / filename
+                    original = path.read_text(encoding="utf-8")
+                    rows = json.loads(original)
+                    rows[0][key] = value
+                    path.write_text(json.dumps(rows), encoding="utf-8")
+                    with self.assertRaises(ValidationError) as caught:
+                        self.reopen()
+                    # The message names a file to check, as in section 4.7.
+                    self.assertIn(".json", str(caught.exception))
+                    path.write_text(original, encoding="utf-8")
 
     def test_warnings_cannot_be_changed_from_outside(self):
         self.system.warnings.append("x")
@@ -118,6 +169,8 @@ class TestStart(SystemTestCase):
         message = str(caught.exception)
         self.assertIn("patients.json está dañado", message)
         self.assertIn("PAC-0001", message)
+        # The system stops, so the message must not say it went on.
+        self.assertNotIn("siguió", message)
 
 
 class TestSession(SystemTestCase):

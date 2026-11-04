@@ -37,6 +37,11 @@ class TicketManager:
 
     TICKETS_FILE = "tickets.json"
     CARE_RECORDS_FILE = "care_records.json"
+    # Holds one row, {"next_sequence": N}. Without it the counter would be
+    # rebuilt from the tickets alone, and the number of a ticket removed by
+    # undo would come back after reopening the program (RN-04, test E2-30).
+    COUNTER_FILE = "ticket_counter.json"
+    COUNTER_KEY = "next_sequence"
 
     # Any prefix letter, a dash and the counter, such as N-004 or P-1000.
     _NUMBER_PATTERN = re.compile(r"[A-Z]-([0-9]+)")
@@ -59,7 +64,8 @@ class TicketManager:
 
         The queues are not saved as such. They are rebuilt with the Pendiente
         tickets sorted by sequence, which is the order they arrived in.
-        The counter becomes the highest number in use plus one.
+        The counter is the larger of two values: the one saved in
+        ticket_counter.json and the highest number in use plus one.
 
         If one file is damaged, the other one still loads and
         CorruptedFileError is raised at the end, so ClinicSystem can warn
@@ -85,7 +91,12 @@ class TicketManager:
         for ticket in tickets:
             if ticket.status is TicketStatus.PENDING:
                 self._queue_for(ticket.care_type).enqueue(ticket)
-        self._counter = self._highest_sequence(tickets, records) + 1
+        # Read last, after every check above passed, so a start that stops
+        # on a hand-edited tickets.json does not create this file.
+        saved_counter = self._load_counter(damaged)
+        self._counter = max(
+            saved_counter, self._highest_sequence(tickets, records) + 1
+        )
 
         if damaged:
             raise self._damaged_error(damaged)
@@ -172,6 +183,26 @@ class TicketManager:
                 )
             highest = max(highest, int(match.group(1)))
         return highest
+
+    def _load_counter(self, damaged: list[str]) -> int:
+        """Return the next sequence saved in ticket_counter.json, or 1 if there is none.
+
+        A missing or empty file gives 1, so the counter comes only from the
+        tickets, as before this file existed. A damaged file is noted like
+        the other two. A row with a value that is not a whole number of 1 or
+        more raises ValidationError, which stops the start.
+        """
+        rows = self._load_rows(self.COUNTER_FILE, damaged)
+        if not rows:
+            return 1
+        value = rows[0].get(self.COUNTER_KEY)
+        # bool is a subclass of int, so true would otherwise pass as 1.
+        is_whole_number = isinstance(value, int) and not isinstance(value, bool)
+        if len(rows) != 1 or not is_whole_number or value < 1:
+            raise ValidationError(
+                f"El contador de turnos no es válido. Revisa {self.COUNTER_FILE}."
+            )
+        return value
 
     @staticmethod
     def _damaged_error(filenames: list[str]) -> CorruptedFileError:
@@ -469,11 +500,14 @@ class TicketManager:
     # -------------------------------------------------------------- saving
 
     def _save(self) -> None:
-        """Write tickets.json and care_records.json."""
+        """Write tickets.json, care_records.json and ticket_counter.json."""
         self._repository.save(
             self.TICKETS_FILE, [ticket.to_dict() for ticket in self.list_tickets()]
         )
         self._repository.save(
             self.CARE_RECORDS_FILE,
             [record.to_dict() for record in self._care_records],
+        )
+        self._repository.save(
+            self.COUNTER_FILE, [{self.COUNTER_KEY: self._counter}]
         )

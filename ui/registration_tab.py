@@ -20,12 +20,14 @@ from ui.widgets import (
     HINT_COLOR,
     SMALL_GAP,
     STRONG_FONT,
-    DataTable,
+    add_form_entry,
+    add_table_frame,
     bind_enter,
     show_info,
 )
 
 ENTRY_WIDTH = 34
+AGE_WIDTH = 8
 PRIORITY_NAME = "Prioritaria"
 
 
@@ -211,11 +213,21 @@ class RegistrationTab(BaseTab):
         form.grid(row=0, column=0, sticky="nsw", padx=(0, GAP))
         form.columnconfigure(1, weight=1)
 
-        self._code_entry = self._add_entry(form, 0, self.CODE_LABEL, self._code)
-        self._name_entry = self._add_entry(form, 1, self.NAME_LABEL, self._full_name)
-        self._age_entry = self._add_entry(form, 2, self.AGE_LABEL, self._age, width=8)
-        self._phone_entry = self._add_entry(form, 3, self.PHONE_LABEL, self._phone)
-        self._reason_entry = self._add_entry(form, 4, self.REASON_LABEL, self._reason)
+        self._code_entry = add_form_entry(
+            form, 0, self.CODE_LABEL, self._code, ENTRY_WIDTH
+        )
+        self._name_entry = add_form_entry(
+            form, 1, self.NAME_LABEL, self._full_name, ENTRY_WIDTH
+        )
+        self._age_entry = add_form_entry(
+            form, 2, self.AGE_LABEL, self._age, width=AGE_WIDTH, fill=False
+        )
+        self._phone_entry = add_form_entry(
+            form, 3, self.PHONE_LABEL, self._phone, ENTRY_WIDTH
+        )
+        self._reason_entry = add_form_entry(
+            form, 4, self.REASON_LABEL, self._reason, ENTRY_WIDTH
+        )
         self._care_fields = CareTypeFields(
             form,
             row=5,
@@ -252,35 +264,12 @@ class RegistrationTab(BaseTab):
         for widget in entries:
             bind_enter(widget, self._submit)
 
-    @staticmethod
-    def _add_entry(
-        form: ttk.Frame,
-        row: int,
-        label: str,
-        variable: tk.StringVar,
-        width: int | None = None,
-    ) -> ttk.Entry:
-        """Put a label and its Entry on one row of the form and return the Entry.
-
-        Without width the Entry fills the column. A short field such as the
-        age gets its own width and stays that size.
-        """
-        ttk.Label(form, text=label).grid(
-            row=row, column=0, sticky="w", pady=SMALL_GAP, padx=(0, GAP)
-        )
-        entry = ttk.Entry(form, textvariable=variable, width=width or ENTRY_WIDTH)
-        entry.grid(row=row, column=1, sticky="w" if width else "ew", pady=SMALL_GAP)
-        return entry
-
     def _build_table(self) -> None:
         """Right side of the sketch: the patient table and its two buttons."""
-        frame = ttk.LabelFrame(self, text=self.TABLE_TITLE, padding=FRAME_PADDING)
+        frame, self._table = add_table_frame(
+            self, self.COLUMNS, height=16, title=self.TABLE_TITLE
+        )
         frame.grid(row=0, column=1, sticky="nsew")
-        frame.columnconfigure(0, weight=1)
-        frame.rowconfigure(0, weight=1)
-
-        self._table = DataTable(frame, self.COLUMNS, height=16)
-        self._table.grid(row=0, column=0, sticky="nsew")
 
         buttons = ttk.Frame(frame)
         buttons.grid(row=1, column=0, sticky="e", pady=(GAP, 0))
@@ -398,7 +387,9 @@ class RegistrationTab(BaseTab):
         self._reason.set("")
         self._care_fields.clear()
 
-        # readonly still shows the code; disabled fields are not sent.
+        # The code stays visible but cannot change, since it identifies the
+        # patient. Motivo and the care type belong to each ticket (section
+        # 3.3), so they are turned off while editing.
         self._code_entry.state(["readonly"])
         self._reason_entry.state(["disabled"])
         self._care_fields.set_enabled(False)

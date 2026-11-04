@@ -14,6 +14,7 @@ import os
 import shutil
 from datetime import datetime
 from pathlib import Path
+from typing import TextIO
 
 from utils.exceptions import CorruptedFileError, StorageError
 
@@ -25,6 +26,7 @@ class JsonRepository:
     # an encoding falls back to the system code page (usually cp1252), so the
     # files would change encoding depending on the machine that wrote them.
     ENCODING = "utf-8"
+    BOM = "﻿"
 
     # Date stamp added to the name of the copy of a damaged file.
     BACKUP_DATE_FORMAT = "%Y%m%d-%H%M%S"
@@ -51,14 +53,17 @@ class JsonRepository:
         """Read the file and return its list of dictionaries.
 
         A missing file is created with an empty list and [] is returned.
-        A damaged file, or one that is not UTF-8, is copied as
-        name.corrupted-YYYYMMDD-HHMMSS.json and CorruptedFileError is raised;
-        the manager that called load then starts with an empty list.
+        A damaged file, one that is not UTF-8, or one that is not a list of
+        objects is copied as name.corrupted-YYYYMMDD-HHMMSS.json and
+        CorruptedFileError is raised; the manager that called load then
+        starts with an empty list. A UTF-8 file that starts with a BOM is
+        read normally.
         Any other read error becomes StorageError.
         """
         path = self._path(filename)
         try:
             with open(path, "r", encoding=self.ENCODING) as file:
+                self._skip_bom(file)
                 data = json.load(file)
         except FileNotFoundError:
             # Must come before OSError, because FileNotFoundError is one of
@@ -73,12 +78,27 @@ class JsonRepository:
                 f"No se pudo leer el archivo {filename}."
             ) from error
 
-        # Valid JSON that is not a list (for example an object written by
-        # hand) is just as unusable for the managers, so it takes the same path.
-        if not isinstance(data, list):
+        # Valid JSON with another shape, such as an object or [1, 2] written
+        # by hand, is just as unusable for the managers, so it takes the same
+        # path. Otherwise the error would surface later as a TypeError, and
+        # the user would get a general message that names no file (E2-27).
+        if not isinstance(data, list) or not all(
+            isinstance(row, dict) for row in data
+        ):
             self._backup_corrupted(path)
             raise CorruptedFileError(filename)
         return data
+
+    @classmethod
+    def _skip_bom(cls, file: TextIO) -> None:
+        """Move past the byte order mark that Notepad adds with "UTF-8 con BOM".
+
+        The file is still UTF-8, but json.load rejects that invisible first
+        character. Skipping it here keeps encoding="utf-8" in every open().
+        save never writes the mark, so the next save removes it (E2-26).
+        """
+        if file.read(1) != cls.BOM:
+            file.seek(0)
 
     def save(self, filename: str, data: list) -> None:
         """Write the whole list to the file through a temporary file.

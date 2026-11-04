@@ -181,6 +181,14 @@ class TestAge(unittest.TestCase):
                     Validator.age(value)
                 self.assertEqual(str(context.exception), self.MESSAGE)
 
+    def test_text_that_int_accepts_but_is_not_plain_digits(self):
+        # int() takes all of these (test E2-03). Only 0 to 9 count as digits.
+        for value in ("1_0", "+30", "-0", "٣٠", "３０"):
+            with self.subTest(value=value):
+                with self.assertRaises(ValidationError) as context:
+                    Validator.age(value)
+                self.assertEqual(str(context.exception), self.MESSAGE)
+
     def test_letters_keep_the_original_value_error(self):
         with self.assertRaises(ValidationError) as context:
             Validator.age("abc")
