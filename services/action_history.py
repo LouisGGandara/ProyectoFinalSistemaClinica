@@ -49,6 +49,15 @@ class ActionHistory:
         """True if there is an action left to undo."""
         return not self._undo_stack.is_empty()
 
+    def next_undo(self) -> UndoableAction:
+        """Return the action that undo_last would revert, without reverting it.
+
+        It is the top of the undo stack. The history tab names it in the
+        confirmation, so the user knows what is about to change before
+        saying yes. Raises EmptyStackError when there is nothing to undo.
+        """
+        return self._undo_stack.peek()
+
     def undo_last(self, context: UndoContext, username: str) -> Action:
         """Undo the last undoable action and return it (RF-30).
 

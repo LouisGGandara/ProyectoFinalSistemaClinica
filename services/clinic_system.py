@@ -367,6 +367,19 @@ class ClinicSystem:
         """Names of the search criteria, in the order the Combobox shows them."""
         return list(CRITERIA)
 
+    @staticmethod
+    def search_suggestions(criterion_name: str) -> list[str]:
+        """Values the search field offers for a criterion, or [] for free text.
+
+        Estado offers the four states and Tipo de atención the two care
+        types, so the user picks a word that matches instead of guessing how
+        to spell it. Each criterion answers for itself through
+        suggestions(). An unknown name gives [], and search() reports the
+        error when the user clicks Buscar.
+        """
+        criterion = CRITERIA.get(criterion_name)
+        return [] if criterion is None else criterion.suggestions()
+
     def list_care_records(self) -> list[CareRecord]:
         """Finished cares, the most recent first (RF-36)."""
         self._require_permission(Permission.VIEW_CARE_HISTORY)
@@ -393,6 +406,15 @@ class ClinicSystem:
         """True if there is an action left to undo, to enable the button."""
         self._require_permission(Permission.UNDO)
         return self._history.can_undo()
+
+    def next_undo(self) -> Action:
+        """Action that undo() would revert next, left in place (step D7).
+
+        The history tab shows it next to the button and names it in the
+        confirmation. Raises EmptyStackError when nothing is left to undo.
+        """
+        self._require_permission(Permission.UNDO)
+        return self._history.next_undo()
 
     def undo(self) -> Action:
         """Undo the last undoable action and return it (RF-30).

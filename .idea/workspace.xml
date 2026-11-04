@@ -1,30 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="553c02d9-41cf-4eff-b8cc-46ff8d3dabe7" name="Changes" comment="2da entrega y esqueleto del programa">
+    <list default="true" id="553c02d9-41cf-4eff-b8cc-46ff8d3dabe7" name="Changes" comment="Logica del sistema completa&#10;&#10;Lógica del sistema de turnos escrita y probada sin interfaz, en los&#10;pasos C1 a C12.&#10;&#10;- utils: excepciones propias que heredan de ClinicError, funciones de&#10;  fecha y Validator con las reglas de formato de la sección 3.9.&#10;- models: Person y User abstractas, Administrator y Receptionist con&#10;  sus permisos, Patient con edad y teléfono validados en sus&#10;  propiedades, CareType con NormalCare y PriorityCare, Ticket con sus&#10;  transiciones de estado, CareRecord y las acciones del historial.&#10;- structures: TicketQueue sobre deque y Stack sobre lista.&#10;- persistence: JsonRepository lee y escribe en UTF-8 sin escapar&#10;  tildes, guarda con archivo temporal y copia como .corrupted el&#10;  archivo que no se puede leer.&#10;- services: UserManager y PatientManager; TicketManager con las dos&#10;  colas, la atención y la cancelación; ActionHistory con dos pilas y&#10;  deshacer; búsqueda por cinco criterios; ClinicStats; y la fachada&#10;  ClinicSystem, que revisa el permiso en cada operación y es lo único&#10;  que verá la interfaz.&#10;- tests: 438 pruebas con unittest, todas pasan, y console_demo.py,&#10;  que muestra un recorrido completo en consola sin tocar data/.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/actions.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/actions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/care_record.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/care_record.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/care_type.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/care_type.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/patient.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/patient.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/permissions.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/permissions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/person.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/person.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ticket.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/ticket.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/ticket_status.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/ticket_status.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/persistence/json_repository.py" beforeDir="false" afterPath="$PROJECT_DIR$/persistence/json_repository.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/action_history.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/action_history.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/clinic_system.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/clinic_system.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/patient_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/patient_manager.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/services/search.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/search.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/stats.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/stats.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/ticket_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/ticket_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/services/user_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/services/user_manager.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/structures/stack.py" beforeDir="false" afterPath="$PROJECT_DIR$/structures/stack.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/structures/ticket_queue.py" beforeDir="false" afterPath="$PROJECT_DIR$/structures/ticket_queue.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/dates.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/dates.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/exceptions.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/validator.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/validator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_managers.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_managers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_system.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_system.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/actions_tab.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/actions_tab.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/base_tab.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/base_tab.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/care_history_tab.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/care_history_tab.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/login_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/login_view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/main_view.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/main_view.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/registration_tab.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/registration_tab.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/search_tab.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/search_tab.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/stats_tab.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/stats_tab.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/tickets_tab.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/tickets_tab.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/users_tab.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/users_tab.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/widgets.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui/widgets.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,20 +58,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/crazy/PycharmProjects/ProyectoFinalSistemaClinica/docs&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.main.executor": "Run",
+    "Python.ticket.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/crazy/PycharmProjects/ProyectoFinalSistemaClinica/docs",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\crazy\PycharmProjects\ProyectoFinalSistemaClinica\docs" />
@@ -131,7 +129,15 @@
       <option name="project" value="LOCAL" />
       <updated>1793577407147</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Logica del sistema completa&#10;&#10;Lógica del sistema de turnos escrita y probada sin interfaz, en los&#10;pasos C1 a C12.&#10;&#10;- utils: excepciones propias que heredan de ClinicError, funciones de&#10;  fecha y Validator con las reglas de formato de la sección 3.9.&#10;- models: Person y User abstractas, Administrator y Receptionist con&#10;  sus permisos, Patient con edad y teléfono validados en sus&#10;  propiedades, CareType con NormalCare y PriorityCare, Ticket con sus&#10;  transiciones de estado, CareRecord y las acciones del historial.&#10;- structures: TicketQueue sobre deque y Stack sobre lista.&#10;- persistence: JsonRepository lee y escribe en UTF-8 sin escapar&#10;  tildes, guarda con archivo temporal y copia como .corrupted el&#10;  archivo que no se puede leer.&#10;- services: UserManager y PatientManager; TicketManager con las dos&#10;  colas, la atención y la cancelación; ActionHistory con dos pilas y&#10;  deshacer; búsqueda por cinco criterios; ClinicStats; y la fachada&#10;  ClinicSystem, que revisa el permiso en cada operación y es lo único&#10;  que verá la interfaz.&#10;- tests: 438 pruebas con unittest, todas pasan, y console_demo.py,&#10;  que muestra un recorrido completo en consola sin tocar data/.">
+      <option name="closed" value="true" />
+      <created>1793727812798</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1793727812798</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -158,6 +164,7 @@
     <MESSAGE value="Iniciar" />
     <MESSAGE value="Primer análisis subida" />
     <MESSAGE value="2da entrega y esqueleto del programa" />
-    <option name="LAST_COMMIT_MESSAGE" value="2da entrega y esqueleto del programa" />
+    <MESSAGE value="Logica del sistema completa&#10;&#10;Lógica del sistema de turnos escrita y probada sin interfaz, en los&#10;pasos C1 a C12.&#10;&#10;- utils: excepciones propias que heredan de ClinicError, funciones de&#10;  fecha y Validator con las reglas de formato de la sección 3.9.&#10;- models: Person y User abstractas, Administrator y Receptionist con&#10;  sus permisos, Patient con edad y teléfono validados en sus&#10;  propiedades, CareType con NormalCare y PriorityCare, Ticket con sus&#10;  transiciones de estado, CareRecord y las acciones del historial.&#10;- structures: TicketQueue sobre deque y Stack sobre lista.&#10;- persistence: JsonRepository lee y escribe en UTF-8 sin escapar&#10;  tildes, guarda con archivo temporal y copia como .corrupted el&#10;  archivo que no se puede leer.&#10;- services: UserManager y PatientManager; TicketManager con las dos&#10;  colas, la atención y la cancelación; ActionHistory con dos pilas y&#10;  deshacer; búsqueda por cinco criterios; ClinicStats; y la fachada&#10;  ClinicSystem, que revisa el permiso en cada operación y es lo único&#10;  que verá la interfaz.&#10;- tests: 438 pruebas con unittest, todas pasan, y console_demo.py,&#10;  que muestra un recorrido completo en consola sin tocar data/." />
+    <option name="LAST_COMMIT_MESSAGE" value="Logica del sistema completa&#10;&#10;Lógica del sistema de turnos escrita y probada sin interfaz, en los&#10;pasos C1 a C12.&#10;&#10;- utils: excepciones propias que heredan de ClinicError, funciones de&#10;  fecha y Validator con las reglas de formato de la sección 3.9.&#10;- models: Person y User abstractas, Administrator y Receptionist con&#10;  sus permisos, Patient con edad y teléfono validados en sus&#10;  propiedades, CareType con NormalCare y PriorityCare, Ticket con sus&#10;  transiciones de estado, CareRecord y las acciones del historial.&#10;- structures: TicketQueue sobre deque y Stack sobre lista.&#10;- persistence: JsonRepository lee y escribe en UTF-8 sin escapar&#10;  tildes, guarda con archivo temporal y copia como .corrupted el&#10;  archivo que no se puede leer.&#10;- services: UserManager y PatientManager; TicketManager con las dos&#10;  colas, la atención y la cancelación; ActionHistory con dos pilas y&#10;  deshacer; búsqueda por cinco criterios; ClinicStats; y la fachada&#10;  ClinicSystem, que revisa el permiso en cada operación y es lo único&#10;  que verá la interfaz.&#10;- tests: 438 pruebas con unittest, todas pasan, y console_demo.py,&#10;  que muestra un recorrido completo en consola sin tocar data/." />
   </component>
 </project>

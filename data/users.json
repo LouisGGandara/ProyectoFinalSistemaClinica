@@ -1,0 +1,16 @@
+[
+    {
+        "full_name": "Administrador General",
+        "username": "admin",
+        "role": "Administrador",
+        "password_hash": "26fb0c7a9f7e9a54fbdb606b04fcb3927355dfde32e1bc893e210f9e4de0ba57",
+        "salt": "b8b19f2ad3697c907aa43a71d8fae202"
+    },
+    {
+        "full_name": "Recepcionista General",
+        "username": "recepcion",
+        "role": "Recepcionista",
+        "password_hash": "889ac7da1c563d029e5ff14ce72f782e1b75bf2dd536e7600820bb15daa07aca",
+        "salt": "b1e01ca1ca613aa82324cad32538f5ca"
+    }
+]

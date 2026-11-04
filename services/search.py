@@ -9,7 +9,9 @@ subclass and one more entry in CRITERIA.
 import unicodedata
 from abc import ABC, abstractmethod
 
+from models.care_type import CARE_TYPE_NAMES
 from models.ticket import Ticket
+from models.ticket_status import TicketStatus
 from utils.exceptions import ValidationError
 
 
@@ -24,6 +26,16 @@ class SearchCriterion(ABC):
     @abstractmethod
     def matches(self, ticket: Ticket, text: str) -> bool:
         """Return True if the ticket fits the text under this criterion."""
+
+    def suggestions(self) -> list[str]:
+        """Values the search field can offer as a list for this criterion.
+
+        A code, a name or a ticket number can be anything, so by default
+        there is nothing to offer and the user types freely. ByStatus and
+        ByCareType override it, because those criteria only match a few
+        fixed words.
+        """
+        return []
 
     @staticmethod
     def _normalize(text: str) -> str:
@@ -84,6 +96,9 @@ class ByStatus(SearchCriterion):
     def matches(self, ticket: Ticket, text: str) -> bool:
         return self._normalize(ticket.status.value) == self._normalize(text)
 
+    def suggestions(self) -> list[str]:
+        return [status.value for status in TicketStatus]
+
 
 class ByCareType(SearchCriterion):
     """Match on the care type name: Normal or Prioritaria."""
@@ -94,6 +109,9 @@ class ByCareType(SearchCriterion):
 
     def matches(self, ticket: Ticket, text: str) -> bool:
         return self._normalize(ticket.care_type.name) == self._normalize(text)
+
+    def suggestions(self) -> list[str]:
+        return list(CARE_TYPE_NAMES)
 
 
 # Visible name of each criterion, in the order the Combobox shows them.

@@ -426,6 +426,29 @@ class TestCancelAndUndo(SystemTestCase):
         )
         self.assertEqual(self.system.list_patients(), [])
 
+    def test_next_undo_names_the_action_without_undoing_it(self):
+        self.system.cancel_ticket("N-002")
+        self.system.logout()
+        self.login_admin()
+        # The logins on top are evidence, so the next undo is still the
+        # cancellation, and asking for it changes nothing.
+        upcoming = self.system.next_undo()
+        self.assertEqual(upcoming.action_type, TICKET_CANCELLATION)
+        self.assertEqual(self.system.get_status("N-002"), "Cancelado")
+        self.assertIs(self.system.undo(), upcoming)
+
+    def test_next_undo_with_nothing_left(self):
+        while self.system.can_undo():
+            self.system.undo()
+        with self.assertRaises(EmptyStackError):
+            self.system.next_undo()
+
+    def test_receptionist_cannot_ask_for_next_undo(self):
+        self.system.logout()
+        self.login_reception()
+        with self.assertRaises(PermissionDeniedError):
+            self.system.next_undo()
+
     def test_undo_registration_and_update(self):
         self.system.update_patient("PAC-0003", "Eva María Ruiz", 40, "77778888")
         self.system.undo()
@@ -518,6 +541,12 @@ class TestQueries(SystemTestCase):
             ["Código de paciente", "Nombre", "Número de turno", "Estado",
              "Tipo de atención"],
         )
+        self.assertEqual(
+            self.system.search_suggestions("Tipo de atención"),
+            ["Normal", "Prioritaria"],
+        )
+        self.assertEqual(self.system.search_suggestions("Nombre"), [])
+        self.assertEqual(self.system.search_suggestions("Teléfono"), [])
 
 
 class TestUsers(SystemTestCase):

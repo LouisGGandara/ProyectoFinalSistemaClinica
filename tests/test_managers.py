@@ -495,6 +495,23 @@ class TestSearchCriteria(ClinicDataTestCase):
         self.assertTrue(CRITERIA["Estado"].matches(ticket, "pendiente"))
         self.assertTrue(CRITERIA["Tipo de atención"].matches(ticket, "normal"))
 
+    def test_only_status_and_care_type_offer_suggestions(self):
+        self.assertEqual(
+            CRITERIA["Estado"].suggestions(),
+            ["Pendiente", "En atención", "Atendido", "Cancelado"],
+        )
+        self.assertEqual(
+            CRITERIA["Tipo de atención"].suggestions(), ["Normal", "Prioritaria"]
+        )
+        for name in ("Código de paciente", "Nombre", "Número de turno"):
+            with self.subTest(name=name):
+                self.assertEqual(CRITERIA[name].suggestions(), [])
+
+    def test_every_suggestion_finds_a_ticket_with_that_value(self):
+        ticket = self.add("PAC-0001", "María López")
+        self.assertTrue(CRITERIA["Estado"].matches(ticket, "Pendiente"))
+        self.assertTrue(CRITERIA["Tipo de atención"].matches(ticket, "Normal"))
+
 
 class TestSearch(ClinicDataTestCase):
     def setUp(self):
