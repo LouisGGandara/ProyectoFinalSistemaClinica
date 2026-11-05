@@ -12,6 +12,7 @@ dictionaries is the job of each model (to_dict and from_dict).
 import json
 import os
 import shutil
+import time
 from datetime import datetime
 from pathlib import Path
 from typing import TextIO
@@ -30,6 +31,12 @@ class JsonRepository:
 
     # Date stamp added to the name of the copy of a damaged file.
     BACKUP_DATE_FORMAT = "%Y%m%d-%H%M%S"
+
+    # Tries of os.replace when Windows reports the file as in use, and the
+    # base wait between them in seconds (it grows with each try, 1.4
+    # seconds at most in total). See _replace.
+    REPLACE_ATTEMPTS = 8
+    REPLACE_WAIT = 0.05
 
     def __init__(self, folder: str = "data") -> None:
         """Keep the data folder and create it if it does not exist."""
@@ -112,7 +119,7 @@ class JsonRepository:
         try:
             with open(tmp_path, "w", encoding=self.ENCODING) as file:
                 json.dump(data, file, indent=4, ensure_ascii=False)
-            os.replace(tmp_path, path)
+            self._replace(tmp_path, path)
         except OSError as error:
             self._discard(tmp_path)
             raise StorageError() from error
@@ -122,6 +129,26 @@ class JsonRepository:
             # is removed so it does not stay half written in the folder.
             self._discard(tmp_path)
             raise
+
+    @classmethod
+    def _replace(cls, tmp_path: Path, path: Path) -> None:
+        """Put the temporary file in place of the original.
+
+        On Windows, os.replace fails with PermissionError while another
+        program has the original open for a moment: PyCharm indexing the
+        project, the antivirus checking the new file or the search indexer.
+        That lock lasts milliseconds, so the replace is tried again a few
+        times with a short wait before giving up. Seen in F6, where the
+        simulated week saves thousands of times in a few seconds.
+        """
+        for attempt in range(1, cls.REPLACE_ATTEMPTS + 1):
+            try:
+                os.replace(tmp_path, path)
+                return
+            except PermissionError:
+                if attempt == cls.REPLACE_ATTEMPTS:
+                    raise
+                time.sleep(cls.REPLACE_WAIT * attempt)
 
     def _backup_corrupted(self, path: Path) -> None:
         """Copy a damaged file next to it, byte for byte.

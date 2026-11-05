@@ -23,6 +23,7 @@ from ui.widgets import (
     add_form_entry,
     add_table_frame,
     bind_enter,
+    center_dialog,
     show_info,
 )
 
@@ -547,18 +548,11 @@ class NewTicketDialog(tk.Toplevel):
             bind_enter(widget, self._submit)
         self.bind("<Escape>", lambda _event: self.close())
 
-        self._center_on(parent.winfo_toplevel())
+        center_dialog(self, parent.winfo_toplevel())
         # The grab only works once the window is visible.
         self.wait_visibility()
         self.grab_set()
         reason_entry.focus_set()
-
-    def _center_on(self, window: tk.Misc) -> None:
-        """Place the dialog in the middle of the main window."""
-        self.update_idletasks()
-        x = window.winfo_rootx() + (window.winfo_width() - self.winfo_reqwidth()) // 2
-        y = window.winfo_rooty() + (window.winfo_height() - self.winfo_reqheight()) // 3
-        self.geometry(f"+{max(x, 0)}+{max(y, 0)}")
 
     def _submit(self) -> None:
         care_type, criterion = self._care_fields.values()

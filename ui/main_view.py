@@ -14,12 +14,14 @@ from services.clinic_system import ClinicSystem
 from ui.actions_tab import ActionsTab
 from ui.base_tab import BaseTab
 from ui.care_history_tab import CareHistoryTab
+from ui.password_dialog import PasswordDialog
 from ui.registration_tab import RegistrationTab
 from ui.search_tab import SearchTab
 from ui.stats_tab import StatsTab
 from ui.tickets_tab import TicketsTab
 from ui.users_tab import UsersTab
-from ui.widgets import GAP, SMALL_GAP, confirm
+from ui.widgets import GAP, SMALL_GAP, confirm, show_error, show_info
+from utils.exceptions import ClinicError
 
 
 class MainView(ttk.Frame):
@@ -38,6 +40,10 @@ class MainView(ttk.Frame):
 
     FILE_MENU = "Archivo"
     VIEW_MENU = "Ver"
+    PASSWORD_TEXT = "Cambiar mi contraseña"
+    PASSWORD_CHANGED_MESSAGE = (
+        "Tu contraseña se cambió. Úsala la próxima vez que inicies sesión."
+    )
     LOGOUT_TEXT = "Cerrar sesión"
     EXIT_TEXT = "Salir"
     LOGOUT_QUESTION = (
@@ -62,6 +68,7 @@ class MainView(ttk.Frame):
         self._on_logout = on_logout
         self._on_exit = on_exit
         self._tabs: list[BaseTab] = []
+        self._changing_password = False
 
         # The status bar is packed first so it keeps its row at the bottom
         # when the window gets smaller; the notebook takes what is left.
@@ -102,6 +109,7 @@ class MainView(ttk.Frame):
         menu_bar = tk.Menu(window, tearoff=False)
 
         file_menu = tk.Menu(menu_bar, tearoff=False)
+        file_menu.add_command(label=self.PASSWORD_TEXT, command=self._change_own_password)
         file_menu.add_command(label=self.LOGOUT_TEXT, command=self._logout)
         file_menu.add_separator()
         file_menu.add_command(label=self.EXIT_TEXT, command=self._on_exit)
@@ -155,6 +163,42 @@ class MainView(ttk.Frame):
         """
         for tab in self._tabs:
             tab.refresh()
+
+    def _change_own_password(self) -> None:
+        """Archivo > Cambiar mi contraseña (RF-44). Every role has this option.
+
+        The dialog asks for the current password too. Errors appear over
+        the dialog and leave it open; once the change works, the dialog
+        closes and the tabs reload, so the new entry shows up in the
+        action history.
+        """
+        user = self._system.current_user
+        PasswordDialog(
+            self,
+            title=self.PASSWORD_TEXT,
+            user_label=f"{user.username} ({user.full_name})",
+            ask_current=True,
+            on_submit=self._submit_own_password,
+        )
+
+    def _submit_own_password(
+        self, dialog: PasswordDialog, current: str, new: str, confirmation: str
+    ) -> None:
+        # Same guard as BaseTab._run: a second Enter that arrives while the
+        # first message is open is ignored (test E2-12).
+        if self._changing_password:
+            return
+        self._changing_password = True
+        try:
+            self._system.change_own_password(current, new, confirmation)
+        except ClinicError as error:
+            show_error(error.message, parent=dialog)
+            return
+        finally:
+            self._changing_password = False
+        dialog.close()
+        self.notify_change()
+        show_info(self.PASSWORD_CHANGED_MESSAGE, parent=self)
 
     def _logout(self) -> None:
         """Ask first, close the session and go back to the login (RF-04)."""

@@ -256,6 +256,52 @@ class TestSaveErrors(RepositoryTestCase):
                 self.repo.save("patients.json", [])
         self.assertIn("No se pudo guardar", str(context.exception))
 
+    def test_file_locked_for_a_moment_is_saved_on_a_later_try(self):
+        """Windows reports PermissionError while PyCharm or the antivirus
+        has the file open; the lock goes away after a few milliseconds."""
+        self.repo.save("patients.json", [])
+        real_replace = __import__("os").replace
+        calls = []
+
+        def locked_twice(src, dst):
+            calls.append(src)
+            if len(calls) <= 2:
+                raise PermissionError(13, "Acceso denegado")
+            real_replace(src, dst)
+
+        with mock.patch(
+            "persistence.json_repository.os.replace", side_effect=locked_twice
+        ), mock.patch("persistence.json_repository.time.sleep") as sleep:
+            self.repo.save("patients.json", PATIENTS)
+
+        self.assertEqual(len(calls), 3)
+        self.assertEqual(sleep.call_count, 2)
+        self.assertEqual(self.repo.load("patients.json"), PATIENTS)
+        self.assertEqual(list(self.folder.glob("*.tmp")), [])
+
+    def test_file_that_stays_locked_raises_storage_error(self):
+        self.repo.save("patients.json", PATIENTS)
+        before = (self.folder / "patients.json").read_bytes()
+
+        with mock.patch(
+            "persistence.json_repository.os.replace",
+            side_effect=PermissionError(13, "Acceso denegado"),
+        ) as replace, mock.patch("persistence.json_repository.time.sleep"):
+            with self.assertRaises(StorageError):
+                self.repo.save("patients.json", [])
+
+        self.assertEqual(replace.call_count, JsonRepository.REPLACE_ATTEMPTS)
+        self.assertEqual((self.folder / "patients.json").read_bytes(), before)
+        self.assertEqual(list(self.folder.glob("*.tmp")), [])
+
+    def test_other_errors_are_not_retried(self):
+        with mock.patch(
+            "persistence.json_repository.os.replace", side_effect=OSError
+        ) as replace:
+            with self.assertRaises(StorageError):
+                self.repo.save("patients.json", [])
+        self.assertEqual(replace.call_count, 1)
+
     def test_unserializable_data_keeps_its_type_and_cleans_up(self):
         with self.assertRaises(TypeError):
             self.repo.save("patients.json", [{"when": object()}])

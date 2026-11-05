@@ -8,6 +8,7 @@ Casos de la sección A6 del roadmap repetidos en la aplicación real (E1), prueb
 |---|---|---|---|
 | E1, casos de A6 | 29 | 29 | 0 |
 | E2, pruebas de error | 32 | 32 | 0 |
+| Cambio de contraseña, casos nuevos | 2 | 2 | 0 |
 
 Ningún caso de E1 falló. En E2 fallaron cinco pruebas, ninguna con un error sin manejar. Las cinco se corrigieron en E3 y ahora pasan; la sección "E3. Correcciones y revisión del código", al final, dice qué cambió y cómo se comprobó.
 
@@ -53,6 +54,8 @@ Ningún caso de E1 falló. En E2 fallaron cinco pruebas, ninguna con un error si
 | CP-27 | RNF-12 | Abrir con `tickets.json` dañado | Con la aplicación cerrada, `tickets.json` queda con el texto `esto no es JSON {[` | Aviso, copia `.corrupted` creada y la aplicación abre | Aparece "El archivo tickets.json está dañado o no está en UTF-8. Se guardó una copia y el sistema siguió con esa lista vacía." Se creó `tickets.corrupted-20261103-185022.json` con el texto dañado. La aplicación abre, el admin entra, los 7 pacientes siguen y las colas quedan vacías. | Pasó | [aviso](capturas_pruebas/CP-27_aviso_archivo_danado.png)<br>[aplicación abierta](capturas_pruebas/CP-27_aplicacion_abre_con_turnos_vacios.png) |
 | CP-28 | RF-42 | Abrir sin `users.json` | Con la aplicación cerrada, se borra `users.json` | Se crean `admin` y `recepcion` | La aplicación crea `users.json` con admin (Administrador) y recepcion (Recepcionista). Las contraseñas se guardan como hash con sal. `admin` / `Admin123` y `recepcion` / `Recep123` entran. | Pasó | [usuarios](capturas_pruebas/CP-28_usuarios_iniciales_creados.png)<br>[recepción](capturas_pruebas/CP-28_entra_recepcion.png) |
 | CP-29 | RNF-17 | Revisar la codificación de `patients.json` | PAC-0007, José Peña, 45, 24456789, "Tos y fiebre", Normal. Luego se cierra la aplicación y se abre `patients.json` | Se lee "José Peña" tal cual, sin secuencias `\uXXXX`, y el Bloc de notas indica UTF-8 | El registro genera N-007. Con la aplicación cerrada, `patients.json` se decodifica como UTF-8 estricto. Contiene `"full_name": "José Peña"` tal cual, sin `\u`, sin BOM y con sangría de 4 espacios. | Pasó | [registro](capturas_pruebas/CP-29_registro_jose_pena.png) |
+| CP-30 | RF-43 | El administrador cambia la contraseña de otro usuario | En Usuarios se selecciona `recepcion` y se presiona Cambiar contraseña. Primero nueva `Clave456` y confirmación `Clave457`; luego confirmación `Clave456` | Mensaje de que no coinciden; después, contraseña cambiada. `recepcion` entra con `Clave456`. Queda evidencia en el historial | Con `admin` seleccionado, Cambiar contraseña y Eliminar seleccionado están deshabilitados. Con `recepcion`, el diálogo pide solo la nueva contraseña y su confirmación. Primero aparece "La contraseña nueva y su confirmación no coinciden." y el diálogo sigue abierto. Al corregir aparece "Se cambió la contraseña de recepcion. Desde ahora entra con la nueva." El historial muestra "Gestión de usuarios: Se cambió la contraseña del usuario recepcion.", marcada No (evidencia). Después de cerrar sesión, `recepcion` entra con `Clave456`. | Pasó | [usuarios](capturas_pruebas/CP-30_usuarios_cambiar_contrasena.png)<br>[no coinciden](capturas_pruebas/CP-30_no_coinciden.png)<br>[diálogo](capturas_pruebas/CP-30_dialogo_admin.png)<br>[mensaje](capturas_pruebas/CP-30_contrasena_cambiada.png)<br>[historial](capturas_pruebas/CP-30_historial.png) |
+| CP-31 | RF-44 | Cada usuario cambia su propia contraseña | Sesión de `recepcion`. Archivo > Cambiar mi contraseña. Primero contraseña actual `recep123`; luego `Recep123`. Nueva y confirmación `Nueva123` | Mensaje de contraseña actual incorrecta; después, contraseña cambiada | El menú Archivo muestra Cambiar mi contraseña también para el recepcionista. El diálogo pide la contraseña actual, la nueva y la confirmación. Con `recep123` aparece "La contraseña actual no es correcta." y no se cambia nada. Con `Recep123` aparece "Tu contraseña se cambió. Úsala la próxima vez que inicies sesión." Las pruebas automáticas confirman que el usuario queda con otra sal y otro hash, y que `users.json` no guarda la contraseña en texto. | Pasó | [menú](capturas_pruebas/CP-31_menu_archivo.png)<br>[actual incorrecta](capturas_pruebas/CP-31_contrasena_actual_incorrecta.png)<br>[diálogo](capturas_pruebas/CP-31_dialogo_propio.png)<br>[mensaje](capturas_pruebas/CP-31_contrasena_cambiada.png) |
 
 ## Observaciones de E1 para E3
 
@@ -188,3 +191,28 @@ Mientras se probaba E2-27 apareció un caso más: una lista o un objeto escrito 
 2. Repetir E2-12 con el teclado real (Enter dos veces en Motivo y espacio dos veces sobre Atender siguiente).
 3. Guardar `patients.json` en el Bloc de notas como "UTF-8 con BOM" y abrir la aplicación (E2-26). También queda de E1 revisar que el Bloc de notas diga UTF-8 en CP-29.
 4. Al abrir la aplicación por primera vez después de E3 aparece `data/ticket_counter.json`. Es normal y va en el commit.
+
+## Cambio de contraseña (después de E3)
+
+Función agregada el 4 de noviembre de 2026: el administrador cambia la contraseña de otro usuario desde Usuarios (RF-43) y cada usuario cambia la suya desde Archivo > Cambiar mi contraseña, escribiendo primero la actual (RF-44). Los casos CP-30 y CP-31 están en la tabla de E1.
+
+### Cambios en el código
+
+| Archivo | Cambio |
+|---|---|
+| `models/user.py` | `User.change_password(new_password)` valida la contraseña, rechaza la misma que ya tiene y guarda una sal y un hash nuevos. Es el único método que cambia `__password_hash` |
+| `services/user_manager.py` | `UserManager.change_password(username, new_password)` busca al usuario, le cambia la contraseña y guarda `users.json` |
+| `services/clinic_system.py` | `change_password(username, new_password, confirmation)` exige `MANAGE_USERS` y rechaza la cuenta propia. `change_own_password(current_password, new_password, confirmation)` solo exige sesión y revisa la contraseña actual. Las dos registran una acción "Gestión de usuarios" de evidencia, sin la contraseña |
+| `ui/password_dialog.py` | Archivo nuevo con `PasswordDialog`, el diálogo que usan las dos pantallas. Con `ask_current=True` pide también la contraseña actual |
+| `ui/users_tab.py` | Botón Cambiar contraseña, deshabilitado con la cuenta propia seleccionada, igual que Eliminar seleccionado. La nota de la cuenta propia dice dónde se cambia su contraseña |
+| `ui/main_view.py` | Opción Archivo > Cambiar mi contraseña para los dos roles, con la misma protección contra un Enter repetido que `BaseTab._run` (E2-12) |
+| `ui/widgets.py`, `ui/registration_tab.py` | `center_dialog()` reemplaza el método `_center_on` que tenía `NewTicketDialog`, para no repetirlo en el diálogo nuevo |
+
+### Cómo se comprobó
+
+- 21 pruebas automáticas nuevas: 5 de `User.change_password`, 4 de `UserManager` y 12 de `ClinicSystem`, que cubren permisos, cuenta propia, campos vacíos, confirmación distinta, contraseña actual equivocada, contraseña repetida, evidencia en el historial y el inicio de sesión después de reabrir. `python -m unittest discover tests` pasa con 479 pruebas en Python 3.12 y 3.13.
+- CP-30 y CP-31 se ejecutaron con la aplicación real en la misma pantalla virtual de Linux, con clics y teclas de xdotool, sobre una carpeta de datos temporal. `errors.log` quedó vacío.
+
+### Pendiente en Windows
+
+Repetir CP-30 y CP-31 con el teclado real y revisar que Archivo > Cambiar mi contraseña se vea en el menú.

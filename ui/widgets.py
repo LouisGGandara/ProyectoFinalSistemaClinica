@@ -107,6 +107,18 @@ def add_table_frame(
     return frame, table
 
 
+def center_dialog(dialog: tk.Toplevel, window: tk.Misc) -> None:
+    """Place a dialog in the middle of the main window, a little above center.
+
+    NewTicketDialog and PasswordDialog both open over the main window, so
+    the arithmetic is written once here.
+    """
+    dialog.update_idletasks()
+    x = window.winfo_rootx() + (window.winfo_width() - dialog.winfo_reqwidth()) // 2
+    y = window.winfo_rooty() + (window.winfo_height() - dialog.winfo_reqheight()) // 3
+    dialog.geometry(f"+{max(x, 0)}+{max(y, 0)}")
+
+
 def show_error(
     message: str, parent: tk.Misc | None = None, title: str = ERROR_TITLE
 ) -> None:

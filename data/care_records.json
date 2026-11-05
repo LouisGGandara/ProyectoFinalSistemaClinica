@@ -1,1 +1,2702 @@
-[]
+[
+    {
+        "ticket_number": "N-001",
+        "patient_code": "PAC-0001",
+        "patient_name": "Germán Echeverría Monzón",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 07:00:56",
+        "served_at": "2026-10-30 07:07:53",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-002",
+        "patient_code": "PAC-0002",
+        "patient_name": "Fernando Ávila Núñez",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 07:09:37",
+        "served_at": "2026-10-30 07:14:37",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-003",
+        "patient_code": "PAC-0003",
+        "patient_name": "Fernando Echeverría Monzón",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 07:18:40",
+        "served_at": "2026-10-30 07:25:22",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-004",
+        "patient_code": "PAC-0004",
+        "patient_name": "Joaquín Juárez Barrios",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-10-30 07:29:19",
+        "served_at": "2026-10-30 07:36:18",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-006",
+        "patient_code": "PAC-0006",
+        "patient_name": "Jesús Montúfar-López",
+        "care_type": "Prioritaria (Urgencia)",
+        "registered_at": "2026-10-30 07:47:29",
+        "served_at": "2026-10-30 07:52:00",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-005",
+        "patient_code": "PAC-0005",
+        "patient_name": "Elena Quiñónez Juárez",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 07:38:38",
+        "served_at": "2026-10-30 08:02:16",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-007",
+        "patient_code": "PAC-0007",
+        "patient_name": "Ramón Aguilar Ramírez",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 07:55:23",
+        "served_at": "2026-10-30 08:09:53",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-008",
+        "patient_code": "PAC-0008",
+        "patient_name": "Mónica Pérez Estrada",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 08:04:38",
+        "served_at": "2026-10-30 08:19:17",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-009",
+        "patient_code": "PAC-0009",
+        "patient_name": "Valentina Aguilar Peña",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 08:15:05",
+        "served_at": "2026-10-30 08:28:44",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-011",
+        "patient_code": "PAC-0011",
+        "patient_name": "Raúl Joaquín Monzón",
+        "care_type": "Prioritaria (Urgencia)",
+        "registered_at": "2026-10-30 08:33:50",
+        "served_at": "2026-10-30 08:40:20",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-012",
+        "patient_code": "PAC-0012",
+        "patient_name": "Fernando Álvarez Girón",
+        "care_type": "Prioritaria (Discapacidad)",
+        "registered_at": "2026-10-30 08:41:44",
+        "served_at": "2026-10-30 08:45:39",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-010",
+        "patient_code": "PAC-0010",
+        "patient_name": "Paola Peñate Martínez",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 08:23:47",
+        "served_at": "2026-10-30 09:06:01",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-013",
+        "patient_code": "PAC-0013",
+        "patient_name": "Natalia Barrios Gutiérrez",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 08:50:56",
+        "served_at": "2026-10-30 09:14:13",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-017",
+        "patient_code": "PAC-0017",
+        "patient_name": "Raúl Peñate Juárez",
+        "care_type": "Prioritaria (Urgencia)",
+        "registered_at": "2026-10-30 09:28:25",
+        "served_at": "2026-10-30 09:35:12",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-014",
+        "patient_code": "PAC-0014",
+        "patient_name": "Lucía Echeverría Gutiérrez",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 09:00:48",
+        "served_at": "2026-10-30 09:41:13",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-019",
+        "patient_code": "PAC-0019",
+        "patient_name": "Óscar Jiménez-Méndez",
+        "care_type": "Prioritaria (Urgencia)",
+        "registered_at": "2026-10-30 09:47:09",
+        "served_at": "2026-10-30 09:51:24",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-015",
+        "patient_code": "PAC-0015",
+        "patient_name": "Ximena Paola Ramírez",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 09:09:47",
+        "served_at": "2026-10-30 10:01:44",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-016",
+        "patient_code": "PAC-0016",
+        "patient_name": "Elena Ávila Velásquez",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 09:19:33",
+        "served_at": "2026-10-30 10:28:58",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-018",
+        "patient_code": "PAC-0018",
+        "patient_name": "Lucía Aguilar Díaz",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 09:37:04",
+        "served_at": "2026-10-30 10:37:38",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-020",
+        "patient_code": "PAC-0020",
+        "patient_name": "Sofía Ruiz Toledo",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 09:55:50",
+        "served_at": "2026-10-30 10:46:08",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-021",
+        "patient_code": "PAC-0021",
+        "patient_name": "Valentina Quiñónez Estrada",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 10:04:46",
+        "served_at": "2026-10-30 10:55:12",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-022",
+        "patient_code": "PAC-0022",
+        "patient_name": "Begoña Álvarez Ávila",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 10:15:22",
+        "served_at": "2026-10-30 11:08:59",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-023",
+        "patient_code": "PAC-0023",
+        "patient_name": "Inés Ávila Ordóñez",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 10:23:37",
+        "served_at": "2026-10-30 11:15:10",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-024",
+        "patient_code": "PAC-0024",
+        "patient_name": "José Ramírez Ibáñez",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 10:33:29",
+        "served_at": "2026-10-30 11:24:20",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-025",
+        "patient_code": "PAC-0025",
+        "patient_name": "Daniela Monzón Echeverría",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 10:41:49",
+        "served_at": "2026-10-30 11:36:03",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-031",
+        "patient_code": "PAC-0031",
+        "patient_name": "Natalia Valentina Ibáñez",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-10-30 11:37:05",
+        "served_at": "2026-10-30 11:42:16",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-026",
+        "patient_code": "PAC-0026",
+        "patient_name": "Rubén Gómez-Fuentes",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 10:51:59",
+        "served_at": "2026-10-30 11:52:45",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-027",
+        "patient_code": "PAC-0027",
+        "patient_name": "Gabriela Estrada Velásquez",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 11:01:19",
+        "served_at": "2026-10-30 11:59:06",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-028",
+        "patient_code": "PAC-0028",
+        "patient_name": "Paola Velásquez Castañeda",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 11:09:25",
+        "served_at": "2026-10-30 12:13:49",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-029",
+        "patient_code": "PAC-0029",
+        "patient_name": "Matías Óscar Martínez",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 11:18:43",
+        "served_at": "2026-10-30 12:20:52",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-038",
+        "patient_code": "PAC-0037",
+        "patient_name": "Renata López Jiménez",
+        "care_type": "Prioritaria (Discapacidad)",
+        "registered_at": "2026-10-30 12:34:05",
+        "served_at": "2026-10-30 12:40:52",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-032",
+        "patient_code": "PAC-0032",
+        "patient_name": "Mónica Orellana Solís",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 11:47:03",
+        "served_at": "2026-10-30 12:46:42",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-040",
+        "patient_code": "PAC-0039",
+        "patient_name": "Iván Martínez Fuentes",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-10-30 12:52:30",
+        "served_at": "2026-10-30 13:04:14",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-033",
+        "patient_code": "PAC-0033",
+        "patient_name": "Lucía Monzón Peñate",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 11:55:27",
+        "served_at": "2026-10-30 13:14:43",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-034",
+        "patient_code": "PAC-0025",
+        "patient_name": "Daniela Monzón Echeverría",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 11:59:46",
+        "served_at": "2026-10-30 13:24:22",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-035",
+        "patient_code": "PAC-0034",
+        "patient_name": "Fernando Echeverría Gómez",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 12:07:27",
+        "served_at": "2026-10-30 13:33:35",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-036",
+        "patient_code": "PAC-0035",
+        "patient_name": "Raúl García-Velásquez",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 12:15:26",
+        "served_at": "2026-10-30 13:44:44",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-037",
+        "patient_code": "PAC-0036",
+        "patient_name": "Sofía Renata García",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 12:23:10",
+        "served_at": "2026-10-30 13:50:49",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-039",
+        "patient_code": "PAC-0038",
+        "patient_name": "Sofía Ángela Toledo",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 12:42:15",
+        "served_at": "2026-10-30 14:00:30",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-049",
+        "patient_code": "PAC-0048",
+        "patient_name": "Ana Begoña Solís",
+        "care_type": "Prioritaria (Discapacidad)",
+        "registered_at": "2026-10-30 14:13:58",
+        "served_at": "2026-10-30 14:20:59",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-041",
+        "patient_code": "PAC-0040",
+        "patient_name": "Daniela Monzón Martínez",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 13:00:02",
+        "served_at": "2026-10-30 14:29:09",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-042",
+        "patient_code": "PAC-0041",
+        "patient_name": "Jesús Pérez Montúfar",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 13:10:06",
+        "served_at": "2026-10-30 14:37:40",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-043",
+        "patient_code": "PAC-0042",
+        "patient_name": "Gabriela Gutiérrez-García",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 13:19:48",
+        "served_at": "2026-10-30 14:48:24",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-044",
+        "patient_code": "PAC-0043",
+        "patient_name": "Verónica Renata Méndez",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 13:28:40",
+        "served_at": "2026-10-30 14:58:42",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-045",
+        "patient_code": "PAC-0044",
+        "patient_name": "Paola Ximena Aguilar",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 13:37:29",
+        "served_at": "2026-10-30 15:06:51",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-046",
+        "patient_code": "PAC-0045",
+        "patient_name": "José Tomás Morales",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 13:46:36",
+        "served_at": "2026-10-30 15:18:06",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-047",
+        "patient_code": "PAC-0046",
+        "patient_name": "Daniela Ordóñez Muñoz",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 13:56:01",
+        "served_at": "2026-10-30 15:24:48",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-048",
+        "patient_code": "PAC-0047",
+        "patient_name": "Iván Pérez Peñate",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 14:06:11",
+        "served_at": "2026-10-30 15:36:54",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-050",
+        "patient_code": "PAC-0049",
+        "patient_name": "Rocío Renata Velásquez",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 14:24:26",
+        "served_at": "2026-10-30 15:41:22",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-051",
+        "patient_code": "PAC-0050",
+        "patient_name": "Paola Solís Orellana",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 14:32:55",
+        "served_at": "2026-10-30 15:53:19",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-060",
+        "patient_code": "PAC-0059",
+        "patient_name": "Ramón Ibáñez Méndez",
+        "care_type": "Prioritaria (Urgencia)",
+        "registered_at": "2026-10-30 15:56:11",
+        "served_at": "2026-10-30 16:12:57",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-052",
+        "patient_code": "PAC-0051",
+        "patient_name": "Rocío Peña Ibáñez",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 14:42:12",
+        "served_at": "2026-10-30 16:21:02",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-053",
+        "patient_code": "PAC-0052",
+        "patient_name": "María Castañeda Ordóñez",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 14:51:45",
+        "served_at": "2026-10-30 16:31:40",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-054",
+        "patient_code": "PAC-0053",
+        "patient_name": "Luis Jesús Sánchez",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 15:00:45",
+        "served_at": "2026-10-30 16:38:43",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-066",
+        "patient_code": "PAC-0040",
+        "patient_name": "Daniela Monzón Martínez",
+        "care_type": "Prioritaria (Urgencia)",
+        "registered_at": "2026-10-30 16:39:18",
+        "served_at": "2026-10-30 16:45:40",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-068",
+        "patient_code": "PAC-0065",
+        "patient_name": "Raúl Girón Morales",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-10-30 16:51:29",
+        "served_at": "2026-10-30 16:57:11",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-056",
+        "patient_code": "PAC-0055",
+        "patient_name": "Rocío Aguilar Muñoz",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 15:18:58",
+        "served_at": "2026-10-30 17:01:40",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-057",
+        "patient_code": "PAC-0056",
+        "patient_name": "Begoña Aguilar Peña",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 15:29:05",
+        "served_at": "2026-10-30 17:06:13",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-058",
+        "patient_code": "PAC-0057",
+        "patient_name": "Daniela Begoña Peña",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 15:37:24",
+        "served_at": "2026-10-30 17:12:21",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-059",
+        "patient_code": "PAC-0058",
+        "patient_name": "Beatriz Fuentes-Quiñónez",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 15:46:54",
+        "served_at": "2026-10-30 17:20:34",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-061",
+        "patient_code": "PAC-0034",
+        "patient_name": "Fernando Echeverría Gómez",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 15:56:25",
+        "served_at": "2026-10-30 17:24:05",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-062",
+        "patient_code": "PAC-0060",
+        "patient_name": "Óscar Jiménez Quiñónez",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 16:06:05",
+        "served_at": "2026-10-30 17:29:38",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-063",
+        "patient_code": "PAC-0061",
+        "patient_name": "Daniela Gómez Álvarez",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 16:14:59",
+        "served_at": "2026-10-30 17:36:04",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-064",
+        "patient_code": "PAC-0062",
+        "patient_name": "Sebastián Toledo-Álvarez",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 16:24:40",
+        "served_at": "2026-10-30 17:41:58",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-065",
+        "patient_code": "PAC-0063",
+        "patient_name": "Joaquín Juárez-López",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 16:33:02",
+        "served_at": "2026-10-30 17:49:09",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-067",
+        "patient_code": "PAC-0064",
+        "patient_name": "Tomás Barrios Muñoz",
+        "care_type": "Normal",
+        "registered_at": "2026-10-30 16:42:30",
+        "served_at": "2026-10-30 17:55:59",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-069",
+        "patient_code": "PAC-0066",
+        "patient_name": "Inés Quiñónez Barrios",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 07:01:39",
+        "served_at": "2026-11-02 07:07:13",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-070",
+        "patient_code": "PAC-0067",
+        "patient_name": "Paola Hernández Velásquez",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-02 07:10:13",
+        "served_at": "2026-11-02 07:13:45",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-071",
+        "patient_code": "PAC-0068",
+        "patient_name": "Germán Gómez-Orellana",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 07:19:43",
+        "served_at": "2026-11-02 07:25:29",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-072",
+        "patient_code": "PAC-0069",
+        "patient_name": "Paola Cabrera Velásquez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 07:29:31",
+        "served_at": "2026-11-02 07:32:53",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-073",
+        "patient_code": "PAC-0070",
+        "patient_name": "Beatriz Verónica Solís",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 07:37:36",
+        "served_at": "2026-11-02 07:43:00",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-074",
+        "patient_code": "PAC-0007",
+        "patient_name": "Ramón Aguilar Ramírez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 07:43:34",
+        "served_at": "2026-11-02 07:53:57",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-076",
+        "patient_code": "PAC-0072",
+        "patient_name": "José Ordóñez Méndez",
+        "care_type": "Prioritaria (Urgencia)",
+        "registered_at": "2026-11-02 07:56:58",
+        "served_at": "2026-11-02 08:02:17",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-075",
+        "patient_code": "PAC-0071",
+        "patient_name": "Valentina Ramírez Morales",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 07:47:00",
+        "served_at": "2026-11-02 08:10:11",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-077",
+        "patient_code": "PAC-0073",
+        "patient_name": "Andrés Cifuentes Castañeda",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 08:05:39",
+        "served_at": "2026-11-02 08:19:41",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-078",
+        "patient_code": "PAC-0022",
+        "patient_name": "Begoña Álvarez Ávila",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 08:10:34",
+        "served_at": "2026-11-02 08:28:18",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-079",
+        "patient_code": "PAC-0074",
+        "patient_name": "Renata García Toledo",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 08:15:36",
+        "served_at": "2026-11-02 08:39:38",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-080",
+        "patient_code": "PAC-0075",
+        "patient_name": "Beatriz Peña Ávila",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 08:25:00",
+        "served_at": "2026-11-02 09:09:10",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-081",
+        "patient_code": "PAC-0076",
+        "patient_name": "Ximena Martínez Pérez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 08:34:16",
+        "served_at": "2026-11-02 09:15:12",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-082",
+        "patient_code": "PAC-0077",
+        "patient_name": "Ximena Quiñónez García",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 08:43:14",
+        "served_at": "2026-11-02 09:35:13",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-088",
+        "patient_code": "PAC-0083",
+        "patient_name": "Paola Monzón Quiñónez",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-02 09:39:57",
+        "served_at": "2026-11-02 09:46:10",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-089",
+        "patient_code": "PAC-0084",
+        "patient_name": "Rocío Peñate Estrada",
+        "care_type": "Prioritaria (Discapacidad)",
+        "registered_at": "2026-11-02 09:50:15",
+        "served_at": "2026-11-02 09:57:59",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-090",
+        "patient_code": "PAC-0085",
+        "patient_name": "Gabriela Morales Toledo",
+        "care_type": "Prioritaria (Embarazo)",
+        "registered_at": "2026-11-02 09:58:39",
+        "served_at": "2026-11-02 10:05:50",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-083",
+        "patient_code": "PAC-0078",
+        "patient_name": "Paola Pérez Martínez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 08:52:42",
+        "served_at": "2026-11-02 10:13:48",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-092",
+        "patient_code": "PAC-0087",
+        "patient_name": "Elena Ana Ávila",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-02 10:17:51",
+        "served_at": "2026-11-02 10:24:56",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-084",
+        "patient_code": "PAC-0079",
+        "patient_name": "Iván Álvarez-Díaz",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 09:03:43",
+        "served_at": "2026-11-02 10:34:32",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-085",
+        "patient_code": "PAC-0080",
+        "patient_name": "Óscar Montúfar Solís",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 09:11:24",
+        "served_at": "2026-11-02 10:39:07",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-086",
+        "patient_code": "PAC-0081",
+        "patient_name": "Ángela Sofía Ramírez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 09:21:22",
+        "served_at": "2026-11-02 10:51:25",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-087",
+        "patient_code": "PAC-0082",
+        "patient_name": "Valentina Orellana Gutiérrez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 09:31:26",
+        "served_at": "2026-11-02 11:00:16",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-097",
+        "patient_code": "PAC-0092",
+        "patient_name": "Joaquín Gutiérrez Fuentes",
+        "care_type": "Prioritaria (Urgencia)",
+        "registered_at": "2026-11-02 11:04:13",
+        "served_at": "2026-11-02 11:11:21",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-098",
+        "patient_code": "PAC-0093",
+        "patient_name": "Renata Velásquez-Peñate",
+        "care_type": "Prioritaria (Urgencia)",
+        "registered_at": "2026-11-02 11:14:08",
+        "served_at": "2026-11-02 11:19:33",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-091",
+        "patient_code": "PAC-0086",
+        "patient_name": "Óscar Emilio Solís",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 10:07:37",
+        "served_at": "2026-11-02 11:30:32",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-094",
+        "patient_code": "PAC-0089",
+        "patient_name": "Sofía Ramírez Pérez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 10:36:12",
+        "served_at": "2026-11-02 11:39:53",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-101",
+        "patient_code": "PAC-0096",
+        "patient_name": "Mónica Juárez Fuentes",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-02 11:41:23",
+        "served_at": "2026-11-02 11:45:24",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-104",
+        "patient_code": "PAC-0099",
+        "patient_name": "Luis Hernández Aguilar",
+        "care_type": "Prioritaria (Discapacidad)",
+        "registered_at": "2026-11-02 12:10:23",
+        "served_at": "2026-11-02 12:23:34",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-105",
+        "patient_code": "PAC-0100",
+        "patient_name": "Inés Ávila Montúfar",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-02 12:18:46",
+        "served_at": "2026-11-02 12:33:57",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-095",
+        "patient_code": "PAC-0090",
+        "patient_name": "Matías Quiñónez Toledo",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 10:45:30",
+        "served_at": "2026-11-02 12:40:55",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-096",
+        "patient_code": "PAC-0091",
+        "patient_name": "José Estrada Álvarez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 10:55:07",
+        "served_at": "2026-11-02 12:55:23",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-109",
+        "patient_code": "PAC-0104",
+        "patient_name": "Emilio Aguilar Orellana",
+        "care_type": "Prioritaria (Discapacidad)",
+        "registered_at": "2026-11-02 12:57:32",
+        "served_at": "2026-11-02 13:03:14",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-099",
+        "patient_code": "PAC-0094",
+        "patient_name": "Gabriela Peñate Estrada",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 11:22:53",
+        "served_at": "2026-11-02 13:14:58",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-111",
+        "patient_code": "PAC-0092",
+        "patient_name": "Joaquín Gutiérrez Fuentes",
+        "care_type": "Prioritaria (Urgencia)",
+        "registered_at": "2026-11-02 13:14:59",
+        "served_at": "2026-11-02 13:24:21",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-100",
+        "patient_code": "PAC-0095",
+        "patient_name": "Matías Rubén Ibáñez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 11:32:52",
+        "served_at": "2026-11-02 13:31:21",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-102",
+        "patient_code": "PAC-0097",
+        "patient_name": "Julián Monzón Núñez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 11:52:17",
+        "served_at": "2026-11-02 13:41:02",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-115",
+        "patient_code": "PAC-0109",
+        "patient_name": "Beatriz Lucía Cifuentes",
+        "care_type": "Prioritaria (Embarazo)",
+        "registered_at": "2026-11-02 13:43:18",
+        "served_at": "2026-11-02 13:51:21",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-116",
+        "patient_code": "PAC-0110",
+        "patient_name": "Valentina Méndez Gutiérrez",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-02 13:52:55",
+        "served_at": "2026-11-02 13:56:11",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-103",
+        "patient_code": "PAC-0098",
+        "patient_name": "Iván Hernández Pérez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 12:01:44",
+        "served_at": "2026-11-02 14:10:10",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-120",
+        "patient_code": "PAC-0113",
+        "patient_name": "Raúl Sánchez Díaz",
+        "care_type": "Prioritaria (Urgencia)",
+        "registered_at": "2026-11-02 14:22:00",
+        "served_at": "2026-11-02 14:29:40",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-106",
+        "patient_code": "PAC-0101",
+        "patient_name": "Emilio Quiñónez Ibáñez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 12:29:04",
+        "served_at": "2026-11-02 14:34:06",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-107",
+        "patient_code": "PAC-0102",
+        "patient_name": "Raúl Solís García",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 12:37:38",
+        "served_at": "2026-11-02 14:46:41",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-123",
+        "patient_code": "PAC-0116",
+        "patient_name": "Luis Matías Rodríguez",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-02 14:50:34",
+        "served_at": "2026-11-02 14:58:06",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-124",
+        "patient_code": "PAC-0117",
+        "patient_name": "Inés Jiménez Cabrera",
+        "care_type": "Prioritaria (Discapacidad)",
+        "registered_at": "2026-11-02 14:58:56",
+        "served_at": "2026-11-02 15:06:10",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-125",
+        "patient_code": "PAC-0118",
+        "patient_name": "Ana Ordóñez-Gómez",
+        "care_type": "Prioritaria (Discapacidad)",
+        "registered_at": "2026-11-02 15:08:20",
+        "served_at": "2026-11-02 15:21:03",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-126",
+        "patient_code": "PAC-0119",
+        "patient_name": "Ramón Gómez Álvarez",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-02 15:17:01",
+        "served_at": "2026-11-02 15:42:20",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-128",
+        "patient_code": "PAC-0102",
+        "patient_name": "Raúl Solís García",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-02 15:26:49",
+        "served_at": "2026-11-02 15:52:45",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-108",
+        "patient_code": "PAC-0103",
+        "patient_name": "Paola Gutiérrez Ibáñez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 12:48:29",
+        "served_at": "2026-11-02 16:00:52",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-110",
+        "patient_code": "PAC-0105",
+        "patient_name": "Begoña Ávila Ordóñez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 13:06:55",
+        "served_at": "2026-11-02 16:08:31",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-112",
+        "patient_code": "PAC-0106",
+        "patient_name": "Nicolás Gómez-Solís",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 13:16:26",
+        "served_at": "2026-11-02 16:17:36",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-113",
+        "patient_code": "PAC-0107",
+        "patient_name": "Beatriz Peñate Quiñónez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 13:25:13",
+        "served_at": "2026-11-02 16:30:46",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-136",
+        "patient_code": "PAC-0013",
+        "patient_name": "Natalia Barrios Gutiérrez",
+        "care_type": "Prioritaria (Embarazo)",
+        "registered_at": "2026-11-02 16:31:03",
+        "served_at": "2026-11-02 16:39:41",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-114",
+        "patient_code": "PAC-0108",
+        "patient_name": "Gabriela Díaz Rodríguez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 13:34:15",
+        "served_at": "2026-11-02 16:47:38",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-117",
+        "patient_code": "PAC-0050",
+        "patient_name": "Paola Solís Orellana",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 13:56:48",
+        "served_at": "2026-11-02 16:56:59",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-119",
+        "patient_code": "PAC-0112",
+        "patient_name": "Nicolás Toledo Orellana",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 14:12:46",
+        "served_at": "2026-11-02 17:03:48",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-121",
+        "patient_code": "PAC-0114",
+        "patient_name": "Luis Montúfar Echeverría",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 14:30:24",
+        "served_at": "2026-11-02 17:11:42",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-122",
+        "patient_code": "PAC-0115",
+        "patient_name": "Ana Juárez Estrada",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 14:40:41",
+        "served_at": "2026-11-02 17:16:22",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-127",
+        "patient_code": "PAC-0120",
+        "patient_name": "María Orellana-Quiñónez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 15:26:16",
+        "served_at": "2026-11-02 17:20:20",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-130",
+        "patient_code": "PAC-0121",
+        "patient_name": "María Natalia García",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 15:37:01",
+        "served_at": "2026-11-02 17:26:28",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-131",
+        "patient_code": "PAC-0122",
+        "patient_name": "Nicolás Monzón Girón",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 15:46:46",
+        "served_at": "2026-11-02 17:32:16",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-132",
+        "patient_code": "PAC-0123",
+        "patient_name": "Luis Gutiérrez Echeverría",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 15:55:08",
+        "served_at": "2026-11-02 17:40:27",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-133",
+        "patient_code": "PAC-0124",
+        "patient_name": "Renata Ana Toledo",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 16:04:56",
+        "served_at": "2026-11-02 17:47:42",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-134",
+        "patient_code": "PAC-0125",
+        "patient_name": "Ana Girón Muñoz",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 16:14:13",
+        "served_at": "2026-11-02 17:52:33",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-135",
+        "patient_code": "PAC-0126",
+        "patient_name": "Verónica Ordóñez-Cifuentes",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 16:23:29",
+        "served_at": "2026-11-02 17:56:17",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-137",
+        "patient_code": "PAC-0127",
+        "patient_name": "Tomás Díaz Fuentes",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 16:32:17",
+        "served_at": "2026-11-02 18:01:13",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-138",
+        "patient_code": "PAC-0128",
+        "patient_name": "Sofía Núñez Rodríguez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 16:42:53",
+        "served_at": "2026-11-02 18:05:18",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-139",
+        "patient_code": "PAC-0129",
+        "patient_name": "Lucía Monzón Álvarez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-02 16:52:09",
+        "served_at": "2026-11-02 18:09:51",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-140",
+        "patient_code": "PAC-0130",
+        "patient_name": "Natalia Morales Orellana",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-03 07:02:28",
+        "served_at": "2026-11-03 07:15:51",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-141",
+        "patient_code": "PAC-0131",
+        "patient_name": "Tomás Peñate Orellana",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 07:09:45",
+        "served_at": "2026-11-03 07:23:50",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-143",
+        "patient_code": "PAC-0133",
+        "patient_name": "Natalia Muñoz-Morales",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-03 07:28:11",
+        "served_at": "2026-11-03 07:33:46",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-144",
+        "patient_code": "PAC-0134",
+        "patient_name": "Germán Girón Estrada",
+        "care_type": "Prioritaria (Urgencia)",
+        "registered_at": "2026-11-03 07:39:00",
+        "served_at": "2026-11-03 07:44:31",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-142",
+        "patient_code": "PAC-0132",
+        "patient_name": "Paola Ávila Aguilar",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 07:19:06",
+        "served_at": "2026-11-03 08:05:33",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-145",
+        "patient_code": "PAC-0135",
+        "patient_name": "Germán Monzón Toledo",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 07:47:39",
+        "served_at": "2026-11-03 08:11:10",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-146",
+        "patient_code": "PAC-0136",
+        "patient_name": "Rocío Ordóñez Echeverría",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 07:57:40",
+        "served_at": "2026-11-03 08:23:25",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-147",
+        "patient_code": "PAC-0137",
+        "patient_name": "Joaquín Ramírez Barrios",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 08:06:00",
+        "served_at": "2026-11-03 08:38:51",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-151",
+        "patient_code": "PAC-0141",
+        "patient_name": "Rocío Solís-López",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-03 08:44:12",
+        "served_at": "2026-11-03 08:51:00",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-148",
+        "patient_code": "PAC-0138",
+        "patient_name": "Begoña Quiñónez-Álvarez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 08:16:34",
+        "served_at": "2026-11-03 08:56:23",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-149",
+        "patient_code": "PAC-0139",
+        "patient_name": "Ana López-Sánchez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 08:25:30",
+        "served_at": "2026-11-03 09:09:51",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-150",
+        "patient_code": "PAC-0140",
+        "patient_name": "Mónica Ordóñez Álvarez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 08:35:16",
+        "served_at": "2026-11-03 09:15:57",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-152",
+        "patient_code": "PAC-0142",
+        "patient_name": "Paola Ruiz Núñez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 08:52:35",
+        "served_at": "2026-11-03 09:29:09",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-153",
+        "patient_code": "PAC-0143",
+        "patient_name": "Rocío Ávila Aguilar",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 09:01:57",
+        "served_at": "2026-11-03 09:39:21",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-154",
+        "patient_code": "PAC-0144",
+        "patient_name": "Natalia Rocío Orellana",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 09:11:33",
+        "served_at": "2026-11-03 09:45:59",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-155",
+        "patient_code": "PAC-0145",
+        "patient_name": "Jesús Ramírez Álvarez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 09:21:53",
+        "served_at": "2026-11-03 09:54:20",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-156",
+        "patient_code": "PAC-0146",
+        "patient_name": "Fernando Jesús Cabrera",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 09:31:50",
+        "served_at": "2026-11-03 10:03:09",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-157",
+        "patient_code": "PAC-0147",
+        "patient_name": "Iván Monzón-Ibáñez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 09:41:06",
+        "served_at": "2026-11-03 10:24:52",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-162",
+        "patient_code": "PAC-0152",
+        "patient_name": "Mónica María Núñez",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-03 10:26:33",
+        "served_at": "2026-11-03 10:30:45",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-163",
+        "patient_code": "PAC-0153",
+        "patient_name": "Inés Álvarez Montúfar",
+        "care_type": "Prioritaria (Embarazo)",
+        "registered_at": "2026-11-03 10:35:55",
+        "served_at": "2026-11-03 10:39:24",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-164",
+        "patient_code": "PAC-0154",
+        "patient_name": "Ana Quiñónez Cifuentes",
+        "care_type": "Prioritaria (Urgencia)",
+        "registered_at": "2026-11-03 10:45:48",
+        "served_at": "2026-11-03 10:51:36",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-165",
+        "patient_code": "PAC-0155",
+        "patient_name": "Lucía Gutiérrez-Monzón",
+        "care_type": "Prioritaria (Embarazo)",
+        "registered_at": "2026-11-03 10:55:18",
+        "served_at": "2026-11-03 10:59:27",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-166",
+        "patient_code": "PAC-0156",
+        "patient_name": "Jesús Óscar Montúfar",
+        "care_type": "Prioritaria (Discapacidad)",
+        "registered_at": "2026-11-03 11:05:09",
+        "served_at": "2026-11-03 11:09:46",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-159",
+        "patient_code": "PAC-0149",
+        "patient_name": "Ramón Núñez Fuentes",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 09:59:36",
+        "served_at": "2026-11-03 11:19:12",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-168",
+        "patient_code": "PAC-0158",
+        "patient_name": "Héctor Aguilar Peña",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-03 11:24:22",
+        "served_at": "2026-11-03 11:39:49",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-160",
+        "patient_code": "PAC-0150",
+        "patient_name": "Rubén Ruiz Estrada",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 10:08:13",
+        "served_at": "2026-11-03 11:46:29",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-161",
+        "patient_code": "PAC-0151",
+        "patient_name": "Daniela Lucía Hernández",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 10:17:03",
+        "served_at": "2026-11-03 11:55:09",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-167",
+        "patient_code": "PAC-0157",
+        "patient_name": "Lucía Monzón Ordóñez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 11:13:44",
+        "served_at": "2026-11-03 12:05:31",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-169",
+        "patient_code": "PAC-0159",
+        "patient_name": "Renata Barrios Quiñónez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 11:33:07",
+        "served_at": "2026-11-03 12:14:55",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-170",
+        "patient_code": "PAC-0160",
+        "patient_name": "Daniela Natalia Quiñónez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 11:41:23",
+        "served_at": "2026-11-03 12:27:13",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-171",
+        "patient_code": "PAC-0161",
+        "patient_name": "José Ibáñez-Pérez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 11:51:04",
+        "served_at": "2026-11-03 12:35:19",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-172",
+        "patient_code": "PAC-0162",
+        "patient_name": "Julián Rodríguez Ávila",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 12:01:00",
+        "served_at": "2026-11-03 12:43:28",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-177",
+        "patient_code": "PAC-0167",
+        "patient_name": "Joaquín Iván Estrada",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-03 12:47:14",
+        "served_at": "2026-11-03 13:01:26",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-179",
+        "patient_code": "PAC-0169",
+        "patient_name": "Ximena Hernández-Peñate",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-03 13:05:39",
+        "served_at": "2026-11-03 13:20:15",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-173",
+        "patient_code": "PAC-0163",
+        "patient_name": "Iván Germán Ibáñez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 12:10:59",
+        "served_at": "2026-11-03 13:29:07",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-182",
+        "patient_code": "PAC-0172",
+        "patient_name": "Begoña Núñez-Díaz",
+        "care_type": "Prioritaria (Urgencia)",
+        "registered_at": "2026-11-03 13:34:25",
+        "served_at": "2026-11-03 13:51:52",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-184",
+        "patient_code": "PAC-0174",
+        "patient_name": "Gabriela Muñoz Gutiérrez",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-03 13:52:36",
+        "served_at": "2026-11-03 13:59:28",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-174",
+        "patient_code": "PAC-0164",
+        "patient_name": "Rubén Monzón Ibáñez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 12:20:13",
+        "served_at": "2026-11-03 14:16:38",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-187",
+        "patient_code": "PAC-0177",
+        "patient_name": "Gabriela Cabrera Martínez",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-03 14:21:28",
+        "served_at": "2026-11-03 14:28:31",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-188",
+        "patient_code": "PAC-0178",
+        "patient_name": "Camila Méndez Ramírez",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-03 14:30:53",
+        "served_at": "2026-11-03 14:37:17",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-189",
+        "patient_code": "PAC-0179",
+        "patient_name": "Martín Méndez Quiñónez",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-03 14:40:01",
+        "served_at": "2026-11-03 14:47:59",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-175",
+        "patient_code": "PAC-0165",
+        "patient_name": "Sofía Velásquez Núñez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 12:28:50",
+        "served_at": "2026-11-03 14:56:29",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-176",
+        "patient_code": "PAC-0166",
+        "patient_name": "Mónica Echeverría-Martínez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 12:39:01",
+        "served_at": "2026-11-03 15:01:18",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-192",
+        "patient_code": "PAC-0182",
+        "patient_name": "José Nicolás Juárez",
+        "care_type": "Prioritaria (Urgencia)",
+        "registered_at": "2026-11-03 15:08:57",
+        "served_at": "2026-11-03 15:14:41",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-178",
+        "patient_code": "PAC-0168",
+        "patient_name": "Ana Valentina Hernández",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 12:57:53",
+        "served_at": "2026-11-03 15:22:55",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-194",
+        "patient_code": "PAC-0184",
+        "patient_name": "Jesús Méndez Ordóñez",
+        "care_type": "Prioritaria (Urgencia)",
+        "registered_at": "2026-11-03 15:27:22",
+        "served_at": "2026-11-03 15:44:05",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-195",
+        "patient_code": "PAC-0185",
+        "patient_name": "Paola Martínez-Juárez",
+        "care_type": "Prioritaria (Embarazo)",
+        "registered_at": "2026-11-03 15:36:59",
+        "served_at": "2026-11-03 15:49:53",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-180",
+        "patient_code": "PAC-0170",
+        "patient_name": "Sofía Peñate Hernández",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 13:15:21",
+        "served_at": "2026-11-03 16:01:07",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-198",
+        "patient_code": "PAC-0188",
+        "patient_name": "Begoña López Estrada",
+        "care_type": "Prioritaria (Embarazo)",
+        "registered_at": "2026-11-03 16:05:21",
+        "served_at": "2026-11-03 16:10:18",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-181",
+        "patient_code": "PAC-0171",
+        "patient_name": "Begoña Solís-Ramírez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 13:24:31",
+        "served_at": "2026-11-03 16:18:34",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-200",
+        "patient_code": "PAC-0169",
+        "patient_name": "Ximena Hernández-Peñate",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-03 16:18:51",
+        "served_at": "2026-11-03 16:30:57",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-183",
+        "patient_code": "PAC-0173",
+        "patient_name": "Mónica Jiménez Gómez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 13:44:34",
+        "served_at": "2026-11-03 16:37:59",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-186",
+        "patient_code": "PAC-0176",
+        "patient_name": "Óscar Castañeda Ruiz",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 14:12:10",
+        "served_at": "2026-11-03 16:47:06",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-204",
+        "patient_code": "PAC-0193",
+        "patient_name": "Beatriz Pérez García",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-03 16:52:13",
+        "served_at": "2026-11-03 16:58:23",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-190",
+        "patient_code": "PAC-0180",
+        "patient_name": "Rocío Jiménez Cifuentes",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 14:50:15",
+        "served_at": "2026-11-03 17:05:42",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-191",
+        "patient_code": "PAC-0181",
+        "patient_name": "Tomás Peña Orellana",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 14:58:19",
+        "served_at": "2026-11-03 17:10:18",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-193",
+        "patient_code": "PAC-0183",
+        "patient_name": "Elena Cifuentes Álvarez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 15:17:23",
+        "served_at": "2026-11-03 17:13:30",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-196",
+        "patient_code": "PAC-0186",
+        "patient_name": "Gabriela Montúfar Velásquez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 15:45:17",
+        "served_at": "2026-11-03 17:19:12",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-197",
+        "patient_code": "PAC-0187",
+        "patient_name": "María Rodríguez Méndez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 15:54:33",
+        "served_at": "2026-11-03 17:25:04",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-199",
+        "patient_code": "PAC-0189",
+        "patient_name": "Luis Ramón Ramírez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 16:13:19",
+        "served_at": "2026-11-03 17:29:29",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-201",
+        "patient_code": "PAC-0190",
+        "patient_name": "Tomás Cifuentes Méndez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 16:23:06",
+        "served_at": "2026-11-03 17:36:29",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-202",
+        "patient_code": "PAC-0191",
+        "patient_name": "Begoña Rocío Estrada",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 16:32:06",
+        "served_at": "2026-11-03 17:42:34",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-203",
+        "patient_code": "PAC-0192",
+        "patient_name": "Raúl Martínez-Núñez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-03 16:41:41",
+        "served_at": "2026-11-03 17:48:41",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-205",
+        "patient_code": "PAC-0194",
+        "patient_name": "Inés Peñate-Ruiz",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 07:02:38",
+        "served_at": "2026-11-04 07:07:48",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-206",
+        "patient_code": "PAC-0195",
+        "patient_name": "Ana Solís Jiménez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 07:10:11",
+        "served_at": "2026-11-04 07:14:21",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-207",
+        "patient_code": "PAC-0196",
+        "patient_name": "Germán Hernández Méndez",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-04 07:18:55",
+        "served_at": "2026-11-04 07:43:58",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-211",
+        "patient_code": "PAC-0199",
+        "patient_name": "Germán Cifuentes Peñate",
+        "care_type": "Prioritaria (Urgencia)",
+        "registered_at": "2026-11-04 07:48:41",
+        "served_at": "2026-11-04 07:55:51",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-208",
+        "patient_code": "PAC-0089",
+        "patient_name": "Sofía Ramírez Pérez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 07:19:27",
+        "served_at": "2026-11-04 08:05:36",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-213",
+        "patient_code": "PAC-0201",
+        "patient_name": "Lucía Jiménez Gómez",
+        "care_type": "Prioritaria (Urgencia)",
+        "registered_at": "2026-11-04 08:06:30",
+        "served_at": "2026-11-04 08:10:30",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-215",
+        "patient_code": "PAC-0203",
+        "patient_name": "Paola Jiménez Peña",
+        "care_type": "Prioritaria (Embarazo)",
+        "registered_at": "2026-11-04 08:24:27",
+        "served_at": "2026-11-04 08:30:04",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-209",
+        "patient_code": "PAC-0197",
+        "patient_name": "Elena Gutiérrez Estrada",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 07:29:24",
+        "served_at": "2026-11-04 08:42:05",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-210",
+        "patient_code": "PAC-0198",
+        "patient_name": "Renata Solís Ávila",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 07:37:34",
+        "served_at": "2026-11-04 08:49:07",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-212",
+        "patient_code": "PAC-0200",
+        "patient_name": "Tomás Estrada Barrios",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 07:58:05",
+        "served_at": "2026-11-04 08:59:21",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-214",
+        "patient_code": "PAC-0202",
+        "patient_name": "María Ruiz Barrios",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 08:15:31",
+        "served_at": "2026-11-04 09:09:20",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-216",
+        "patient_code": "PAC-0204",
+        "patient_name": "Daniela Velásquez-Gutiérrez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 08:33:48",
+        "served_at": "2026-11-04 09:18:20",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-222",
+        "patient_code": "PAC-0209",
+        "patient_name": "Martín Díaz Castañeda",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-04 09:20:50",
+        "served_at": "2026-11-04 09:26:17",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-217",
+        "patient_code": "PAC-0205",
+        "patient_name": "Renata Ramírez Gutiérrez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 08:43:10",
+        "served_at": "2026-11-04 09:34:18",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-218",
+        "patient_code": "PAC-0206",
+        "patient_name": "Gabriela Méndez-Morales",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 08:52:46",
+        "served_at": "2026-11-04 09:46:03",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-219",
+        "patient_code": "PAC-0207",
+        "patient_name": "Tomás Aguilar Echeverría",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 09:02:06",
+        "served_at": "2026-11-04 09:56:35",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-226",
+        "patient_code": "PAC-0003",
+        "patient_name": "Fernando Echeverría Monzón",
+        "care_type": "Prioritaria (Discapacidad)",
+        "registered_at": "2026-11-04 09:56:53",
+        "served_at": "2026-11-04 10:06:47",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-227",
+        "patient_code": "PAC-0213",
+        "patient_name": "Beatriz Ruiz García",
+        "care_type": "Prioritaria (Discapacidad)",
+        "registered_at": "2026-11-04 09:59:31",
+        "served_at": "2026-11-04 10:15:24",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-228",
+        "patient_code": "PAC-0214",
+        "patient_name": "Iván Hernández Barrios",
+        "care_type": "Prioritaria (Urgencia)",
+        "registered_at": "2026-11-04 10:07:34",
+        "served_at": "2026-11-04 10:23:31",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-221",
+        "patient_code": "PAC-0208",
+        "patient_name": "Begoña Inés Barrios",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 09:11:15",
+        "served_at": "2026-11-04 10:33:27",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-231",
+        "patient_code": "PAC-0217",
+        "patient_name": "María Montúfar-Muñoz",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-04 10:37:28",
+        "served_at": "2026-11-04 10:44:51",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-223",
+        "patient_code": "PAC-0210",
+        "patient_name": "Raúl Cabrera Orellana",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 09:30:58",
+        "served_at": "2026-11-04 10:49:54",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-224",
+        "patient_code": "PAC-0211",
+        "patient_name": "Renata Camila Hernández",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 09:39:46",
+        "served_at": "2026-11-04 11:02:14",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-235",
+        "patient_code": "PAC-0220",
+        "patient_name": "Gabriela Cifuentes-Ibáñez",
+        "care_type": "Prioritaria (Embarazo)",
+        "registered_at": "2026-11-04 11:04:45",
+        "served_at": "2026-11-04 11:08:31",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-225",
+        "patient_code": "PAC-0212",
+        "patient_name": "Emilio Pérez Méndez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 09:49:14",
+        "served_at": "2026-11-04 11:31:13",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-229",
+        "patient_code": "PAC-0215",
+        "patient_name": "Camila Solís Orellana",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 10:18:00",
+        "served_at": "2026-11-04 11:39:34",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-230",
+        "patient_code": "PAC-0216",
+        "patient_name": "Paola María Montúfar",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 10:26:55",
+        "served_at": "2026-11-04 11:49:59",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-241",
+        "patient_code": "PAC-0225",
+        "patient_name": "Germán Toledo Castañeda",
+        "care_type": "Prioritaria (Urgencia)",
+        "registered_at": "2026-11-04 11:52:26",
+        "served_at": "2026-11-04 11:56:53",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-232",
+        "patient_code": "PAC-0092",
+        "patient_name": "Joaquín Gutiérrez Fuentes",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 10:44:59",
+        "served_at": "2026-11-04 12:16:13",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-233",
+        "patient_code": "PAC-0218",
+        "patient_name": "Ángela Morales Martínez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 10:45:06",
+        "served_at": "2026-11-04 12:27:53",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-234",
+        "patient_code": "PAC-0219",
+        "patient_name": "Matías García-Jiménez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 10:55:19",
+        "served_at": "2026-11-04 12:32:27",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-247",
+        "patient_code": "PAC-0230",
+        "patient_name": "José Quiñónez Morales",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-04 12:38:35",
+        "served_at": "2026-11-04 12:43:10",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-236",
+        "patient_code": "PAC-0169",
+        "patient_name": "Ximena Hernández-Peñate",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 11:08:53",
+        "served_at": "2026-11-04 12:52:40",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-249",
+        "patient_code": "PAC-0232",
+        "patient_name": "Sebastián Jiménez Ibáñez",
+        "care_type": "Prioritaria (Urgencia)",
+        "registered_at": "2026-11-04 12:56:45",
+        "served_at": "2026-11-04 13:01:13",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-250",
+        "patient_code": "PAC-0233",
+        "patient_name": "Rubén Barrios Ibáñez",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-04 13:06:20",
+        "served_at": "2026-11-04 13:13:44",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-237",
+        "patient_code": "PAC-0221",
+        "patient_name": "Luis Morales Jiménez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 11:14:38",
+        "served_at": "2026-11-04 13:24:21",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-238",
+        "patient_code": "PAC-0222",
+        "patient_name": "Elena Cabrera Núñez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 11:23:43",
+        "served_at": "2026-11-04 13:33:14",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-254",
+        "patient_code": "PAC-0237",
+        "patient_name": "Beatriz Inés Sánchez",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-04 13:43:09",
+        "served_at": "2026-11-04 13:48:12",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-239",
+        "patient_code": "PAC-0223",
+        "patient_name": "Camila Peña Núñez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 11:32:17",
+        "served_at": "2026-11-04 14:01:11",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-256",
+        "patient_code": "PAC-0239",
+        "patient_name": "Camila López-García",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-04 14:02:34",
+        "served_at": "2026-11-04 14:08:48",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-258",
+        "patient_code": "PAC-0240",
+        "patient_name": "Julián Castañeda Juárez",
+        "care_type": "Prioritaria (Discapacidad)",
+        "registered_at": "2026-11-04 14:12:29",
+        "served_at": "2026-11-04 14:17:36",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-260",
+        "patient_code": "PAC-0241",
+        "patient_name": "Sofía Beatriz Montúfar",
+        "care_type": "Prioritaria (Discapacidad)",
+        "registered_at": "2026-11-04 14:21:42",
+        "served_at": "2026-11-04 14:37:53",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-261",
+        "patient_code": "PAC-0183",
+        "patient_name": "Elena Cifuentes Álvarez",
+        "care_type": "Prioritaria (Discapacidad)",
+        "registered_at": "2026-11-04 14:21:58",
+        "served_at": "2026-11-04 15:04:22",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-263",
+        "patient_code": "PAC-0243",
+        "patient_name": "Fernando Álvarez-Monzón",
+        "care_type": "Prioritaria (Discapacidad)",
+        "registered_at": "2026-11-04 14:40:41",
+        "served_at": "2026-11-04 15:14:46",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-265",
+        "patient_code": "PAC-0245",
+        "patient_name": "Elena Jiménez Solís",
+        "care_type": "Prioritaria (Discapacidad)",
+        "registered_at": "2026-11-04 14:59:55",
+        "served_at": "2026-11-04 15:22:33",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-240",
+        "patient_code": "PAC-0224",
+        "patient_name": "José Aguilar Orellana",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 11:42:12",
+        "served_at": "2026-11-04 15:35:00",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-242",
+        "patient_code": "PAC-0226",
+        "patient_name": "Ángela Quiñónez Núñez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 12:00:25",
+        "served_at": "2026-11-04 16:01:06",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-243",
+        "patient_code": "PAC-0227",
+        "patient_name": "Luis Álvarez-Solís",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 12:11:04",
+        "served_at": "2026-11-04 16:13:06",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-244",
+        "patient_code": "PAC-0228",
+        "patient_name": "María Velásquez Cabrera",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 12:20:24",
+        "served_at": "2026-11-04 16:36:13",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "P-276",
+        "patient_code": "PAC-0256",
+        "patient_name": "Camila Montúfar Estrada",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-04 16:42:04",
+        "served_at": "2026-11-04 16:46:19",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-245",
+        "patient_code": "PAC-0134",
+        "patient_name": "Germán Girón Estrada",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 12:28:06",
+        "served_at": "2026-11-04 16:57:59",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-246",
+        "patient_code": "PAC-0229",
+        "patient_name": "Julián Hernández Quiñónez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 12:28:21",
+        "served_at": "2026-11-04 17:02:00",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-248",
+        "patient_code": "PAC-0231",
+        "patient_name": "Tomás Solís Gutiérrez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 12:47:42",
+        "served_at": "2026-11-04 17:07:11",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-251",
+        "patient_code": "PAC-0234",
+        "patient_name": "Verónica Muñoz Solís",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 13:16:50",
+        "served_at": "2026-11-04 17:14:41",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-252",
+        "patient_code": "PAC-0235",
+        "patient_name": "Emilio Cabrera Gómez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 13:25:07",
+        "served_at": "2026-11-04 17:22:10",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-255",
+        "patient_code": "PAC-0238",
+        "patient_name": "Héctor Iván López",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 13:54:07",
+        "served_at": "2026-11-04 17:25:45",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-257",
+        "patient_code": "PAC-0032",
+        "patient_name": "Mónica Orellana Solís",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 14:09:19",
+        "served_at": "2026-11-04 17:34:16",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-262",
+        "patient_code": "PAC-0242",
+        "patient_name": "Renata Díaz Sánchez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 14:30:41",
+        "served_at": "2026-11-04 17:41:39",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-264",
+        "patient_code": "PAC-0244",
+        "patient_name": "Raúl Méndez Cifuentes",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 14:49:28",
+        "served_at": "2026-11-04 17:48:32",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-266",
+        "patient_code": "PAC-0246",
+        "patient_name": "Raúl Cabrera Barrios",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 15:07:56",
+        "served_at": "2026-11-04 17:53:10",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-267",
+        "patient_code": "PAC-0247",
+        "patient_name": "Begoña Pérez-Quiñónez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 15:18:01",
+        "served_at": "2026-11-04 17:59:06",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-268",
+        "patient_code": "PAC-0248",
+        "patient_name": "Sebastián Méndez-Girón",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 15:27:55",
+        "served_at": "2026-11-04 18:05:22",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-269",
+        "patient_code": "PAC-0249",
+        "patient_name": "Camila Echeverría Castañeda",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 15:36:12",
+        "served_at": "2026-11-04 18:09:13",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-270",
+        "patient_code": "PAC-0250",
+        "patient_name": "Sofía Álvarez López",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 15:45:58",
+        "served_at": "2026-11-04 18:15:52",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-271",
+        "patient_code": "PAC-0251",
+        "patient_name": "Matías Martínez Quiñónez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 15:56:04",
+        "served_at": "2026-11-04 18:20:43",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-272",
+        "patient_code": "PAC-0252",
+        "patient_name": "Nicolás Sánchez Castañeda",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 16:05:08",
+        "served_at": "2026-11-04 18:27:20",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-273",
+        "patient_code": "PAC-0253",
+        "patient_name": "Beatriz García Núñez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 16:14:37",
+        "served_at": "2026-11-04 18:31:25",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-274",
+        "patient_code": "PAC-0254",
+        "patient_name": "Ramón Aguilar Cifuentes",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 16:22:41",
+        "served_at": "2026-11-04 18:35:46",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-275",
+        "patient_code": "PAC-0255",
+        "patient_name": "Jesús Núñez-Hernández",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 16:32:37",
+        "served_at": "2026-11-04 18:39:24",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-277",
+        "patient_code": "PAC-0257",
+        "patient_name": "Martín Méndez Martínez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-04 16:50:43",
+        "served_at": "2026-11-04 18:43:56",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-278",
+        "patient_code": "PAC-0258",
+        "patient_name": "Iván Aguilar Jiménez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-05 07:01:22",
+        "served_at": "2026-11-05 07:07:47",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-279",
+        "patient_code": "PAC-0259",
+        "patient_name": "Matías Sánchez-Ibáñez",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-05 07:09:50",
+        "served_at": "2026-11-05 07:17:20",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-280",
+        "patient_code": "PAC-0260",
+        "patient_name": "Ana Aguilar Gómez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-05 07:20:25",
+        "served_at": "2026-11-05 07:27:44",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-281",
+        "patient_code": "PAC-0261",
+        "patient_name": "Óscar Fuentes-Muñoz",
+        "care_type": "Prioritaria (Urgencia)",
+        "registered_at": "2026-11-05 07:28:29",
+        "served_at": "2026-11-05 07:35:42",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-282",
+        "patient_code": "PAC-0262",
+        "patient_name": "Germán Morales Castañeda",
+        "care_type": "Normal",
+        "registered_at": "2026-11-05 07:39:21",
+        "served_at": "2026-11-05 07:44:20",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-283",
+        "patient_code": "PAC-0263",
+        "patient_name": "Julián José Juárez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-05 07:48:00",
+        "served_at": "2026-11-05 07:54:14",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-284",
+        "patient_code": "PAC-0264",
+        "patient_name": "Rocío Gómez Ávila",
+        "care_type": "Prioritaria (Discapacidad)",
+        "registered_at": "2026-11-05 07:57:16",
+        "served_at": "2026-11-05 08:01:43",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-285",
+        "patient_code": "PAC-0015",
+        "patient_name": "Ximena Paola Ramírez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-05 08:02:18",
+        "served_at": "2026-11-05 08:11:31",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-286",
+        "patient_code": "PAC-0265",
+        "patient_name": "Matías Díaz Gómez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-05 08:05:46",
+        "served_at": "2026-11-05 08:22:21",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-287",
+        "patient_code": "PAC-0266",
+        "patient_name": "Gabriela Orellana Toledo",
+        "care_type": "Normal",
+        "registered_at": "2026-11-05 08:16:31",
+        "served_at": "2026-11-05 08:30:25",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-289",
+        "patient_code": "PAC-0158",
+        "patient_name": "Héctor Aguilar Peña",
+        "care_type": "Prioritaria (Urgencia)",
+        "registered_at": "2026-11-05 08:31:03",
+        "served_at": "2026-11-05 08:42:17",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-291",
+        "patient_code": "PAC-0269",
+        "patient_name": "Andrés Sánchez Gutiérrez",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-05 08:43:16",
+        "served_at": "2026-11-05 08:48:03",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-292",
+        "patient_code": "PAC-0270",
+        "patient_name": "Nicolás Barrios Echeverría",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-05 08:53:00",
+        "served_at": "2026-11-05 09:00:08",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-293",
+        "patient_code": "PAC-0271",
+        "patient_name": "Natalia Peñate Girón",
+        "care_type": "Prioritaria (Urgencia)",
+        "registered_at": "2026-11-05 09:03:29",
+        "served_at": "2026-11-05 09:08:33",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-294",
+        "patient_code": "PAC-0272",
+        "patient_name": "Valentina Aguilar-Castañeda",
+        "care_type": "Prioritaria (Discapacidad)",
+        "registered_at": "2026-11-05 09:11:27",
+        "served_at": "2026-11-05 09:14:36",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-295",
+        "patient_code": "PAC-0273",
+        "patient_name": "Martín Ordóñez Echeverría",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-05 09:21:29",
+        "served_at": "2026-11-05 09:24:50",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-290",
+        "patient_code": "PAC-0268",
+        "patient_name": "Ramón Gutiérrez Morales",
+        "care_type": "Normal",
+        "registered_at": "2026-11-05 08:34:29",
+        "served_at": "2026-11-05 09:36:50",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-299",
+        "patient_code": "PAC-0277",
+        "patient_name": "Gabriela Díaz Castañeda",
+        "care_type": "Prioritaria (Adulto mayor)",
+        "registered_at": "2026-11-05 09:58:46",
+        "served_at": "2026-11-05 10:04:48",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-296",
+        "patient_code": "PAC-0274",
+        "patient_name": "Lucía Montúfar-Martínez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-05 09:31:13",
+        "served_at": "2026-11-05 10:14:40",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-302",
+        "patient_code": "PAC-0279",
+        "patient_name": "Ana Jiménez-Solís",
+        "care_type": "Prioritaria (Urgencia)",
+        "registered_at": "2026-11-05 10:17:56",
+        "served_at": "2026-11-05 10:21:26",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-297",
+        "patient_code": "PAC-0275",
+        "patient_name": "Rubén Barrios Cifuentes",
+        "care_type": "Normal",
+        "registered_at": "2026-11-05 09:40:09",
+        "served_at": "2026-11-05 10:30:58",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-298",
+        "patient_code": "PAC-0276",
+        "patient_name": "Beatriz Morales Quiñónez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-05 09:49:35",
+        "served_at": "2026-11-05 10:52:02",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-300",
+        "patient_code": "PAC-0122",
+        "patient_name": "Nicolás Monzón Girón",
+        "care_type": "Normal",
+        "registered_at": "2026-11-05 10:05:19",
+        "served_at": "2026-11-05 11:02:20",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "P-307",
+        "patient_code": "PAC-0284",
+        "patient_name": "Begoña Ibáñez Jiménez",
+        "care_type": "Prioritaria (Discapacidad)",
+        "registered_at": "2026-11-05 11:04:32",
+        "served_at": "2026-11-05 11:09:22",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-301",
+        "patient_code": "PAC-0278",
+        "patient_name": "Martín Aguilar Méndez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-05 10:08:37",
+        "served_at": "2026-11-05 11:17:44",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-303",
+        "patient_code": "PAC-0280",
+        "patient_name": "Rubén Nicolás Núñez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-05 10:27:12",
+        "served_at": "2026-11-05 11:28:34",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-304",
+        "patient_code": "PAC-0281",
+        "patient_name": "Valentina Ibáñez-Sánchez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-05 10:37:10",
+        "served_at": "2026-11-05 11:36:37",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-305",
+        "patient_code": "PAC-0282",
+        "patient_name": "Ángela Aguilar López",
+        "care_type": "Normal",
+        "registered_at": "2026-11-05 10:45:48",
+        "served_at": "2026-11-05 11:48:22",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-306",
+        "patient_code": "PAC-0283",
+        "patient_name": "Emilio Aguilar-Echeverría",
+        "care_type": "Normal",
+        "registered_at": "2026-11-05 10:56:21",
+        "served_at": "2026-11-05 11:55:12",
+        "served_by": "recepcion"
+    },
+    {
+        "ticket_number": "N-308",
+        "patient_code": "PAC-0285",
+        "patient_name": "Camila Martínez Muñoz",
+        "care_type": "Normal",
+        "registered_at": "2026-11-05 11:13:24",
+        "served_at": "2026-11-05 12:08:29",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-309",
+        "patient_code": "PAC-0286",
+        "patient_name": "Paola Fuentes Barrios",
+        "care_type": "Normal",
+        "registered_at": "2026-11-05 11:23:27",
+        "served_at": "2026-11-05 12:14:32",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-310",
+        "patient_code": "PAC-0287",
+        "patient_name": "Valentina Muñoz Díaz",
+        "care_type": "Normal",
+        "registered_at": "2026-11-05 11:32:47",
+        "served_at": "2026-11-05 12:27:17",
+        "served_by": "recepcion_tarde"
+    },
+    {
+        "ticket_number": "N-311",
+        "patient_code": "PAC-0288",
+        "patient_name": "Nicolás Fernando Jiménez",
+        "care_type": "Normal",
+        "registered_at": "2026-11-05 11:42:26",
+        "served_at": "2026-11-05 12:32:12",
+        "served_by": "recepcion_tarde"
+    }
+]

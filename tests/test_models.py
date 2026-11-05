@@ -166,6 +166,49 @@ class TestUser(unittest.TestCase):
         self.assertEqual(self.receptionist.role, "Recepcionista")
 
 
+class TestChangePassword(unittest.TestCase):
+    """User.change_password (RF-43, RF-44)."""
+
+    def setUp(self):
+        self.user = Receptionist.create("María Peña", "recepcion", "Recep123")
+
+    def test_new_password_works_and_old_one_does_not(self):
+        self.user.change_password("Nueva123")
+        self.assertTrue(self.user.verify_password("Nueva123"))
+        self.assertFalse(self.user.verify_password("Recep123"))
+
+    def test_salt_and_hash_change(self):
+        before = self.user.to_dict()
+        self.user.change_password("Nueva123")
+        after = self.user.to_dict()
+        self.assertNotEqual(before["salt"], after["salt"])
+        self.assertNotEqual(before["password_hash"], after["password_hash"])
+        self.assertNotIn("Nueva123", after.values())
+
+    def test_short_password_keeps_the_old_one(self):
+        with self.assertRaises(ValidationError) as caught:
+            self.user.change_password("12345")
+        self.assertEqual(
+            str(caught.exception), "La contraseña debe tener al menos 6 caracteres."
+        )
+        self.assertTrue(self.user.verify_password("Recep123"))
+
+    def test_same_password_is_rejected(self):
+        before = self.user.to_dict()
+        with self.assertRaises(ValidationError) as caught:
+            self.user.change_password("Recep123")
+        self.assertEqual(
+            str(caught.exception),
+            "La contraseña nueva debe ser distinta de la actual.",
+        )
+        self.assertEqual(self.user.to_dict(), before)
+
+    def test_password_with_accents_and_spaces(self):
+        self.user.change_password(" contraseña ")
+        self.assertTrue(self.user.verify_password(" contraseña "))
+        self.assertFalse(self.user.verify_password("contraseña"))
+
+
 class TestPermissionsByRole(unittest.TestCase):
     def setUp(self):
         self.admin = Administrator.create("Luis Gándara", "admin", "Admin123")

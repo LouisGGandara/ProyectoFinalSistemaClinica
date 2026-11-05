@@ -3,7 +3,7 @@
 import unittest
 from datetime import datetime
 
-from utils.dates import DATE_FORMAT, now_text, parse_date
+from utils.dates import DATE_FORMAT, now_text, parse_date, set_clock
 from utils.exceptions import (
     ClinicError,
     CorruptedFileError,
@@ -81,6 +81,14 @@ class TestDates(unittest.TestCase):
         self.assertEqual(
             parse_date("2026-11-01 18:30:05"), datetime(2026, 11, 1, 18, 30, 5)
         )
+
+    def test_set_clock_changes_now_text_until_reset(self):
+        set_clock(lambda: datetime(2026, 11, 2, 7, 15, 30))
+        try:
+            self.assertEqual(now_text(), "2026-11-02 07:15:30")
+        finally:
+            set_clock(None)
+        self.assertNotEqual(now_text(), "2026-11-02 07:15:30")
 
     def test_parse_date_rejects_other_formats(self):
         for text in ("01/11/2026 18:30", "2026-11-01", "", "abc", None):

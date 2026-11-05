@@ -461,6 +461,75 @@ class ClinicSystem:
         )
         return user
 
+    def change_password(
+        self, username: str, new_password: str, confirmation: str
+    ) -> User:
+        """Give another user a new password (RF-43). Evidence only.
+
+        Only the administrator can do it, from the users tab. Their own
+        password is refused here and goes through change_own_password,
+        which asks for the current one first: nobody changes the password
+        of an open session without knowing it.
+        """
+        self._require_permission(Permission.MANAGE_USERS)
+        clean_username = Validator.required(username, "Usuario")
+        if clean_username == self._username():
+            raise ValidationError(
+                "Para cambiar tu propia contraseña usa Archivo > "
+                "Cambiar mi contraseña."
+            )
+        self._check_new_password(new_password, confirmation)
+        user = self._user_manager.change_password(clean_username, new_password)
+        self._history.register(
+            LogOnlyAction(
+                USER_MANAGEMENT,
+                f"Se cambió la contraseña del usuario {user.username}.",
+                self._username(),
+                {"username": user.username},
+            )
+        )
+        return user
+
+    def change_own_password(
+        self, current_password: str, new_password: str, confirmation: str
+    ) -> User:
+        """Change the password of the user with the open session (RF-44).
+
+        Every role can do it, so it needs a session and no permission. The
+        current password is checked last, after the fields, so a typo in
+        the confirmation does not look like a wrong password. The history
+        keeps the change as evidence and never the password itself.
+        """
+        user = self._current_user
+        if user is None:
+            raise PermissionDeniedError("Inicia sesión para continuar.")
+        Validator.required(current_password, "Contraseña actual")
+        self._check_new_password(new_password, confirmation)
+        if not user.verify_password(current_password):
+            raise ValidationError("La contraseña actual no es correcta.")
+        self._user_manager.change_password(user.username, new_password)
+        self._history.register(
+            LogOnlyAction(
+                USER_MANAGEMENT,
+                f"{user.full_name} cambió su contraseña.",
+                user.username,
+                {"username": user.username},
+            )
+        )
+        return user
+
+    @staticmethod
+    def _check_new_password(new_password: str, confirmation: str) -> None:
+        """Check that both new password fields are filled in and match.
+
+        The rule about the length is in User.change_password, through
+        Validator.password, like for a new user.
+        """
+        Validator.required(new_password, "Nueva contraseña")
+        Validator.required(confirmation, "Confirmar contraseña")
+        if new_password != confirmation:
+            raise ValidationError("La contraseña nueva y su confirmación no coinciden.")
+
     def delete_user(self, username: str) -> None:
         """Delete a user other than oneself (RF-07, RN-12). Evidence only."""
         self._require_permission(Permission.MANAGE_USERS)

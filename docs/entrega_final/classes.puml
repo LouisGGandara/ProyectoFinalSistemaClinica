@@ -1,0 +1,1895 @@
+' ============================================================================
+' Sistema de atención y gestión de turnos de una clínica
+' Paso F1. Diagrama de clases actualizado (entrega final)
+'
+' Este archivo reemplaza al de docs/entrega2_diseno/classes.puml. Se comparó
+' con el código final clase por clase (atributos, métodos, visibilidad y
+' relaciones) y se corrigió todo lo que no coincidía.
+'
+' El diagrama se divide en tres partes, y cada parte en una o más vistas para
+' que se lean en una página:
+'   Parte 1. Modelos (paquete models)
+'     1. modelos            personas, pacientes, tipos de atención y turnos
+'     2. acciones           acciones del historial y contexto del deshacer
+'   Parte 2. Servicios y estructuras (services, structures, persistence, utils)
+'     3. servicios          fachada, gestores, cola, estadísticas y persistencia
+'     4. historial_busqueda historial de acciones, pila y búsquedas
+'     5. utilidades         excepciones, validador y fechas
+'   Parte 3. Interfaz (paquete ui y main.py)
+'     6. interfaz           ventana, inicio de sesión, ventana principal,
+'                           pestaña base y componentes
+'     7. pestanas_registro_turnos  Registro y Turnos y colas, con sus piezas
+'     8. pestanas_consultas        Búsqueda, Atendidos, Historial de acciones,
+'                                  Estadísticas y Usuarios
+'
+' En la entrega 2 la interfaz era un solo diagrama. Ahora son tres, porque
+' las pestañas crecieron y no cabían en una página.
+'
+' Relaciones: herencia, composición, agregación, dependencia y, en el
+' diagrama 2, la realización del protocolo UndoContext.
+'
+' Exportar: java -jar plantuml.jar -tpng -charset UTF-8 classes.puml
+' Cada bloque @startuml genera su propia imagen con el nombre del bloque.
+'
+' Convenciones
+'   -  privado      #  protegido      +  público
+'   cursiva                 clase o método abstracto
+'   subrayado               atributo o método de clase (static, classmethod)
+'   «get»                   propiedad de solo lectura (@property)
+'   «get/set»               propiedad con setter que valida
+'   «textos»                constantes de clase con texto que ve el usuario;
+'                           se nombran juntas, sin su valor
+'   clases grises           se detallan en otro diagrama
+' ============================================================================
+
+
+' ============================================================================
+' 1. MODELOS
+' ============================================================================
+@startuml modelos
+title Diagrama 1. Modelos: personas, pacientes, tipos de atención y turnos
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam nodesep 40
+skinparam ranksep 50
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #444444
+  ArrowColor #444444
+}
+skinparam class<<módulo>> {
+  BackgroundColor #F6F3E8
+}
+
+package models {
+
+  enum Permission <<enumeración>> {
+    REGISTER_PATIENT = "Registrar paciente"
+    UPDATE_PATIENT = "Modificar paciente"
+    CREATE_TICKET = "Generar turno"
+    SEARCH = "Buscar información"
+    VIEW_QUEUES = "Ver colas"
+    SERVE = "Atender pacientes"
+    VIEW_CARE_HISTORY = "Ver historial de atendidos"
+    VIEW_STATS = "Ver estadísticas"
+    CANCEL_TICKET = "Cancelar turno"
+    UNDO = "Deshacer la última acción"
+    VIEW_ACTION_LOG = "Ver historial de acciones"
+    MANAGE_USERS = "Administrar usuarios"
+  }
+
+  abstract class Person {
+    #_full_name: str
+    --
+    +__init__(full_name: str)
+    +full_name: str «get/set»
+    {abstract} +description(): str
+    +__str__(): str
+  }
+
+  abstract class User {
+    {static} +SALT_BYTES: int = 16
+    #_username: str
+    -__password_hash: str
+    #_salt: str
+    --
+    +__init__(full_name: str, username: str, password_hash: str, salt: str)
+    +username: str «get»
+    {abstract} +role: str «get»
+    {abstract} +permissions(): set[Permission]
+    +has_permission(permission: Permission): bool
+    +verify_password(password: str): bool
+    +change_password(new_password: str): None
+    {static} #_compute_hash(password: str, salt: str): str
+    {static} +create(full_name: str, username: str, password: str): User
+    +to_dict(): dict
+  }
+
+  class Administrator {
+    +role: str «get»
+    +permissions(): set[Permission]
+    +description(): str
+  }
+
+  class Receptionist {
+    +role: str «get»
+    +permissions(): set[Permission]
+    +description(): str
+  }
+
+  class "user.py" as user_module <<módulo>> {
+    +ADMINISTRATOR_ROLE: str = "Administrador"
+    +RECEPTIONIST_ROLE: str = "Recepcionista"
+    +ROLES: dict[str, type[User]]
+    --
+    +user_from_dict(data: dict): User
+  }
+
+  class Patient {
+    #_code: str
+    #_age: int
+    #_phone: str
+    #_registered_at: str
+    --
+    +__init__(code: str, full_name: str, age: int | str, phone: str,
+    \tregistered_at: str | None = None)
+    +code: str «get»
+    +registered_at: str «get»
+    +age: int «get/set»
+    +phone: str «get/set»
+    +description(): str
+    +update_details(full_name: str, age: int | str, phone: str): dict
+    +to_dict(): dict
+    {static} +from_dict(data: dict): Patient
+    +__str__(): str
+  }
+
+  abstract class CareType {
+    {abstract} +name: str «get»
+    {abstract} +prefix: str «get»
+    {abstract} +is_priority: bool «get»
+    +validate_for(patient: Patient): None
+    +description(): str
+    +to_dict(): dict
+    +__str__(): str
+  }
+
+  class NormalCare {
+    +name: str «get»
+    +prefix: str «get»
+    +is_priority: bool «get»
+  }
+
+  class PriorityCare {
+    {static} +CRITERIA: tuple[str, ...] = ("Adulto mayor", "Embarazo", "Discapacidad", "Urgencia")
+    {static} +SENIOR: str = "Adulto mayor"
+    {static} +SENIOR_AGE: int = 60
+    #_criterion: str
+    --
+    +__init__(criterion: str)
+    +criterion: str «get»
+    +name: str «get»
+    +prefix: str «get»
+    +is_priority: bool «get»
+    +validate_for(patient: Patient): None
+    +description(): str
+    +to_dict(): dict
+  }
+
+  class "care_type.py" as care_type_module <<módulo>> {
+    +NORMAL: str = "Normal"
+    +PRIORITY: str = "Prioritaria"
+    +CARE_TYPE_NAMES: tuple[str, str] = (NORMAL, PRIORITY)
+    --
+    +make_care_type(name: str, criterion: str | None = None): CareType
+  }
+
+  enum TicketStatus <<enumeración>> {
+    PENDING = "Pendiente"
+    IN_PROGRESS = "En atención"
+    SERVED = "Atendido"
+    CANCELLED = "Cancelado"
+    --
+    +is_active: bool «get»
+  }
+
+  class Ticket {
+    {static} +NUMBER_DIGITS: int = 3
+    {static} #_PREVIOUS_STATUS: dict[TicketStatus, TicketStatus]
+    #_number: str
+    #_patient: Patient
+    #_care_type: CareType
+    #_reason: str
+    #_created_at: str
+    #_status: TicketStatus
+    #_served_at: str | None
+    --
+    +__init__(number: str, patient: Patient, care_type: CareType, reason: str,
+    \tcreated_at: str | None = None, status: TicketStatus = TicketStatus.PENDING,
+    \tserved_at: str | None = None)
+    {static} +format_number(prefix: str, sequence: int): str
+    {static} #_check_number(number: str, care_type: CareType): str
+    #_check_served_at(served_at: str | None): str | None
+    +number: str «get»
+    +patient: Patient «get»
+    +care_type: CareType «get»
+    +reason: str «get»
+    +created_at: str «get»
+    +status: TicketStatus «get»
+    +served_at: str | None «get»
+    +sequence: int «get»
+    +is_active: bool «get»
+    +start_care(): None
+    +finish_care(): None
+    +cancel(): None
+    +revert_to(status: TicketStatus): None
+    +to_dict(): dict
+    {static} +from_dict(data: dict, patients_by_code: dict[str, Patient]): Ticket
+    +__str__(): str
+  }
+
+  class CareRecord {
+    #_ticket_number: str
+    #_patient_code: str
+    #_patient_name: str
+    #_care_type: str
+    #_registered_at: str
+    #_served_at: str
+    #_served_by: str
+    --
+    +__init__(ticket_number: str, patient_code: str, patient_name: str, care_type: str,
+    \tregistered_at: str, served_at: str, served_by: str)
+    +ticket_number: str «get»
+    +patient_code: str «get»
+    +patient_name: str «get»
+    +care_type: str «get»
+    +registered_at: str «get»
+    +served_at: str «get»
+    +served_by: str «get»
+    {static} +from_ticket(ticket: Ticket, username: str): CareRecord
+    +to_dict(): dict
+    {static} +from_dict(data: dict): CareRecord
+    +__str__(): str
+  }
+
+  note bottom of PriorityCare
+    Sobrescribe validate_for(): el criterio SENIOR
+    ("Adulto mayor") exige SENIOR_AGE años o más.
+    NormalCare hereda la versión que no valida nada.
+  end note
+
+  note right of Ticket
+    El estado solo cambia con start_care(),
+    finish_care() y cancel(), que revisan la
+    transición (sección 3.4). revert_to() lo
+    usan solamente las acciones al deshacer, y
+    solo acepta volver al estado anterior que
+    indica _PREVIOUS_STATUS; si no, lanza
+    NotUndoableError.
+    _check_number() exige que el prefijo del
+    número coincida con el tipo de atención, y
+    _check_served_at() que solo un turno Atendido
+    tenga fecha de atención. Así un tickets.json
+    editado a mano no carga datos incoherentes.
+  end note
+
+  note bottom of Patient
+    Los setters de full_name, age y phone validan con
+    Validator (diagrama 5). update_details() valida los
+    tres valores antes de cambiar alguno y devuelve los
+    anteriores para poder deshacer.
+  end note
+
+  note bottom of Receptionist
+    permissions(): Administrator devuelve todos los
+    permisos; Receptionist, todos menos CANCEL_TICKET,
+    UNDO, VIEW_ACTION_LOG y MANAGE_USERS (sección 3.1).
+    El valor de cada permiso es el texto en español que
+    muestra la pestaña Usuarios.
+  end note
+
+  note bottom of User
+    create() es @classmethod: genera la sal con
+    secrets.token_hex(SALT_BYTES) y calcula el hash
+    SHA-256. Administrator.create(...) devuelve un
+    Administrator. user_from_dict() elige la clase
+    con el diccionario ROLES.
+  end note
+}
+
+' --- Herencia ---
+Person <|-- User
+Person <|-- Patient
+User <|-- Administrator
+User <|-- Receptionist
+CareType <|-- NormalCare
+CareType <|-- PriorityCare
+
+' --- Composición y agregación ---
+Ticket "1" *-- "1" CareType : care_type
+Patient "1" --o "0..*" Ticket : patient
+Ticket ..> TicketStatus : status
+
+' --- Dependencias ---
+User ..> Permission : usa
+Administrator <.. user_module : crea
+Receptionist <.. user_module : crea
+NormalCare <.. care_type_module : crea
+PriorityCare <.. care_type_module : crea
+Patient <.. PriorityCare : valida la edad
+Ticket <.. CareRecord : se crea desde
+
+legend right
+  - privado   # protegido   + público
+  //cursiva//: abstracto    __subrayado__: de clase
+  «get»: solo lectura   «get/set»: setter que valida
+  gris: se detalla en otro diagrama
+endlegend
+@enduml
+
+
+' ============================================================================
+' 2. MODELOS: ACCIONES DEL HISTORIAL
+' ============================================================================
+@startuml acciones
+title Diagrama 2. Modelos: acciones del historial
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam nodesep 35
+skinparam ranksep 55
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #444444
+  ArrowColor #444444
+}
+skinparam class<<diagrama 1>> {
+  BackgroundColor #EEEEEE
+  BorderColor #999999
+}
+skinparam class<<diagrama 3>> {
+  BackgroundColor #EEEEEE
+  BorderColor #999999
+}
+skinparam class<<módulo>> {
+  BackgroundColor #F6F3E8
+}
+hide <<diagrama 1>> members
+hide <<diagrama 3>> members
+
+package models {
+  class "actions.py" as actions_module <<módulo>> {
+    +LOGIN: str = "Inicio de sesión"
+    +LOGOUT: str = "Cierre de sesión"
+    +PATIENT_REGISTRATION: str = "Registro de paciente"
+    +TICKET_CREATION: str = "Generación de turno"
+    +PATIENT_UPDATE: str = "Modificación de paciente"
+    +CALL_NEXT: str = "Atención"
+    +CARE_FINISHED: str = "Finalización de atención"
+    +TICKET_CANCELLATION: str = "Cancelación de turno"
+    +USER_MANAGEMENT: str = "Gestión de usuarios"
+    +UNDONE: str = "Acción deshecha"
+    +ACTION_TYPES: tuple[str, ...]
+  }
+
+  interface UndoContext <<protocolo>> {
+    +patient_manager: PatientManager
+    +ticket_manager: TicketManager
+  }
+
+  abstract class Action {
+    #_action_type: str
+    #_description: str
+    #_username: str
+    #_data: dict
+    #_timestamp: str
+    --
+    +__init__(action_type: str, description: str, username: str,
+    \tdata: dict | None = None, timestamp: str | None = None)
+    +action_type: str «get»
+    +description: str «get»
+    +username: str «get»
+    +data: dict[str, Any] «get»
+    +timestamp: str «get»
+    {abstract} +is_undoable: bool «get»
+    +__str__(): str
+  }
+
+  class LogOnlyAction {
+    +is_undoable: bool «get»
+  }
+
+  abstract class UndoableAction {
+    #_undone: bool
+    --
+    +__init__(action_type: str, description: str, username: str,
+    \tdata: dict | None = None, timestamp: str | None = None)
+    +is_undoable: bool «get»
+    +undone: bool «get»
+    +undo(context: UndoContext): None
+    {abstract} #_revert(context: UndoContext): None
+  }
+
+  class RegisterPatientAction {
+    #_patient: Patient
+    #_ticket: Ticket
+    --
+    +__init__(username: str, patient: Patient, ticket: Ticket)
+    #_revert(context: UndoContext): None
+  }
+
+  class CreateTicketAction {
+    #_ticket: Ticket
+    --
+    +__init__(username: str, ticket: Ticket)
+    #_revert(context: UndoContext): None
+  }
+
+  class UpdatePatientAction {
+    #_patient: Patient
+    #_previous: dict
+    --
+    +__init__(username: str, patient: Patient, previous_values: dict)
+    #_revert(context: UndoContext): None
+  }
+
+  class CallNextAction {
+    #_ticket: Ticket
+    --
+    +__init__(username: str, ticket: Ticket)
+    #_revert(context: UndoContext): None
+  }
+
+  class FinishCareAction {
+    #_ticket: Ticket
+    #_record: CareRecord
+    --
+    +__init__(username: str, ticket: Ticket, record: CareRecord)
+    #_revert(context: UndoContext): None
+  }
+
+  class CancelTicketAction {
+    #_ticket: Ticket
+    #_position: int
+    --
+    +__init__(username: str, ticket: Ticket, position: int)
+    +position: int «get»
+    #_revert(context: UndoContext): None
+  }
+}
+
+class Patient <<diagrama 1>>
+class Ticket <<diagrama 1>>
+class CareRecord <<diagrama 1>>
+class PatientManager <<diagrama 3>>
+class TicketManager <<diagrama 3>>
+class ClinicSystem <<diagrama 3>>
+
+' --- Herencia ---
+Action <|-- LogOnlyAction
+Action <|-- UndoableAction
+UndoableAction <|-- RegisterPatientAction
+UndoableAction <|-- CreateTicketAction
+UndoableAction <|-- UpdatePatientAction
+UndoableAction <|-- CallNextAction
+UndoableAction <|-- FinishCareAction
+UndoableAction <|-- CancelTicketAction
+
+' --- Agregación: cada acción guarda los objetos que debe revertir ---
+RegisterPatientAction o-- "1" Patient
+RegisterPatientAction o-- "1" Ticket
+CreateTicketAction o-- "1" Ticket
+UpdatePatientAction o-- "1" Patient
+CallNextAction o-- "1" Ticket
+FinishCareAction o-- "1" Ticket
+FinishCareAction o-- "1" CareRecord
+CancelTicketAction o-- "1" Ticket
+
+' --- Contexto del deshacer ---
+UndoableAction ..> UndoContext : context
+UndoContext ..> PatientManager
+UndoContext ..> TicketManager
+UndoContext <|.. ClinicSystem : cumple el protocolo
+
+' --- Dependencias ---
+Action ..> actions_module : usa los tipos
+
+note bottom of UndoContext
+  UndoContext es un typing.Protocol: describe lo que
+  necesita undo() (los dos gestores) sin que nadie
+  herede de él. ClinicSystem lo cumple porque tiene
+  las propiedades patient_manager y ticket_manager;
+  en las pruebas basta un objeto simple con esos dos
+  atributos. Así actions.py no importa ClinicSystem
+  y no hay importación circular.
+end note
+
+note bottom of CancelTicketAction
+  Cada hija sobrescribe _revert() con su
+  propia reversión (tabla de la sección 3.6).
+  undo() lanza NotUndoableError si ya se deshizo.
+  position deja ver la posición guardada en la cola.
+end note
+
+legend right
+  - privado   # protegido   + público
+  //cursiva//: abstracto    __subrayado__: de clase
+  «get»: solo lectura   «get/set»: setter que valida
+  gris: se detalla en otro diagrama
+endlegend
+@enduml
+
+
+' ============================================================================
+' 3. SERVICIOS Y ESTRUCTURAS: FACHADA, GESTORES, COLA Y PERSISTENCIA
+' ============================================================================
+@startuml servicios
+title Diagrama 3. Servicios y estructuras: fachada, gestores, cola, estadísticas y persistencia
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam nodesep 35
+skinparam ranksep 60
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #444444
+  ArrowColor #444444
+}
+skinparam class<<diagrama 1>> {
+  BackgroundColor #EEEEEE
+  BorderColor #999999
+}
+skinparam class<<diagrama 2>> {
+  BackgroundColor #EEEEEE
+  BorderColor #999999
+}
+skinparam class<<diagrama 4>> {
+  BackgroundColor #EEEEEE
+  BorderColor #999999
+}
+skinparam class<<módulo>> {
+  BackgroundColor #F6F3E8
+}
+hide <<diagrama 1>> members
+hide <<diagrama 2>> members
+hide <<diagrama 4>> members
+
+class ClinicSystem {
+  #_repository: JsonRepository
+  #_user_manager: UserManager
+  #_patient_manager: PatientManager
+  #_ticket_manager: TicketManager
+  #_history: ActionHistory
+  #_stats: ClinicStats
+  #_current_user: User | None
+  #_warnings: list[str]
+  -- Arranque, sesión y permisos --
+  +__init__(data_folder: str = "data")
+  #_load_all(): None
+  +warnings: list[str] «get»
+  +patient_manager: PatientManager «get»
+  +ticket_manager: TicketManager «get»
+  +current_user: User | None «get»
+  +login(username: str, password: str): User
+  +logout(): None
+  +has_permission(permission: Permission | None): bool
+  #_require_permission(permission: Permission): None
+  #_username(): str
+  -- Pacientes --
+  +next_code(): str
+  {static} +care_type_names(): list[str]
+  {static} +priority_criteria(): list[str]
+  +register_patient(code: str, full_name: str, age: int | str, phone: str, reason: str,
+  \tcare_type: str, criterion: str | None = None): Ticket
+  +create_ticket(code: str, reason: str, care_type: str, criterion: str | None = None): Ticket
+  +update_patient(code: str, full_name: str, age: int | str, phone: str): None
+  +list_patients(): list[Patient]
+  -- Turnos --
+  +peek_next(): Ticket | None
+  +in_progress(): Ticket | None
+  +pending_priority(): list[Ticket]
+  +pending_normal(): list[Ticket]
+  +queues_empty(): bool
+  +call_next(): Ticket
+  +finish_care(): CareRecord
+  +cancel_ticket(number: str): None
+  +get_status(number: str): str
+  -- Consultas --
+  +search(criterion_name: str, text: str): list[Ticket]
+  {static} +search_criteria(): list[str]
+  {static} +search_suggestions(criterion_name: str): list[str]
+  +list_care_records(): list[CareRecord]
+  +stats(): dict[str, int]
+  -- Historial de acciones --
+  +last_action(): Action
+  +action_history(): list[Action]
+  +can_undo(): bool
+  +next_undo(): Action
+  +undo(): Action
+  -- Usuarios --
+  {static} +roles(): list[str]
+  +list_users(): list[User]
+  +create_user(full_name: str, username: str, password: str, role: str): User
+  +change_password(username: str, new_password: str, confirmation: str): User
+  +change_own_password(current_password: str, new_password: str, confirmation: str): User
+  {static} #_check_new_password(new_password: str, confirmation: str): None
+  +delete_user(username: str): None
+}
+
+class UserManager {
+  {static} +FILE: str = "users.json"
+  {static} +DEFAULT_USERS: tuple[tuple[str, str, str, str], ...]
+  #_repository: JsonRepository
+  #_users: dict[str, User]
+  --
+  +__init__(repository: JsonRepository)
+  +load(): None
+  +login(username: str, password: str): User
+  +create_user(full_name: str, username: str, password: str, role: str): User
+  +change_password(username: str, new_password: str): User
+  +delete_user(username: str, requested_by: User): None
+  +list_all(): list[User]
+  #_create_default_users(): None
+  #_username_taken(username: str): bool
+  #_administrator_count(): int
+  #_save(): None
+}
+
+class PatientManager {
+  {static} +FILE: str = "patients.json"
+  {static} +CODE_PREFIX: str = "PAC-"
+  {static} +CODE_MAX_NUMBER: int = 9999
+  #_repository: JsonRepository
+  #_patients: dict[str, Patient]
+  --
+  +__init__(repository: JsonRepository)
+  +load(): None
+  +register(patient: Patient): None
+  +get(code: str): Patient
+  +exists(code: str): bool
+  +update(code: str, full_name: str, age: int | str, phone: str): dict
+  +delete(code: str): None
+  +next_code(): str
+  +list_all(): list[Patient]
+  +patients_by_code(): dict[str, Patient]
+  +count(): int
+  {static} #_key(code: str): str
+  #_save(): None
+}
+
+class TicketManager {
+  {static} +TICKETS_FILE: str = "tickets.json"
+  {static} +CARE_RECORDS_FILE: str = "care_records.json"
+  {static} +COUNTER_FILE: str = "ticket_counter.json"
+  {static} +COUNTER_KEY: str = "next_sequence"
+  {static} #_NUMBER_PATTERN: re.Pattern
+  #_repository: JsonRepository
+  #_priority_queue: TicketQueue
+  #_normal_queue: TicketQueue
+  #_tickets: dict[str, Ticket]
+  #_care_records: list[CareRecord]
+  #_counter: int
+  #_in_progress: Ticket | None
+  -- Carga --
+  +__init__(repository: JsonRepository)
+  +load(patients_by_code: dict[str, Patient]): None
+  #_reset(): None
+  #_load_rows(filename: str, damaged: list[str]): list[dict]
+  #_build_tickets(rows: list[dict], patients_by_code: dict[str, Patient]): list[Ticket]
+  #_check_active(tickets: list[Ticket]): Ticket | None
+  #_highest_sequence(tickets: list[Ticket], records: list[CareRecord]): int
+  #_load_counter(damaged: list[str]): int
+  {static} #_damaged_error(filenames: list[str]): CorruptedFileError
+  -- Generación y consultas (C8) --
+  #_next_number(care_type: CareType): str
+  #_queue_for(care_type: CareType): TicketQueue
+  +create_ticket(patient: Patient, care_type: CareType, reason: str): Ticket
+  +active_ticket_of(patient_code: str): Ticket | None
+  +get(number: str): Ticket
+  +get_status(number: str): TicketStatus
+  +peek_next(): Ticket | None
+  +pending_priority(): list[Ticket]
+  +pending_normal(): list[Ticket]
+  +priority_count(): int
+  +normal_count(): int
+  +queues_empty(): bool
+  +list_tickets(): list[Ticket]
+  -- Atención y cancelación (C9) --
+  +in_progress: Ticket | None «get»
+  +list_care_records(): list[CareRecord]
+  +call_next(): Ticket
+  +finish_care(username: str): CareRecord
+  +cancel_ticket(number: str): int
+  -- Solo para deshacer (C9) --
+  +remove_pending_ticket(number: str): None
+  +return_to_front(ticket: Ticket): None
+  +restore_cancelled(ticket: Ticket, position: int): None
+  +revert_finish(ticket: Ticket): None
+  #_record_index(ticket_number: str): int
+  -- Guardado --
+  #_save(): None
+}
+
+class ClinicStats {
+  #_patient_manager: PatientManager
+  #_ticket_manager: TicketManager
+  --
+  +__init__(patient_manager: PatientManager, ticket_manager: TicketManager)
+  +compute(): dict[str, int]
+}
+
+note bottom of ClinicStats
+  compute() devuelve las claves registered_patients,
+  pending, in_progress, served, cancelled, normal,
+  priority, normal_queue y priority_queue.
+  normal y priority cuentan turnos en cualquier estado,
+  y usan care_type.is_priority igual que _queue_for().
+end note
+
+note right of TicketManager
+  _queue_for() elige la cola con care_type.is_priority,
+  sin preguntar la clase del objeto (polimorfismo).
+  call_next() toma de la cola prioritaria y, si está
+  vacía, de la normal (RN-01 y RN-02).
+  Contador (sección 3.5): _save() escribe también
+  ticket_counter.json. Al cargar, _load_counter() lee
+  ese valor y load() usa el mayor entre él y
+  _highest_sequence() + 1, así un número deshecho no
+  vuelve a salir al reabrir (prueba E2-30).
+  Si tickets.json trae un turno repetido o de un
+  paciente que no existe, load() lanza ValidationError
+  y el sistema no arranca (sección 3.11).
+end note
+
+note bottom of ClinicSystem
+  Fachada: es la única clase de la lógica que conoce la interfaz.
+  Cada operación que cambia datos sigue el mismo orden:
+  exige el permiso, valida, ejecuta y registra la acción.
+  Las consultas también exigen su permiso.
+  care_type_names(), priority_criteria(), roles(), search_criteria()
+  y search_suggestions() son estáticos y no piden permiso: existen
+  para que la interfaz llene sus Combobox sin importar models.
+  has_permission(None) devuelve True con una sesión abierta.
+  _load_all() carga usuarios, pacientes y turnos, en ese orden.
+end note
+
+class TicketQueue {
+  #_name: str
+  #_items: deque[Ticket]
+  --
+  +__init__(name: str)
+  +name: str «get»
+  +enqueue(ticket: Ticket): None
+  +dequeue(): Ticket
+  +peek(): Ticket
+  +is_empty(): bool
+  +count(): int
+  +__len__(): int
+  +list_all(): list[Ticket]
+  +remove(ticket: Ticket): int
+  +insert_at(position: int, ticket: Ticket): None
+  +push_front(ticket: Ticket): None
+  #_check_not_empty(): None
+  +__repr__(): str
+}
+
+class JsonRepository {
+  {static} +ENCODING: str = "utf-8"
+  {static} +BOM: str = U+FEFF (marca de orden de bytes)
+  {static} +BACKUP_DATE_FORMAT: str = "%Y%m%d-%H%M%S"
+  {static} +REPLACE_ATTEMPTS: int = 8
+  {static} +REPLACE_WAIT: float = 0.05
+  #_folder: Path
+  --
+  +__init__(folder: str = "data")
+  #_path(filename: str): Path
+  +exists(filename: str): bool
+  +load(filename: str): list[dict]
+  {static} #_skip_bom(file: TextIO): None
+  +save(filename: str, data: list[dict]): None
+  {static} #_replace(tmp_path: Path, path: Path): None
+  #_backup_corrupted(path: Path): None
+  {static} #_discard(path: Path): None
+}
+note bottom of JsonRepository
+  Todo open() usa encoding=ENCODING (UTF-8).
+  load(): si el archivo no existe lo crea con [].
+  Salta el BOM con _skip_bom(). Si no es JSON, no
+  está en UTF-8 o no es una lista de objetos, guarda
+  una copia name.corrupted-AAAAMMDD-HHMMSS.json con
+  _backup_corrupted() y lanza CorruptedFileError.
+  save(): json.dump(indent=4, ensure_ascii=False) en
+  un .tmp y luego os.replace(); nunca escribe BOM.
+  _replace(): si Windows dice que el archivo está en
+  uso (PermissionError), espera y vuelve a intentar,
+  hasta REPLACE_ATTEMPTS veces (paso F6).
+  Un OSError se relanza como StorageError, y
+  _discard() borra el .tmp que haya quedado.
+end note
+
+class ActionHistory <<diagrama 4>>
+class Action <<diagrama 2>>
+class User <<diagrama 1>>
+class Patient <<diagrama 1>>
+class Ticket <<diagrama 1>>
+class CareRecord <<diagrama 1>>
+class CareType <<diagrama 1>>
+class "search.py" as SearchModule <<diagrama 4>>
+
+' --- Composición: ClinicSystem crea y es dueña de todo ---
+ClinicSystem "1" *-- "1" UserManager
+ClinicSystem "1" *-- "1" PatientManager
+ClinicSystem "1" *-- "1" TicketManager
+ClinicSystem "1" *-- "1" ActionHistory
+ClinicSystem "1" *-- "1" ClinicStats
+ClinicSystem "1" *--- "1" JsonRepository
+ClinicSystem o-- "0..1" User : current_user
+ClinicSystem ..> SearchModule : usa
+ClinicSystem ..> Patient : crea
+ClinicSystem ..> CareType : make_care_type()
+ClinicSystem ..> Action : crea y registra
+
+' --- Estadísticas: usa los dos gestores para contar ---
+PatientManager <.. ClinicStats : usa
+TicketManager <.. ClinicStats : usa
+
+' --- Gestores ---
+UserManager "1" *-- "0..*" User
+PatientManager "1" *-- "0..*" Patient
+TicketManager "1" *-- "2" TicketQueue : prioritaria y normal
+TicketManager "1" *-- "0..*" CareRecord
+TicketManager "1" *-- "0..*" Ticket
+TicketQueue "0..1" o-- "0..*" Ticket : en espera
+TicketManager ..> CareType : is_priority
+
+' --- Los gestores usan el repositorio que les pasa ClinicSystem ---
+UserManager ..> JsonRepository : usa
+PatientManager ..> JsonRepository : usa
+TicketManager ..> JsonRepository : usa
+
+legend right
+  - privado   # protegido   + público
+  //cursiva//: abstracto    __subrayado__: de clase
+  «get»: solo lectura
+  gris: se detalla en otro diagrama
+  Paquetes: TicketQueue en structures,
+  JsonRepository en persistence,
+  el resto en services
+endlegend
+@enduml
+
+' ============================================================================
+' 4. SERVICIOS Y ESTRUCTURAS: HISTORIAL, PILA Y BÚSQUEDAS
+' ============================================================================
+@startuml historial_busqueda
+title Diagrama 4. Servicios y estructuras: historial de acciones, pila y búsquedas
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam nodesep 30
+skinparam ranksep 60
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #444444
+  ArrowColor #444444
+}
+skinparam class<<diagrama 1>> {
+  BackgroundColor #EEEEEE
+  BorderColor #999999
+}
+skinparam class<<diagrama 2>> {
+  BackgroundColor #EEEEEE
+  BorderColor #999999
+}
+skinparam class<<diagrama 3>> {
+  BackgroundColor #EEEEEE
+  BorderColor #999999
+}
+skinparam class<<módulo>> {
+  BackgroundColor #F6F3E8
+}
+hide <<diagrama 1>> members
+hide <<diagrama 2>> members
+hide <<diagrama 3>> members
+
+class ClinicSystem <<diagrama 3>>
+
+package structures {
+  class Stack {
+    #_items: list[Any]
+    --
+    +__init__()
+    +push(item: Any): None
+    +pop(): Any
+    +peek(): Any
+    +is_empty(): bool
+    +count(): int
+    +__len__(): int
+    +list_from_top(): list[Any]
+    #_check_not_empty(): None
+    +__repr__(): str
+  }
+}
+
+package services {
+  class ActionHistory {
+    #_history: Stack
+    #_undo_stack: Stack
+    --
+    +__init__()
+    +register(action: Action): None
+    +last_action(): Action
+    +list_all(): list[Action]
+    +has_actions(): bool
+    +can_undo(): bool
+    +next_undo(): UndoableAction
+    +undo_last(context: UndoContext, username: str): Action
+  }
+
+  note right of ActionHistory
+    Dos objetos Stack (sección 3.7):
+    _history guarda todas las acciones;
+    _undo_stack guarda solo las deshacibles.
+    Un inicio de sesión nunca bloquea el deshacer.
+    next_undo() muestra la cima de _undo_stack sin
+    sacarla, para nombrarla en la confirmación.
+    Si undo() falla, la acción vuelve a la pila
+    y el error se relanza.
+  end note
+  abstract class SearchCriterion {
+    {abstract} +name: str «get»
+    {abstract} +matches(ticket: Ticket, text: str): bool
+    +suggestions(): list[str]
+    {static} #_normalize(text: str): str
+  }
+
+  class ByPatientCode {
+    +name: str «get»
+    +matches(ticket: Ticket, text: str): bool
+  }
+  class ByPatientName {
+    +name: str «get»
+    +matches(ticket: Ticket, text: str): bool
+  }
+  class ByTicketNumber {
+    +name: str «get»
+    +matches(ticket: Ticket, text: str): bool
+  }
+  class ByStatus {
+    +name: str «get»
+    +matches(ticket: Ticket, text: str): bool
+    +suggestions(): list[str]
+  }
+  class ByCareType {
+    +name: str «get»
+    +matches(ticket: Ticket, text: str): bool
+    +suggestions(): list[str]
+  }
+
+  class "search.py" as search_module <<módulo>> {
+    +CRITERIA: dict[str, SearchCriterion]
+    +search(tickets: list[Ticket], criterion_name: str, text: str): list[Ticket]
+  }
+
+  note right of SearchCriterion
+    Cada criterio sobrescribe matches() con su comparación.
+    search() busca el criterio en CRITERIA y llama a matches()
+    sin saber de qué clase es (polimorfismo).
+    suggestions() devuelve [] por defecto (texto libre); ByStatus
+    la sobrescribe con los cuatro estados y ByCareType con
+    Normal y Prioritaria, para que la búsqueda ofrezca una lista.
+    _normalize() pasa a minúsculas, junta espacios y quita tildes,
+    por eso "mar" encuentra a María y a Marco (RF-33).
+    Código y número de turno se comparan exactos; nombre, parcial.
+    Claves de CRITERIA (lo que ve el usuario): "Código de paciente",
+    "Nombre", "Número de turno", "Estado", "Tipo de atención".
+  end note
+}
+
+class Ticket <<diagrama 1>>
+class Action <<diagrama 2>>
+class LogOnlyAction <<diagrama 2>>
+class UndoableAction <<diagrama 2>>
+class UndoContext <<diagrama 2>>
+
+ClinicSystem ..> search_module : search(), search_criteria(),\nsearch_suggestions()
+
+' --- Historial y pila ---
+ClinicSystem "1" *-- "1" ActionHistory
+ActionHistory "1" *-- "2" Stack : historial y deshacer
+Stack "1..2" o-- "0..*" Action : guarda
+ActionHistory ..> LogOnlyAction : crea "Acción deshecha"
+ActionHistory ..> UndoableAction : undo()
+ActionHistory ..> UndoContext : context
+
+' --- Búsquedas ---
+search_module "1" *-- "5" SearchCriterion : CRITERIA
+SearchCriterion <|-- ByPatientCode
+SearchCriterion <|-- ByPatientName
+SearchCriterion <|-- ByTicketNumber
+SearchCriterion <|-- ByStatus
+SearchCriterion <|-- ByCareType
+SearchCriterion ..> Ticket : compara
+
+legend right
+  - privado   # protegido   + público
+  //cursiva//: abstracto    __subrayado__: de clase
+  «get»: solo lectura   «get/set»: setter que valida
+  gris: se detalla en otro diagrama
+endlegend
+@enduml
+
+
+' ============================================================================
+' 5. SERVICIOS Y ESTRUCTURAS: EXCEPCIONES, VALIDADOR Y FECHAS
+' ============================================================================
+@startuml utilidades
+title Diagrama 5. Servicios y estructuras: utilidades (excepciones, validador y fechas)
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam nodesep 25
+skinparam ranksep 50
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #444444
+  ArrowColor #444444
+}
+skinparam class<<externa>> {
+  BackgroundColor #EEEEEE
+  BorderColor #999999
+}
+skinparam class<<módulo>> {
+  BackgroundColor #F6F3E8
+}
+hide <<externa>> members
+
+class Exception <<externa>>
+
+package utils {
+  class ClinicError {
+    {static} +default_message: str = "Ocurrió un error inesperado en el sistema."
+    #_message: str
+    --
+    +__init__(message: str | None = None)
+    +message: str «get»
+  }
+
+  class ValidationError {
+    {static} +default_message: str = "El dato ingresado no es válido."
+  }
+  class DuplicateError {
+    {static} +default_message: str = "Ese registro ya existe."
+  }
+  class NotFoundError {
+    {static} +default_message: str = "No se encontró el registro solicitado."
+  }
+  class InvalidCredentialsError {
+    {static} +default_message: str = "Usuario o contraseña incorrectos."
+  }
+  class PermissionDeniedError {
+    {static} +default_message: str = "Tu usuario no tiene permiso para esta acción."
+  }
+  class EmptyQueueError {
+    {static} +default_message: str = "No hay pacientes en espera."
+  }
+  class EmptyStackError {
+    {static} +default_message: str = "No hay acciones que se puedan deshacer."
+  }
+  class NotUndoableError {
+    {static} +default_message: str = "Esta acción no se puede deshacer."
+  }
+  class StorageError {
+    {static} +default_message: str = "No se pudo guardar la información.
+    \tLos datos siguen en memoria; intenta de nuevo."
+  }
+  class CorruptedFileError {
+    #_filename: str
+    --
+    +__init__(filename: str, message: str | None = None)
+    +filename: str «get»
+  }
+
+  class Validator {
+    {static} +PATIENT_CODE_PATTERN: str = "PAC-[0-9]{4}"
+    {static} +LETTER: str = "A-Za-zÁÉÍÓÚÜÑáéíóúüñ"
+    {static} +FULL_NAME_PATTERN: str
+    {static} +PHONE_PATTERN: str = "[2-7][0-9]{7}"
+    {static} +USERNAME_MIN_LENGTH: int = 4
+    {static} +USERNAME_MAX_LENGTH: int = 20
+    {static} +USERNAME_PATTERN: str
+    {static} +NAME_MIN_LENGTH: int = 3
+    {static} +NAME_MAX_LENGTH: int = 80
+    {static} +AGE_MIN: int = 0
+    {static} +AGE_MAX: int = 120
+    {static} +AGE_PATTERN: str = "[0-9]{1,3}"
+    {static} +REASON_MIN_LENGTH: int = 5
+    {static} +REASON_MAX_LENGTH: int = 200
+    {static} +PASSWORD_MIN_LENGTH: int = 6
+    --
+    {static} +required(value: str, field_label: str): str
+    {static} +patient_code(value: str): str
+    {static} +full_name(value: str): str
+    {static} +age(value: str | int): int
+    {static} +phone(value: str): str
+    {static} +reason(value: str): str
+    {static} +username(value: str): str
+    {static} +password(value: str): str
+  }
+
+  class "dates.py" as dates_module <<módulo>> {
+    +DATE_FORMAT: str = "%Y-%m-%d %H:%M:%S"
+    -_clock: Callable[[], datetime] = datetime.now
+    +now_text(): str
+    +set_clock(clock: Callable[[], datetime] | None): None
+    +parse_date(text: str): datetime
+  }
+}
+
+Exception <|-- ClinicError
+ClinicError <|-- ValidationError
+ClinicError <|-- DuplicateError
+ClinicError <|-- NotFoundError
+ClinicError <|-- InvalidCredentialsError
+ClinicError <|-- PermissionDeniedError
+ClinicError <|-- EmptyQueueError
+ClinicError <|-- EmptyStackError
+ClinicError <|-- NotUndoableError
+ClinicError <|-- StorageError
+ClinicError <|-- CorruptedFileError
+
+Validator ..> ValidationError : lanza
+dates_module ..> ValidationError : parse_date() lanza
+
+note right of ClinicError
+  Todas las excepciones propias heredan de ClinicError,
+  así la interfaz las atrapa juntas y muestra error.message.
+  Cada hija sobrescribe default_message; al lanzarla se puede
+  pasar un mensaje concreto (sección 4.6), que reemplaza al
+  de la clase. CorruptedFileError arma su mensaje con el
+  nombre del archivo dañado.
+end note
+
+note bottom of Validator
+  Cada método limpia el valor y lo devuelve,
+  o lanza ValidationError con el mensaje de la sección 4.6.
+  Los patrones se comparan con re.fullmatch.
+  age() atrapa el ValueError de int() y además exige
+  AGE_PATTERN, porque int() acepta "1_0", "+30" y dígitos
+  de otros alfabetos (prueba E2-03).
+end note
+
+legend right
+  - privado   # protegido   + público
+  //cursiva//: abstracto    __subrayado__: de clase
+  «get»: solo lectura   «get/set»: setter que valida
+  gris: se detalla en otro diagrama
+endlegend
+@enduml
+
+
+' ============================================================================
+' 6. INTERFAZ GRÁFICA: VENTANA, INICIO DE SESIÓN, VENTANA PRINCIPAL Y BASE
+' ============================================================================
+@startuml interfaz
+title Diagrama 6. Interfaz gráfica con Tkinter: ventana, vistas, pestaña base y componentes
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam nodesep 30
+skinparam ranksep 60
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #444444
+  ArrowColor #444444
+}
+skinparam class<<externa>> {
+  BackgroundColor #EEEEEE
+  BorderColor #999999
+}
+skinparam class<<diagrama 1>> {
+  BackgroundColor #EEEEEE
+  BorderColor #999999
+}
+skinparam class<<diagrama 3>> {
+  BackgroundColor #EEEEEE
+  BorderColor #999999
+}
+skinparam class<<diagrama 5>> {
+  BackgroundColor #EEEEEE
+  BorderColor #999999
+}
+skinparam class<<diagramas 7 y 8>> {
+  BackgroundColor #EEEEEE
+  BorderColor #999999
+}
+skinparam class<<módulo>> {
+  BackgroundColor #F6F3E8
+}
+hide <<externa>> members
+hide <<diagrama 1>> members
+hide <<diagrama 3>> members
+hide <<diagrama 5>> members
+hide <<diagramas 7 y 8>> members
+
+class "tk.Tk" as Tk <<externa>>
+class "ttk.Frame" as Frame <<externa>>
+class "tk.Toplevel" as Toplevel6 <<externa>>
+
+class "main.py" as main_module <<módulo>> {
+  +BASE_DIR: Path
+  +main(): None
+}
+
+package ui {
+  class App {
+    {static} +WINDOW_SIZE: str = "1100x700"
+    {static} +MIN_WIDTH: int = 900
+    {static} +MIN_HEIGHT: int = 600
+    {static} +THEME: str = "clam"
+    {static} +WINDOW_TITLE, START_ERROR_TITLE, START_CLOSING_NOTE,
+    \tUNEXPECTED_ERROR_MESSAGE, EXIT_QUESTION: str «textos»
+    #_log_path: Path
+    #_view: ttk.Frame | None
+    #_system: ClinicSystem | None
+    --
+    +__init__(data_folder: str = "data", log_path: str | Path = "errors.log",
+    \tsystem: ClinicSystem | None = None)
+    #_configure_style(): None
+    #_start_system(data_folder: str): ClinicSystem | None
+    #_show_load_warnings(): None
+    +show_login(): None
+    +show_main(): None
+    #_show_view(view_class: type[ttk.Frame], **callbacks: Callable[[], None]): None
+    +request_exit(): None
+    +mainloop(n: int = 0): None
+    +report_callback_exception(exc_type, exc_value, exc_traceback): None
+    #_write_log(details: str): None
+  }
+
+  class LoginView {
+    {static} +ENTRY_WIDTH: int = 36
+    {static} +PASSWORD_MASK: str = "•"
+    {static} +TITLE, SUBTITLE, USERNAME_LABEL, PASSWORD_LABEL,
+    \tLOGIN_TEXT, EXIT_TEXT: str «textos»
+    #_system: ClinicSystem
+    #_on_success: Callable[[], None]
+    #_on_exit: Callable[[], None]
+    #_username: tk.StringVar
+    #_password: tk.StringVar
+    #_username_entry: ttk.Entry
+    #_password_entry: ttk.Entry
+    --
+    +__init__(parent: tk.Misc, system: ClinicSystem,
+    \ton_success: Callable[[], None], on_exit: Callable[[], None])
+    #_build_form(): None
+    #_submit(): None
+    #_focus_first_empty(): None
+  }
+
+  class MainView {
+    {static} +TAB_CLASSES: tuple[type[BaseTab], ...]
+    {static} +FILE_MENU, VIEW_MENU, PASSWORD_TEXT, PASSWORD_CHANGED_MESSAGE,
+    \tLOGOUT_TEXT, EXIT_TEXT, LOGOUT_QUESTION, STATUS_TEXT: str «textos»
+    #_system: ClinicSystem
+    #_on_logout: Callable[[], None]
+    #_on_exit: Callable[[], None]
+    #_tabs: list[BaseTab]
+    #_notebook: ttk.Notebook
+    #_changing_password: bool
+    --
+    +__init__(parent: tk.Misc, system: ClinicSystem,
+    \ton_logout: Callable[[], None], on_exit: Callable[[], None])
+    #_build_tabs(): None
+    #_build_menu(): None
+    #_build_status_bar(): None
+    #_focus_current_tab(_event: tk.Event | None = None): None
+    +notify_change(): None
+    #_change_own_password(): None
+    #_submit_own_password(dialog: PasswordDialog, current: str, new: str,
+    \tconfirmation: str): None
+    #_logout(): None
+  }
+
+  class PasswordDialog {
+    {static} +PASSWORD_MASK: str = "•"
+    {static} +USER_LABEL, CURRENT_LABEL, NEW_LABEL, CONFIRM_LABEL,
+    \tHINT, SUBMIT_TEXT, CLOSE_TEXT: str «textos»
+    #_on_submit: Callable[[PasswordDialog, str, str, str], None]
+    #_current: tk.StringVar
+    #_new: tk.StringVar
+    #_confirmation: tk.StringVar
+    --
+    +__init__(parent: tk.Misc, title: str, user_label: str, ask_current: bool,
+    \ton_submit: Callable[[PasswordDialog, str, str, str], None])
+    #_submit(): None
+    +close(): None
+  }
+
+  abstract class BaseTab {
+    {static} +title: str = ""
+    {static} +required_permission: Permission | None = None
+    {static} +PADDING: int = GAP
+    #_system: ClinicSystem
+    #_on_change: Callable[[], None]
+    #_busy: bool
+    --
+    +__init__(parent: tk.Misc, system: ClinicSystem, on_change: Callable[[], None])
+    {abstract} +refresh(): None
+    +first_field(): tk.Misc | None
+    +focus_first(): None
+    #_run(operation: Callable[..., Any], *args: Any,
+    \ton_success: Callable[[Any], None] | None = None, parent: tk.Misc | None = None): None
+    #_run_once(operation: Callable[..., Any], args: tuple[Any, ...],
+    \ton_success: Callable[[Any], None] | None, message_parent: tk.Misc): None
+    #_query(operation: Callable[..., Any], *args: Any, parent: tk.Misc | None = None): Any
+    #_selected_or_warn(table: DataTable, message: str): str | None
+  }
+
+  class DataTable {
+    #_tree: ttk.Treeview
+    #_row_ids: dict[str, str]
+    --
+    +__init__(parent: tk.Misc, columns: Sequence[tuple[str, str, int]], height: int = 10)
+    +load(rows: Iterable[Sequence[object]]): None
+    +clear(): None
+    +selected_id(): str | None
+    +clear_selection(): None
+    +on_select(callback: Callable[[], None]): None
+  }
+
+  class "password_dialog.py" as password_module <<módulo>> {
+    +ENTRY_WIDTH: int = 28
+  }
+
+  class "widgets.py" as widgets_module <<módulo>> {
+    +ERROR_TITLE, INFO_TITLE, WARNING_TITLE, CONFIRM_TITLE: str «textos»
+    +ENTER_KEYS: tuple[str, str] = ("<Return>", "<KP_Enter>")
+    +FONT_FAMILY: str = "Segoe UI"
+    +TITLE_FONT, HEADING_FONT, STRONG_FONT, NUMBER_FONT, BIG_NUMBER_FONT: tuple
+    +HINT_COLOR: str = "#555555"
+    +GAP: int = 10
+    +SMALL_GAP: int = 4
+    +FRAME_PADDING: int = 10
+    --
+    +count_text(count: int, singular: str, plural: str): str
+    +bind_enter(widget: tk.Misc, action: Callable[[], None]): None
+    +add_form_entry(form: tk.Misc, row: int, label: str, variable: tk.StringVar,
+    \twidth: int, fill: bool = True, show: str = ""): ttk.Entry
+    +add_table_frame(parent: tk.Misc, columns: Sequence[tuple[str, str, int]],
+    \theight: int, title: str = ""): tuple[ttk.LabelFrame, DataTable]
+    +center_dialog(dialog: tk.Toplevel, window: tk.Misc): None
+    +show_error(message: str, parent: tk.Misc | None = None, title: str = ERROR_TITLE): None
+    +show_info(message: str, parent: tk.Misc | None = None, title: str = INFO_TITLE): None
+    +show_warning(message: str, parent: tk.Misc | None = None, title: str = WARNING_TITLE): None
+    +confirm(message: str, parent: tk.Misc | None = None, title: str = CONFIRM_TITLE): bool
+  }
+}
+
+class ClinicSystem <<diagrama 3>>
+class Permission <<diagrama 1>>
+class ClinicError <<diagrama 5>>
+class "Las siete pestañas" as Tabs <<diagramas 7 y 8>>
+
+' --- Arranque ---
+main_module ..> App : crea y llama a mainloop()
+
+' --- Estructura de ventanas ---
+Tk <|-- App
+App "1" *-- "0..1" ClinicSystem : None si no arrancó
+App "1" *-- "0..1" LoginView : _view
+App "1" *-- "0..1" MainView : _view
+LoginView ..> App : on_success = show_main\non_exit = request_exit
+MainView ..> App : on_logout = show_login\non_exit = request_exit
+LoginView ..> ClinicSystem : login()
+MainView ..> ClinicSystem : has_permission(), current_user, logout()
+MainView "1" *-- "5..7" BaseTab : según permisos
+Frame <|-- LoginView
+Frame <|-- MainView
+Frame <|-- BaseTab
+Frame <|-- DataTable
+BaseTab <|-- Tabs
+
+' --- Pestaña base ---
+BaseTab ..> ClinicSystem : usa
+BaseTab ..> Permission : required_permission
+BaseTab ..> ClinicError : atrapa en _run_once() y _query()
+BaseTab ..> DataTable : _selected_or_warn()
+BaseTab ..> widgets_module : show_error()
+
+' --- Componentes y errores ---
+widgets_module ..> DataTable : add_table_frame() la crea
+App ..> widgets_module : confirm(), show_error(), show_warning()
+App ..> ClinicError : atrapa al arrancar y en\nreport_callback_exception()
+LoginView ..> ClinicError : atrapa InvalidCredentialsError
+
+' --- Cambio de contraseña (RF-43 y RF-44) ---
+Toplevel6 <|-- PasswordDialog
+MainView ..> PasswordDialog : Archivo > Cambiar mi contraseña\n(ask_current = True)
+MainView ..> ClinicSystem : change_own_password()
+MainView ..> ClinicError : atrapa en _submit_own_password()
+PasswordDialog ..> widgets_module : add_form_entry(), center_dialog()
+PasswordDialog ..> password_module
+
+note bottom of PasswordDialog
+  Sirve a dos pantallas. Desde Archivo pide también la
+  contraseña actual; desde Usuarios, el administrador pone
+  una nueva a otro usuario y ese campo no aparece.
+  Como NewTicketDialog, no llama a ClinicSystem: on_submit
+  recibe los valores y quien lo abrió lo cierra con close()
+  si el cambio funcionó.
+end note
+
+note right of BaseTab
+  _run() llama a la operación de ClinicSystem mediante
+  _run_once(), que atrapa ClinicError y muestra su
+  mensaje; si todo sale bien llama a on_change(), que es
+  MainView.notify_change(), y luego a on_success. Con
+  _busy ignora una segunda llamada mientras la primera
+  sigue abierta con su mensaje (prueba E2-12).
+  _query() hace lo mismo para las consultas, sin refrescar.
+  Así ningún botón repite su propio try/except.
+  MainView llama a refresh() y a focus_first() en cada
+  pestaña sin saber de qué clase es (polimorfismo).
+end note
+
+note bottom of App
+  Solo hay una vista a la vez: LoginView o MainView.
+  Las vistas no conocen App: reciben sus métodos como
+  callbacks (on_success, on_logout, on_exit).
+  Si ClinicSystem lanza ClinicError al crearse, App muestra
+  el mensaje y se cierra sin abrir el login, para no guardar
+  nada encima del archivo que hay que corregir (sección 3.11).
+  report_callback_exception() se sobrescribe para mostrar un
+  mensaje general y escribir el detalle en errors.log (RNF-11).
+  system recibe un ClinicSystem ya cargado. Lo usa
+  tests/bulk_demo.py para abrir la ventana con su historial
+  de acciones, que solo vive en memoria (sección 3.8).
+end note
+
+note bottom of widgets_module
+  add_form_entry() y add_table_frame() salieron en E3 del
+  código que repetían Registro, Usuarios y Turnos y colas.
+  center_dialog() lo usan NewTicketDialog y PasswordDialog.
+  Las fuentes, el color de ayuda y los márgenes se definen
+  aquí una sola vez para todas las pantallas.
+end note
+
+note "La interfaz solo importa ClinicSystem, Permission y las excepciones (sección 10).\nLas pestañas leen las propiedades de los objetos que devuelve ClinicSystem\n(Ticket, Patient, User, Action, CareRecord) sin importar sus clases." as N1
+
+legend right
+  - privado   # protegido   + público
+  //cursiva//: abstracto    __subrayado__: de clase
+  «get»: solo lectura   «textos»: constantes con texto visible
+  gris: se detalla en otro diagrama
+endlegend
+@enduml
+
+
+' ============================================================================
+' 7. INTERFAZ GRÁFICA: PESTAÑAS DE REGISTRO Y DE TURNOS
+' ============================================================================
+@startuml pestanas_registro_turnos
+title Diagrama 7. Interfaz gráfica con Tkinter: pestañas Registro y Turnos y colas
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam nodesep 25
+skinparam ranksep 70
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #444444
+  ArrowColor #444444
+}
+skinparam class<<externa>> {
+  BackgroundColor #EEEEEE
+  BorderColor #999999
+}
+skinparam class<<diagrama 6>> {
+  BackgroundColor #EEEEEE
+  BorderColor #999999
+}
+skinparam class<<módulo>> {
+  BackgroundColor #F6F3E8
+}
+hide <<externa>> members
+hide <<diagrama 6>> members
+
+class "tk.Toplevel" as Toplevel <<externa>>
+class "ttk.LabelFrame" as LabelFrame <<externa>>
+class BaseTab <<diagrama 6>>
+class DataTable <<diagrama 6>>
+class PasswordDialog <<diagrama 6>>
+
+package ui {
+  class "registration_tab.py" as registration_module <<módulo>> {
+    +ENTRY_WIDTH: int = 34
+    +AGE_WIDTH: int = 8
+    +PRIORITY_NAME: str = "Prioritaria"
+  }
+
+  class RegistrationTab {
+    {static} +title: str = "Registro"
+    {static} +required_permission = Permission.REGISTER_PATIENT
+    {static} +COLUMNS: tuple[tuple[str, str, int], ...]
+    {static} +FORM_TITLE, TABLE_TITLE, CODE_LABEL, NAME_LABEL, AGE_LABEL,
+    \tPHONE_LABEL, REASON_LABEL, REGISTER_TEXT, SAVE_TEXT, CLEAR_TEXT,
+    \tCANCEL_EDIT_TEXT, MODIFY_TEXT, NEW_TICKET_TEXT, EDIT_NOTE,
+    \tSELECT_PATIENT_MESSAGE, REGISTERED_MESSAGE, UPDATED_MESSAGE,
+    \tTICKET_CREATED_MESSAGE: str «textos»
+    #_code, _full_name, _age, _phone, _reason, _edit_note: tk.StringVar
+    #_proposed_code: str
+    #_editing_code: str | None
+    #_patients: dict[str, Patient]
+    #_code_entry, _name_entry, _age_entry, _phone_entry, _reason_entry: ttk.Entry
+    #_care_fields: CareTypeFields
+    #_submit_button: ttk.Button
+    #_clear_button: ttk.Button
+    #_table: DataTable
+    --
+    +__init__(parent: tk.Misc, system: ClinicSystem, on_change: Callable[[], None])
+    +first_field(): tk.Misc
+    #_build_form(): None
+    #_build_table(): None
+    +refresh(): None
+    #_submit(): None
+    #_register_patient(): None
+    #_after_register(ticket): None
+    #_save_changes(): None
+    #_after_save(code: str): None
+    #_start_edit(): None
+    #_leave_edit_mode(): None
+    #_clear_or_cancel(): None
+    #_clear_form(): None
+    #_open_new_ticket(): None
+    #_create_ticket(dialog: NewTicketDialog, code: str, reason: str,
+    \tcare_type: str, criterion: str | None): None
+    #_after_ticket_created(dialog: NewTicketDialog, ticket): None
+  }
+
+  class CareTypeFields {
+    {static} +TYPE_LABEL, CRITERION_LABEL: str «textos»
+    #_care_type: tk.StringVar
+    #_criterion: tk.StringVar
+    #_enabled: bool
+    #_type_box: ttk.Combobox
+    #_criterion_box: ttk.Combobox
+    --
+    +__init__(parent: tk.Misc, row: int, care_types: list[str], criteria: list[str])
+    +widgets: tuple[ttk.Combobox, ttk.Combobox] «get»
+    +values(): tuple[str, str | None]
+    +clear(): None
+    +set_enabled(enabled: bool): None
+    #_on_type_selected(_event: tk.Event): None
+    #_update_criterion_state(): None
+  }
+
+  class NewTicketDialog {
+    {static} +WINDOW_TITLE, PATIENT_LABEL, REASON_LABEL,
+    \tSUBMIT_TEXT, CLOSE_TEXT: str «textos»
+    #_on_submit: Callable[[NewTicketDialog, str, str, str | None], None]
+    #_reason: tk.StringVar
+    #_care_fields: CareTypeFields
+    --
+    +__init__(parent: tk.Misc, patient_label: str, care_types: list[str],
+    \tcriteria: list[str], on_submit: Callable[[NewTicketDialog, str, str, str | None], None])
+    #_submit(): None
+    +close(): None
+  }
+
+  class TicketsTab {
+    {static} +title: str = "Turnos y colas"
+    {static} +required_permission = Permission.VIEW_QUEUES
+    {static} +COLUMNS: tuple[tuple[str, str, int], ...]
+    {static} +NEXT_TITLE, IN_PROGRESS_TITLE, PRIORITY_TITLE, NORMAL_TITLE,
+    \tSTATUS_TITLE, NUMBER_LABEL, CALL_TEXT, FINISH_TEXT, CANCEL_TEXT,
+    \tQUERY_TEXT, EMPTY_QUEUES_TEXT, NOBODY_IN_CARE_TEXT, CANCEL_HINT,
+    \tSELECT_TICKET_MESSAGE, CANCEL_QUESTION, CALLED_MESSAGE,
+    \tFINISHED_MESSAGE, CANCELLED_MESSAGE, STATUS_RESULT: str «textos»
+    #_number: tk.StringVar
+    #_status_result: tk.StringVar
+    #_queried_number: str | None
+    #_next_box: TicketSummary
+    #_in_progress_box: TicketSummary
+    #_priority_frame: ttk.LabelFrame
+    #_priority_table: DataTable
+    #_normal_frame: ttk.LabelFrame
+    #_normal_table: DataTable
+    #_number_entry: ttk.Entry
+    --
+    +__init__(parent: tk.Misc, system: ClinicSystem, on_change: Callable[[], None])
+    +first_field(): tk.Misc
+    #_build_top(): None
+    #_build_queues(): None
+    #_add_queue(parent: ttk.Frame, column: int): tuple[ttk.LabelFrame, DataTable]
+    #_build_status_query(): None
+    +refresh(): None
+    {static} #_rows(tickets: Iterable): list[tuple]
+    #_refresh_status_result(): None
+    #_call_next(): None
+    #_after_call(ticket): None
+    #_finish_care(): None
+    #_cancel_ticket(): None
+    #_ticket_to_cancel(): str | None
+    #_query_status(): None
+    {static} #_keep_single_selection(selected: DataTable, other: DataTable): None
+  }
+
+  class TicketSummary {
+    {static} +WIDTH: int = 260
+    #_number: tk.StringVar
+    #_details: tk.StringVar
+    --
+    +__init__(parent: tk.Misc, title: str)
+    +show_ticket(ticket): None
+    +show_message(message: str): None
+  }
+
+
+
+
+
+
+}
+
+' --- Herencia ---
+BaseTab <|-- RegistrationTab
+BaseTab <|-- TicketsTab
+Toplevel <|-- NewTicketDialog
+LabelFrame <|-- TicketSummary
+
+' --- Composición ---
+RegistrationTab "1" *-- "1" DataTable
+RegistrationTab "1" *-- "1" CareTypeFields
+NewTicketDialog "1" *-- "1" CareTypeFields
+TicketsTab "1" *-- "2" DataTable : prioritaria y normal
+TicketsTab "1" *-- "2" TicketSummary : Siguiente y En atención
+
+' --- Dependencias ---
+RegistrationTab ..> NewTicketDialog : abre y le pasa on_submit
+RegistrationTab ..> registration_module
+CareTypeFields ..> registration_module : PRIORITY_NAME
+
+note bottom of NewTicketDialog
+  El diálogo no llama a ClinicSystem: on_submit le
+  entrega el motivo, el tipo y el criterio a
+  RegistrationTab._create_ticket(), que llama a
+  create_ticket() mediante _run() y cierra el
+  diálogo con close() si el turno se generó.
+  CareTypeFields pone el tipo de atención y el
+  criterio en el formulario y en el diálogo; el
+  criterio solo se habilita con Prioritaria.
+end note
+
+
+note bottom of TicketsTab
+  Cancelar turno queda deshabilitado si el usuario
+  no tiene CANCEL_TICKET; ClinicSystem también lo
+  rechaza (RNF-08). Cancela la fila seleccionada en
+  una cola o, si no hay ninguna, el número escrito
+  en Consultar estado.
+end note
+
+
+
+note top of RegistrationTab
+  first_field() se sobrescribe en Registro, Turnos y
+  colas, Búsqueda y Usuarios; las demás devuelven
+  None y toman el foco ellas mismas.
+end note
+
+note bottom of BaseTab
+  Título y permiso de cada pestaña (atributos de clase)
+  |= Clase |= title |= required_permission |
+  | RegistrationTab | "Registro" | REGISTER_PATIENT |
+  | TicketsTab | "Turnos y colas" | VIEW_QUEUES |
+  | SearchTab | "Búsqueda" | SEARCH |
+  | CareHistoryTab | "Atendidos" | VIEW_CARE_HISTORY |
+  | ActionsTab | "Historial de acciones" | VIEW_ACTION_LOG |
+  | StatsTab | "Estadísticas" | VIEW_STATS |
+  | UsersTab | "Usuarios" | MANAGE_USERS |
+  El recepcionista ve las cinco primeras y el
+  administrador las siete (sección 3.1).
+end note
+
+legend right
+  - privado   # protegido   + público
+  //cursiva//: abstracto    __subrayado__: de clase
+  «get»: solo lectura   «textos»: constantes con texto visible
+  gris: se detalla en otro diagrama
+endlegend
+@enduml
+
+
+' ============================================================================
+' 8. INTERFAZ GRÁFICA: PESTAÑAS DE CONSULTA Y ADMINISTRACIÓN
+' ============================================================================
+@startuml pestanas_consultas
+title Diagrama 8. Interfaz gráfica con Tkinter: Búsqueda, Atendidos, Historial de acciones, Estadísticas y Usuarios
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam nodesep 25
+skinparam ranksep 70
+skinparam class {
+  BackgroundColor #FFFFFF
+  BorderColor #444444
+  ArrowColor #444444
+}
+skinparam class<<diagrama 6>> {
+  BackgroundColor #EEEEEE
+  BorderColor #999999
+}
+skinparam class<<módulo>> {
+  BackgroundColor #F6F3E8
+}
+hide <<diagrama 6>> members
+
+class BaseTab <<diagrama 6>>
+class DataTable <<diagrama 6>>
+
+package ui {
+  class SearchTab {
+    {static} +title: str = "Búsqueda"
+    {static} +required_permission = Permission.SEARCH
+    {static} +COLUMNS: tuple[tuple[str, str, int], ...]
+    {static} +CRITERION_LABEL, TEXT_LABEL, SEARCH_TEXT, CLEAR_TEXT,
+    \tRESULTS_TITLE, FREE_TEXT_HINT, LIST_HINT, NO_RESULTS_MESSAGE,
+    \tCOUNT_TEXT, EMPTY_TEXT, NO_RESULTS_TEXT: str «textos»
+    #_criterion, _text, _hint, _summary: tk.StringVar
+    #_last_search: tuple[str, str] | None
+    #_suggestions: list[str]
+    #_text_box: ttk.Combobox
+    #_table: DataTable
+    --
+    +__init__(parent: tk.Misc, system: ClinicSystem, on_change: Callable[[], None])
+    +first_field(): tk.Misc
+    #_build_form(criteria: list[str]): None
+    #_build_results(): None
+    +refresh(): None
+    {static} #_rows(tickets: Iterable): list[tuple]
+    #_show_results(criterion: str, text: str, tickets: list): None
+    #_search(): None
+    #_clear(): None
+    #_on_criterion_selected(_event: tk.Event): None
+    #_update_suggestions(): None
+  }
+
+  class CareHistoryTab {
+    {static} +title: str = "Atendidos"
+    {static} +required_permission = Permission.VIEW_CARE_HISTORY
+    {static} +COLUMNS: tuple[tuple[str, str, int], ...]
+    {static} +HEADING, COUNT_TEXT, EMPTY_TEXT: str «textos»
+    #_summary: tk.StringVar
+    #_table: DataTable
+    --
+    +__init__(parent: tk.Misc, system: ClinicSystem, on_change: Callable[[], None])
+    +refresh(): None
+  }
+
+  class ActionsTab {
+    {static} +title: str = "Historial de acciones"
+    {static} +required_permission = Permission.VIEW_ACTION_LOG
+    {static} +COLUMNS: tuple[tuple[str, str, int], ...]
+    {static} +HEADING, LAST_TITLE, UNDO_TITLE, UNDO_TEXT, NEXT_UNDO_LABEL,
+    \tLAST_DETAILS, NO_ACTIONS_TEXT, NOTHING_TO_UNDO_TEXT, COUNT_TEXT,
+    \tUNDO_QUESTION, UNDONE_MESSAGE, CAN_UNDO, EVIDENCE_ONLY,
+    \tALREADY_UNDONE: str «textos»
+    #_last_type, _last_description, _last_details: tk.StringVar
+    #_next_undo: tk.StringVar
+    #_summary: tk.StringVar
+    #_table: DataTable
+    #_undo_button: ttk.Button
+    --
+    +__init__(parent: tk.Misc, system: ClinicSystem, on_change: Callable[[], None])
+    #_build_top(): None
+    +refresh(): None
+    #_row(action): tuple
+    #_undo_state(action): str
+    #_show_last_action(action): None
+    #_refresh_undo(): None
+    #_undo(): None
+    #_after_undo(action): None
+  }
+
+  class StatsTab {
+    {static} +title: str = "Estadísticas"
+    {static} +required_permission = Permission.VIEW_STATS
+    {static} +GROUPS: tuple[tuple[str, tuple[tuple[str, str], ...]], ...]
+    {static} +HEADING, NOTE: str «textos»
+    #_values: dict[str, tk.StringVar]
+    --
+    +__init__(parent: tk.Misc, system: ClinicSystem, on_change: Callable[[], None])
+    #_build_group(group_title: str, items: tuple[tuple[str, str], ...]): ttk.LabelFrame
+    +refresh(): None
+  }
+
+  class UsersTab {
+    {static} +title: str = "Usuarios"
+    {static} +required_permission = Permission.MANAGE_USERS
+    {static} +COLUMNS: tuple[tuple[str, str, int], ...]
+    {static} +PASSWORD_MASK: str = "•"
+    {static} +FORM_TITLE, TABLE_TITLE, PERMISSIONS_TITLE, NAME_LABEL,
+    \tUSERNAME_LABEL, PASSWORD_LABEL, ROLE_LABEL, CREATE_TEXT, CLEAR_TEXT,
+    \tDELETE_TEXT, FORM_HINT, OWN_ACCOUNT_HINT, NO_SELECTION_HINT,
+    \tPERMISSIONS_OF, SELECT_USER_MESSAGE, CREATED_MESSAGE,
+    \tDELETE_QUESTION, DELETED_MESSAGE, PASSWORD_TEXT, PASSWORD_TITLE,
+    \tPASSWORD_CHANGED_MESSAGE: str «textos»
+    #_full_name, _username, _password, _role: tk.StringVar
+    #_permissions_caption: tk.StringVar
+    #_users: dict[str, User]
+    #_name_entry: ttk.Entry
+    #_permissions_list: tk.Listbox
+    #_table: DataTable
+    #_delete_button: ttk.Button
+    #_password_button: ttk.Button
+    --
+    +__init__(parent: tk.Misc, system: ClinicSystem, on_change: Callable[[], None])
+    +first_field(): tk.Misc
+    #_build_left_side(): None
+    #_build_form(parent: ttk.Frame): None
+    #_build_permissions(parent: ttk.Frame): None
+    #_build_table(): None
+    +refresh(): None
+    #_on_user_selected(): None
+    #_show_permissions(): None
+    #_create_user(): None
+    #_after_create(user): None
+    #_delete_user(): None
+    #_change_password(): None
+    #_after_password_change(dialog: PasswordDialog, username: str): None
+    #_clear_form(): None
+  }
+
+  class "users_tab.py" as users_module <<módulo>> {
+    +ENTRY_WIDTH: int = 30
+  }
+}
+
+' --- Herencia ---
+BaseTab <|-- SearchTab
+BaseTab <|-- CareHistoryTab
+BaseTab <|-- ActionsTab
+BaseTab <|-- StatsTab
+BaseTab <|-- UsersTab
+
+' --- Composición ---
+SearchTab "1" *-- "1" DataTable
+CareHistoryTab "1" *-- "1" DataTable
+ActionsTab "1" *-- "1" DataTable
+UsersTab "1" *-- "1" DataTable
+
+' --- Dependencias ---
+UsersTab ..> users_module
+UsersTab ..> PasswordDialog : Cambiar contraseña\n(ask_current = False)
+
+note bottom of UsersTab
+  _show_permissions() llama a user.permissions():
+  cada rol responde con sus propios permisos
+  (polimorfismo) y la lista muestra sus textos.
+  Cambiar contraseña y Eliminar seleccionado se
+  deshabilitan con la cuenta propia seleccionada.
+end note
+
+note bottom of ActionsTab
+  El botón Deshacer última acción se habilita solo si
+  can_undo() es verdadero. next_undo() da la acción que
+  se va a revertir, para mostrarla junto al botón y
+  nombrarla en la confirmación.
+end note
+
+note bottom of SearchTab
+  _update_suggestions() pide search_suggestions() a
+  ClinicSystem: con Estado o Tipo de atención el campo
+  ofrece una lista; con los demás criterios es texto libre.
+end note
+
+note bottom of StatsTab
+  GROUPS ordena las claves de stats() en recuadros
+  (pacientes, turnos por estado, por tipo y colas).
+  refresh() se llama después de cada cambio, así los
+  valores se mantienen al día solos (RF-39).
+end note
+
+legend right
+  - privado   # protegido   + público
+  //cursiva//: abstracto    __subrayado__: de clase
+  «get»: solo lectura   «textos»: constantes con texto visible
+  gris: se detalla en otro diagrama
+endlegend
+@enduml

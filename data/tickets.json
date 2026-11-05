@@ -1,1 +1,3192 @@
-[]
+[
+    {
+        "number": "N-001",
+        "patient_code": "PAC-0001",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control de diabetes",
+        "created_at": "2026-10-30 07:00:56",
+        "status": "Atendido",
+        "served_at": "2026-10-30 07:07:53"
+    },
+    {
+        "number": "N-002",
+        "patient_code": "PAC-0002",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor lumbar",
+        "created_at": "2026-10-30 07:09:37",
+        "status": "Atendido",
+        "served_at": "2026-10-30 07:14:37"
+    },
+    {
+        "number": "N-003",
+        "patient_code": "PAC-0003",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Vómitos y diarrea",
+        "created_at": "2026-10-30 07:18:40",
+        "status": "Atendido",
+        "served_at": "2026-10-30 07:25:22"
+    },
+    {
+        "number": "P-004",
+        "patient_code": "PAC-0004",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Renovación de receta",
+        "created_at": "2026-10-30 07:29:19",
+        "status": "Atendido",
+        "served_at": "2026-10-30 07:36:18"
+    },
+    {
+        "number": "N-005",
+        "patient_code": "PAC-0005",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de oído",
+        "created_at": "2026-10-30 07:38:38",
+        "status": "Atendido",
+        "served_at": "2026-10-30 08:02:16"
+    },
+    {
+        "number": "P-006",
+        "patient_code": "PAC-0006",
+        "care_type": "Prioritaria",
+        "criterion": "Urgencia",
+        "reason": "Corte en la mano",
+        "created_at": "2026-10-30 07:47:29",
+        "status": "Atendido",
+        "served_at": "2026-10-30 07:52:00"
+    },
+    {
+        "number": "N-007",
+        "patient_code": "PAC-0007",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor en el pecho",
+        "created_at": "2026-10-30 07:55:23",
+        "status": "Atendido",
+        "served_at": "2026-10-30 08:09:53"
+    },
+    {
+        "number": "N-008",
+        "patient_code": "PAC-0008",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Revisión de resultados de laboratorio",
+        "created_at": "2026-10-30 08:04:38",
+        "status": "Atendido",
+        "served_at": "2026-10-30 08:19:17"
+    },
+    {
+        "number": "N-009",
+        "patient_code": "PAC-0009",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Revisión de resultados de laboratorio",
+        "created_at": "2026-10-30 08:15:05",
+        "status": "Atendido",
+        "served_at": "2026-10-30 08:28:44"
+    },
+    {
+        "number": "N-010",
+        "patient_code": "PAC-0010",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Mareos frecuentes",
+        "created_at": "2026-10-30 08:23:47",
+        "status": "Atendido",
+        "served_at": "2026-10-30 09:06:01"
+    },
+    {
+        "number": "P-011",
+        "patient_code": "PAC-0011",
+        "care_type": "Prioritaria",
+        "criterion": "Urgencia",
+        "reason": "Dificultad para respirar",
+        "created_at": "2026-10-30 08:33:50",
+        "status": "Atendido",
+        "served_at": "2026-10-30 08:40:20"
+    },
+    {
+        "number": "P-012",
+        "patient_code": "PAC-0012",
+        "care_type": "Prioritaria",
+        "criterion": "Discapacidad",
+        "reason": "Dolor de muelas",
+        "created_at": "2026-10-30 08:41:44",
+        "status": "Atendido",
+        "served_at": "2026-10-30 08:45:39"
+    },
+    {
+        "number": "N-013",
+        "patient_code": "PAC-0013",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control de diabetes",
+        "created_at": "2026-10-30 08:50:56",
+        "status": "Atendido",
+        "served_at": "2026-10-30 09:14:13"
+    },
+    {
+        "number": "N-014",
+        "patient_code": "PAC-0014",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dificultad para respirar",
+        "created_at": "2026-10-30 09:00:48",
+        "status": "Atendido",
+        "served_at": "2026-10-30 09:41:13"
+    },
+    {
+        "number": "N-015",
+        "patient_code": "PAC-0015",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de cabeza",
+        "created_at": "2026-10-30 09:09:47",
+        "status": "Atendido",
+        "served_at": "2026-10-30 10:01:44"
+    },
+    {
+        "number": "N-016",
+        "patient_code": "PAC-0016",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Corte en la mano",
+        "created_at": "2026-10-30 09:19:33",
+        "status": "Atendido",
+        "served_at": "2026-10-30 10:28:58"
+    },
+    {
+        "number": "P-017",
+        "patient_code": "PAC-0017",
+        "care_type": "Prioritaria",
+        "criterion": "Urgencia",
+        "reason": "Dificultad para respirar",
+        "created_at": "2026-10-30 09:28:25",
+        "status": "Atendido",
+        "served_at": "2026-10-30 09:35:12"
+    },
+    {
+        "number": "N-018",
+        "patient_code": "PAC-0018",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control prenatal",
+        "created_at": "2026-10-30 09:37:04",
+        "status": "Atendido",
+        "served_at": "2026-10-30 10:37:38"
+    },
+    {
+        "number": "P-019",
+        "patient_code": "PAC-0019",
+        "care_type": "Prioritaria",
+        "criterion": "Urgencia",
+        "reason": "Dolor en el pecho",
+        "created_at": "2026-10-30 09:47:09",
+        "status": "Atendido",
+        "served_at": "2026-10-30 09:51:24"
+    },
+    {
+        "number": "N-020",
+        "patient_code": "PAC-0020",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor lumbar",
+        "created_at": "2026-10-30 09:55:50",
+        "status": "Atendido",
+        "served_at": "2026-10-30 10:46:08"
+    },
+    {
+        "number": "N-021",
+        "patient_code": "PAC-0021",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Vómitos y diarrea",
+        "created_at": "2026-10-30 10:04:46",
+        "status": "Atendido",
+        "served_at": "2026-10-30 10:55:12"
+    },
+    {
+        "number": "N-022",
+        "patient_code": "PAC-0022",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Alergia en la piel",
+        "created_at": "2026-10-30 10:15:22",
+        "status": "Atendido",
+        "served_at": "2026-10-30 11:08:59"
+    },
+    {
+        "number": "N-023",
+        "patient_code": "PAC-0023",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Vacunación",
+        "created_at": "2026-10-30 10:23:37",
+        "status": "Atendido",
+        "served_at": "2026-10-30 11:15:10"
+    },
+    {
+        "number": "N-024",
+        "patient_code": "PAC-0024",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control prenatal",
+        "created_at": "2026-10-30 10:33:29",
+        "status": "Atendido",
+        "served_at": "2026-10-30 11:24:20"
+    },
+    {
+        "number": "N-025",
+        "patient_code": "PAC-0025",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Revisión de resultados de laboratorio",
+        "created_at": "2026-10-30 10:41:49",
+        "status": "Atendido",
+        "served_at": "2026-10-30 11:36:03"
+    },
+    {
+        "number": "N-026",
+        "patient_code": "PAC-0026",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Certificado médico",
+        "created_at": "2026-10-30 10:51:59",
+        "status": "Atendido",
+        "served_at": "2026-10-30 11:52:45"
+    },
+    {
+        "number": "N-027",
+        "patient_code": "PAC-0027",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de muelas",
+        "created_at": "2026-10-30 11:01:19",
+        "status": "Atendido",
+        "served_at": "2026-10-30 11:59:06"
+    },
+    {
+        "number": "N-028",
+        "patient_code": "PAC-0028",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dificultad para respirar",
+        "created_at": "2026-10-30 11:09:25",
+        "status": "Atendido",
+        "served_at": "2026-10-30 12:13:49"
+    },
+    {
+        "number": "N-029",
+        "patient_code": "PAC-0029",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Revisión de la vista",
+        "created_at": "2026-10-30 11:18:43",
+        "status": "Atendido",
+        "served_at": "2026-10-30 12:20:52"
+    },
+    {
+        "number": "N-030",
+        "patient_code": "PAC-0030",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Infección urinaria",
+        "created_at": "2026-10-30 11:28:33",
+        "status": "Cancelado",
+        "served_at": null
+    },
+    {
+        "number": "P-031",
+        "patient_code": "PAC-0031",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Certificado médico",
+        "created_at": "2026-10-30 11:37:05",
+        "status": "Atendido",
+        "served_at": "2026-10-30 11:42:16"
+    },
+    {
+        "number": "N-032",
+        "patient_code": "PAC-0032",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Esguince de tobillo",
+        "created_at": "2026-10-30 11:47:03",
+        "status": "Atendido",
+        "served_at": "2026-10-30 12:46:42"
+    },
+    {
+        "number": "N-033",
+        "patient_code": "PAC-0033",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control de presión arterial",
+        "created_at": "2026-10-30 11:55:27",
+        "status": "Atendido",
+        "served_at": "2026-10-30 13:14:43"
+    },
+    {
+        "number": "N-034",
+        "patient_code": "PAC-0025",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de garganta",
+        "created_at": "2026-10-30 11:59:46",
+        "status": "Atendido",
+        "served_at": "2026-10-30 13:24:22"
+    },
+    {
+        "number": "N-035",
+        "patient_code": "PAC-0034",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Vacunación",
+        "created_at": "2026-10-30 12:07:27",
+        "status": "Atendido",
+        "served_at": "2026-10-30 13:33:35"
+    },
+    {
+        "number": "N-036",
+        "patient_code": "PAC-0035",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de garganta",
+        "created_at": "2026-10-30 12:15:26",
+        "status": "Atendido",
+        "served_at": "2026-10-30 13:44:44"
+    },
+    {
+        "number": "N-037",
+        "patient_code": "PAC-0036",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control prenatal",
+        "created_at": "2026-10-30 12:23:10",
+        "status": "Atendido",
+        "served_at": "2026-10-30 13:50:49"
+    },
+    {
+        "number": "P-038",
+        "patient_code": "PAC-0037",
+        "care_type": "Prioritaria",
+        "criterion": "Discapacidad",
+        "reason": "Corte en la mano",
+        "created_at": "2026-10-30 12:34:05",
+        "status": "Atendido",
+        "served_at": "2026-10-30 12:40:52"
+    },
+    {
+        "number": "N-039",
+        "patient_code": "PAC-0038",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control prenatal",
+        "created_at": "2026-10-30 12:42:15",
+        "status": "Atendido",
+        "served_at": "2026-10-30 14:00:30"
+    },
+    {
+        "number": "P-040",
+        "patient_code": "PAC-0039",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Corte en la mano",
+        "created_at": "2026-10-30 12:52:30",
+        "status": "Atendido",
+        "served_at": "2026-10-30 13:04:14"
+    },
+    {
+        "number": "N-041",
+        "patient_code": "PAC-0040",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Mareos frecuentes",
+        "created_at": "2026-10-30 13:00:02",
+        "status": "Atendido",
+        "served_at": "2026-10-30 14:29:09"
+    },
+    {
+        "number": "N-042",
+        "patient_code": "PAC-0041",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Alergia en la piel",
+        "created_at": "2026-10-30 13:10:06",
+        "status": "Atendido",
+        "served_at": "2026-10-30 14:37:40"
+    },
+    {
+        "number": "N-043",
+        "patient_code": "PAC-0042",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Revisión de la vista",
+        "created_at": "2026-10-30 13:19:48",
+        "status": "Atendido",
+        "served_at": "2026-10-30 14:48:24"
+    },
+    {
+        "number": "N-044",
+        "patient_code": "PAC-0043",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Revisión de la vista",
+        "created_at": "2026-10-30 13:28:40",
+        "status": "Atendido",
+        "served_at": "2026-10-30 14:58:42"
+    },
+    {
+        "number": "N-045",
+        "patient_code": "PAC-0044",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control de niño sano",
+        "created_at": "2026-10-30 13:37:29",
+        "status": "Atendido",
+        "served_at": "2026-10-30 15:06:51"
+    },
+    {
+        "number": "N-046",
+        "patient_code": "PAC-0045",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de cabeza",
+        "created_at": "2026-10-30 13:46:36",
+        "status": "Atendido",
+        "served_at": "2026-10-30 15:18:06"
+    },
+    {
+        "number": "N-047",
+        "patient_code": "PAC-0046",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Alergia en la piel",
+        "created_at": "2026-10-30 13:56:01",
+        "status": "Atendido",
+        "served_at": "2026-10-30 15:24:48"
+    },
+    {
+        "number": "N-048",
+        "patient_code": "PAC-0047",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de garganta",
+        "created_at": "2026-10-30 14:06:11",
+        "status": "Atendido",
+        "served_at": "2026-10-30 15:36:54"
+    },
+    {
+        "number": "P-049",
+        "patient_code": "PAC-0048",
+        "care_type": "Prioritaria",
+        "criterion": "Discapacidad",
+        "reason": "Dolor de muelas",
+        "created_at": "2026-10-30 14:13:58",
+        "status": "Atendido",
+        "served_at": "2026-10-30 14:20:59"
+    },
+    {
+        "number": "N-050",
+        "patient_code": "PAC-0049",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Renovación de receta",
+        "created_at": "2026-10-30 14:24:26",
+        "status": "Atendido",
+        "served_at": "2026-10-30 15:41:22"
+    },
+    {
+        "number": "N-051",
+        "patient_code": "PAC-0050",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de cabeza",
+        "created_at": "2026-10-30 14:32:55",
+        "status": "Atendido",
+        "served_at": "2026-10-30 15:53:19"
+    },
+    {
+        "number": "N-052",
+        "patient_code": "PAC-0051",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Fiebre alta desde ayer",
+        "created_at": "2026-10-30 14:42:12",
+        "status": "Atendido",
+        "served_at": "2026-10-30 16:21:02"
+    },
+    {
+        "number": "N-053",
+        "patient_code": "PAC-0052",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Tos persistente",
+        "created_at": "2026-10-30 14:51:45",
+        "status": "Atendido",
+        "served_at": "2026-10-30 16:31:40"
+    },
+    {
+        "number": "N-054",
+        "patient_code": "PAC-0053",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control de niño sano",
+        "created_at": "2026-10-30 15:00:45",
+        "status": "Atendido",
+        "served_at": "2026-10-30 16:38:43"
+    },
+    {
+        "number": "N-055",
+        "patient_code": "PAC-0054",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor lumbar",
+        "created_at": "2026-10-30 15:10:40",
+        "status": "Cancelado",
+        "served_at": null
+    },
+    {
+        "number": "N-056",
+        "patient_code": "PAC-0055",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Renovación de receta",
+        "created_at": "2026-10-30 15:18:58",
+        "status": "Atendido",
+        "served_at": "2026-10-30 17:01:40"
+    },
+    {
+        "number": "N-057",
+        "patient_code": "PAC-0056",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de oído",
+        "created_at": "2026-10-30 15:29:05",
+        "status": "Atendido",
+        "served_at": "2026-10-30 17:06:13"
+    },
+    {
+        "number": "N-058",
+        "patient_code": "PAC-0057",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor abdominal",
+        "created_at": "2026-10-30 15:37:24",
+        "status": "Atendido",
+        "served_at": "2026-10-30 17:12:21"
+    },
+    {
+        "number": "N-059",
+        "patient_code": "PAC-0058",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Vacunación",
+        "created_at": "2026-10-30 15:46:54",
+        "status": "Atendido",
+        "served_at": "2026-10-30 17:20:34"
+    },
+    {
+        "number": "P-060",
+        "patient_code": "PAC-0059",
+        "care_type": "Prioritaria",
+        "criterion": "Urgencia",
+        "reason": "Dificultad para respirar",
+        "created_at": "2026-10-30 15:56:11",
+        "status": "Atendido",
+        "served_at": "2026-10-30 16:12:57"
+    },
+    {
+        "number": "N-061",
+        "patient_code": "PAC-0034",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Revisión de resultados de laboratorio",
+        "created_at": "2026-10-30 15:56:25",
+        "status": "Atendido",
+        "served_at": "2026-10-30 17:24:05"
+    },
+    {
+        "number": "N-062",
+        "patient_code": "PAC-0060",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dificultad para respirar",
+        "created_at": "2026-10-30 16:06:05",
+        "status": "Atendido",
+        "served_at": "2026-10-30 17:29:38"
+    },
+    {
+        "number": "N-063",
+        "patient_code": "PAC-0061",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Alergia en la piel",
+        "created_at": "2026-10-30 16:14:59",
+        "status": "Atendido",
+        "served_at": "2026-10-30 17:36:04"
+    },
+    {
+        "number": "N-064",
+        "patient_code": "PAC-0062",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de muelas",
+        "created_at": "2026-10-30 16:24:40",
+        "status": "Atendido",
+        "served_at": "2026-10-30 17:41:58"
+    },
+    {
+        "number": "N-065",
+        "patient_code": "PAC-0063",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de muelas",
+        "created_at": "2026-10-30 16:33:02",
+        "status": "Atendido",
+        "served_at": "2026-10-30 17:49:09"
+    },
+    {
+        "number": "P-066",
+        "patient_code": "PAC-0040",
+        "care_type": "Prioritaria",
+        "criterion": "Urgencia",
+        "reason": "Dolor en el pecho",
+        "created_at": "2026-10-30 16:39:18",
+        "status": "Atendido",
+        "served_at": "2026-10-30 16:45:40"
+    },
+    {
+        "number": "N-067",
+        "patient_code": "PAC-0064",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de cabeza",
+        "created_at": "2026-10-30 16:42:30",
+        "status": "Atendido",
+        "served_at": "2026-10-30 17:55:59"
+    },
+    {
+        "number": "P-068",
+        "patient_code": "PAC-0065",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Dolor de muelas",
+        "created_at": "2026-10-30 16:51:29",
+        "status": "Atendido",
+        "served_at": "2026-10-30 16:57:11"
+    },
+    {
+        "number": "N-069",
+        "patient_code": "PAC-0066",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Alergia en la piel",
+        "created_at": "2026-11-02 07:01:39",
+        "status": "Atendido",
+        "served_at": "2026-11-02 07:07:13"
+    },
+    {
+        "number": "P-070",
+        "patient_code": "PAC-0067",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Certificado médico",
+        "created_at": "2026-11-02 07:10:13",
+        "status": "Atendido",
+        "served_at": "2026-11-02 07:13:45"
+    },
+    {
+        "number": "N-071",
+        "patient_code": "PAC-0068",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de garganta",
+        "created_at": "2026-11-02 07:19:43",
+        "status": "Atendido",
+        "served_at": "2026-11-02 07:25:29"
+    },
+    {
+        "number": "N-072",
+        "patient_code": "PAC-0069",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor en el pecho",
+        "created_at": "2026-11-02 07:29:31",
+        "status": "Atendido",
+        "served_at": "2026-11-02 07:32:53"
+    },
+    {
+        "number": "N-073",
+        "patient_code": "PAC-0070",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control de presión arterial",
+        "created_at": "2026-11-02 07:37:36",
+        "status": "Atendido",
+        "served_at": "2026-11-02 07:43:00"
+    },
+    {
+        "number": "N-074",
+        "patient_code": "PAC-0007",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Certificado médico",
+        "created_at": "2026-11-02 07:43:34",
+        "status": "Atendido",
+        "served_at": "2026-11-02 07:53:57"
+    },
+    {
+        "number": "N-075",
+        "patient_code": "PAC-0071",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control prenatal",
+        "created_at": "2026-11-02 07:47:00",
+        "status": "Atendido",
+        "served_at": "2026-11-02 08:10:11"
+    },
+    {
+        "number": "P-076",
+        "patient_code": "PAC-0072",
+        "care_type": "Prioritaria",
+        "criterion": "Urgencia",
+        "reason": "Corte en la mano",
+        "created_at": "2026-11-02 07:56:58",
+        "status": "Atendido",
+        "served_at": "2026-11-02 08:02:17"
+    },
+    {
+        "number": "N-077",
+        "patient_code": "PAC-0073",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Esguince de tobillo",
+        "created_at": "2026-11-02 08:05:39",
+        "status": "Atendido",
+        "served_at": "2026-11-02 08:19:41"
+    },
+    {
+        "number": "N-078",
+        "patient_code": "PAC-0022",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Vacunación",
+        "created_at": "2026-11-02 08:10:34",
+        "status": "Atendido",
+        "served_at": "2026-11-02 08:28:18"
+    },
+    {
+        "number": "N-079",
+        "patient_code": "PAC-0074",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Certificado médico",
+        "created_at": "2026-11-02 08:15:36",
+        "status": "Atendido",
+        "served_at": "2026-11-02 08:39:38"
+    },
+    {
+        "number": "N-080",
+        "patient_code": "PAC-0075",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Esguince de tobillo",
+        "created_at": "2026-11-02 08:25:00",
+        "status": "Atendido",
+        "served_at": "2026-11-02 09:09:10"
+    },
+    {
+        "number": "N-081",
+        "patient_code": "PAC-0076",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Vacunación",
+        "created_at": "2026-11-02 08:34:16",
+        "status": "Atendido",
+        "served_at": "2026-11-02 09:15:12"
+    },
+    {
+        "number": "N-082",
+        "patient_code": "PAC-0077",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Certificado médico",
+        "created_at": "2026-11-02 08:43:14",
+        "status": "Atendido",
+        "served_at": "2026-11-02 09:35:13"
+    },
+    {
+        "number": "N-083",
+        "patient_code": "PAC-0078",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Tos persistente",
+        "created_at": "2026-11-02 08:52:42",
+        "status": "Atendido",
+        "served_at": "2026-11-02 10:13:48"
+    },
+    {
+        "number": "N-084",
+        "patient_code": "PAC-0079",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control prenatal",
+        "created_at": "2026-11-02 09:03:43",
+        "status": "Atendido",
+        "served_at": "2026-11-02 10:34:32"
+    },
+    {
+        "number": "N-085",
+        "patient_code": "PAC-0080",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor en el pecho",
+        "created_at": "2026-11-02 09:11:24",
+        "status": "Atendido",
+        "served_at": "2026-11-02 10:39:07"
+    },
+    {
+        "number": "N-086",
+        "patient_code": "PAC-0081",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de cabeza",
+        "created_at": "2026-11-02 09:21:22",
+        "status": "Atendido",
+        "served_at": "2026-11-02 10:51:25"
+    },
+    {
+        "number": "N-087",
+        "patient_code": "PAC-0082",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Alergia en la piel",
+        "created_at": "2026-11-02 09:31:26",
+        "status": "Atendido",
+        "served_at": "2026-11-02 11:00:16"
+    },
+    {
+        "number": "P-088",
+        "patient_code": "PAC-0083",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Corte en la mano",
+        "created_at": "2026-11-02 09:39:57",
+        "status": "Atendido",
+        "served_at": "2026-11-02 09:46:10"
+    },
+    {
+        "number": "P-089",
+        "patient_code": "PAC-0084",
+        "care_type": "Prioritaria",
+        "criterion": "Discapacidad",
+        "reason": "Fiebre alta desde ayer",
+        "created_at": "2026-11-02 09:50:15",
+        "status": "Atendido",
+        "served_at": "2026-11-02 09:57:59"
+    },
+    {
+        "number": "P-090",
+        "patient_code": "PAC-0085",
+        "care_type": "Prioritaria",
+        "criterion": "Embarazo",
+        "reason": "Control prenatal",
+        "created_at": "2026-11-02 09:58:39",
+        "status": "Atendido",
+        "served_at": "2026-11-02 10:05:50"
+    },
+    {
+        "number": "N-091",
+        "patient_code": "PAC-0086",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Vacunación",
+        "created_at": "2026-11-02 10:07:37",
+        "status": "Atendido",
+        "served_at": "2026-11-02 11:30:32"
+    },
+    {
+        "number": "P-092",
+        "patient_code": "PAC-0087",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Control de niño sano",
+        "created_at": "2026-11-02 10:17:51",
+        "status": "Atendido",
+        "served_at": "2026-11-02 10:24:56"
+    },
+    {
+        "number": "N-093",
+        "patient_code": "PAC-0088",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control de diabetes",
+        "created_at": "2026-11-02 10:28:05",
+        "status": "Cancelado",
+        "served_at": null
+    },
+    {
+        "number": "N-094",
+        "patient_code": "PAC-0089",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Vacunación",
+        "created_at": "2026-11-02 10:36:12",
+        "status": "Atendido",
+        "served_at": "2026-11-02 11:39:53"
+    },
+    {
+        "number": "N-095",
+        "patient_code": "PAC-0090",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Certificado médico",
+        "created_at": "2026-11-02 10:45:30",
+        "status": "Atendido",
+        "served_at": "2026-11-02 12:40:55"
+    },
+    {
+        "number": "N-096",
+        "patient_code": "PAC-0091",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Revisión de la vista",
+        "created_at": "2026-11-02 10:55:07",
+        "status": "Atendido",
+        "served_at": "2026-11-02 12:55:23"
+    },
+    {
+        "number": "P-097",
+        "patient_code": "PAC-0092",
+        "care_type": "Prioritaria",
+        "criterion": "Urgencia",
+        "reason": "Corte en la mano",
+        "created_at": "2026-11-02 11:04:13",
+        "status": "Atendido",
+        "served_at": "2026-11-02 11:11:21"
+    },
+    {
+        "number": "P-098",
+        "patient_code": "PAC-0093",
+        "care_type": "Prioritaria",
+        "criterion": "Urgencia",
+        "reason": "Dolor en el pecho",
+        "created_at": "2026-11-02 11:14:08",
+        "status": "Atendido",
+        "served_at": "2026-11-02 11:19:33"
+    },
+    {
+        "number": "N-099",
+        "patient_code": "PAC-0094",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Vacunación",
+        "created_at": "2026-11-02 11:22:53",
+        "status": "Atendido",
+        "served_at": "2026-11-02 13:14:58"
+    },
+    {
+        "number": "N-100",
+        "patient_code": "PAC-0095",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor abdominal",
+        "created_at": "2026-11-02 11:32:52",
+        "status": "Atendido",
+        "served_at": "2026-11-02 13:31:21"
+    },
+    {
+        "number": "P-101",
+        "patient_code": "PAC-0096",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Fiebre alta desde ayer",
+        "created_at": "2026-11-02 11:41:23",
+        "status": "Atendido",
+        "served_at": "2026-11-02 11:45:24"
+    },
+    {
+        "number": "N-102",
+        "patient_code": "PAC-0097",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control de diabetes",
+        "created_at": "2026-11-02 11:52:17",
+        "status": "Atendido",
+        "served_at": "2026-11-02 13:41:02"
+    },
+    {
+        "number": "N-103",
+        "patient_code": "PAC-0098",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Vacunación",
+        "created_at": "2026-11-02 12:01:44",
+        "status": "Atendido",
+        "served_at": "2026-11-02 14:10:10"
+    },
+    {
+        "number": "P-104",
+        "patient_code": "PAC-0099",
+        "care_type": "Prioritaria",
+        "criterion": "Discapacidad",
+        "reason": "Control de presión arterial",
+        "created_at": "2026-11-02 12:10:23",
+        "status": "Atendido",
+        "served_at": "2026-11-02 12:23:34"
+    },
+    {
+        "number": "P-105",
+        "patient_code": "PAC-0100",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Dolor de muelas",
+        "created_at": "2026-11-02 12:18:46",
+        "status": "Atendido",
+        "served_at": "2026-11-02 12:33:57"
+    },
+    {
+        "number": "N-106",
+        "patient_code": "PAC-0101",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Esguince de tobillo",
+        "created_at": "2026-11-02 12:29:04",
+        "status": "Atendido",
+        "served_at": "2026-11-02 14:34:06"
+    },
+    {
+        "number": "N-107",
+        "patient_code": "PAC-0102",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor abdominal",
+        "created_at": "2026-11-02 12:37:38",
+        "status": "Atendido",
+        "served_at": "2026-11-02 14:46:41"
+    },
+    {
+        "number": "N-108",
+        "patient_code": "PAC-0103",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor en el pecho",
+        "created_at": "2026-11-02 12:48:29",
+        "status": "Atendido",
+        "served_at": "2026-11-02 16:00:52"
+    },
+    {
+        "number": "P-109",
+        "patient_code": "PAC-0104",
+        "care_type": "Prioritaria",
+        "criterion": "Discapacidad",
+        "reason": "Revisión de resultados de laboratorio",
+        "created_at": "2026-11-02 12:57:32",
+        "status": "Atendido",
+        "served_at": "2026-11-02 13:03:14"
+    },
+    {
+        "number": "N-110",
+        "patient_code": "PAC-0105",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor lumbar",
+        "created_at": "2026-11-02 13:06:55",
+        "status": "Atendido",
+        "served_at": "2026-11-02 16:08:31"
+    },
+    {
+        "number": "P-111",
+        "patient_code": "PAC-0092",
+        "care_type": "Prioritaria",
+        "criterion": "Urgencia",
+        "reason": "Corte en la mano",
+        "created_at": "2026-11-02 13:14:59",
+        "status": "Atendido",
+        "served_at": "2026-11-02 13:24:21"
+    },
+    {
+        "number": "N-112",
+        "patient_code": "PAC-0106",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Vacunación",
+        "created_at": "2026-11-02 13:16:26",
+        "status": "Atendido",
+        "served_at": "2026-11-02 16:17:36"
+    },
+    {
+        "number": "N-113",
+        "patient_code": "PAC-0107",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Vómitos y diarrea",
+        "created_at": "2026-11-02 13:25:13",
+        "status": "Atendido",
+        "served_at": "2026-11-02 16:30:46"
+    },
+    {
+        "number": "N-114",
+        "patient_code": "PAC-0108",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de garganta",
+        "created_at": "2026-11-02 13:34:15",
+        "status": "Atendido",
+        "served_at": "2026-11-02 16:47:38"
+    },
+    {
+        "number": "P-115",
+        "patient_code": "PAC-0109",
+        "care_type": "Prioritaria",
+        "criterion": "Embarazo",
+        "reason": "Control prenatal",
+        "created_at": "2026-11-02 13:43:18",
+        "status": "Atendido",
+        "served_at": "2026-11-02 13:51:21"
+    },
+    {
+        "number": "P-116",
+        "patient_code": "PAC-0110",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Control de niño sano",
+        "created_at": "2026-11-02 13:52:55",
+        "status": "Atendido",
+        "served_at": "2026-11-02 13:56:11"
+    },
+    {
+        "number": "N-117",
+        "patient_code": "PAC-0050",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Revisión de resultados de laboratorio",
+        "created_at": "2026-11-02 13:56:48",
+        "status": "Atendido",
+        "served_at": "2026-11-02 16:56:59"
+    },
+    {
+        "number": "N-118",
+        "patient_code": "PAC-0111",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor en el pecho",
+        "created_at": "2026-11-02 14:02:44",
+        "status": "Cancelado",
+        "served_at": null
+    },
+    {
+        "number": "N-119",
+        "patient_code": "PAC-0112",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de garganta",
+        "created_at": "2026-11-02 14:12:46",
+        "status": "Atendido",
+        "served_at": "2026-11-02 17:03:48"
+    },
+    {
+        "number": "P-120",
+        "patient_code": "PAC-0113",
+        "care_type": "Prioritaria",
+        "criterion": "Urgencia",
+        "reason": "Corte en la mano",
+        "created_at": "2026-11-02 14:22:00",
+        "status": "Atendido",
+        "served_at": "2026-11-02 14:29:40"
+    },
+    {
+        "number": "N-121",
+        "patient_code": "PAC-0114",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Vómitos y diarrea",
+        "created_at": "2026-11-02 14:30:24",
+        "status": "Atendido",
+        "served_at": "2026-11-02 17:11:42"
+    },
+    {
+        "number": "N-122",
+        "patient_code": "PAC-0115",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Alergia en la piel",
+        "created_at": "2026-11-02 14:40:41",
+        "status": "Atendido",
+        "served_at": "2026-11-02 17:16:22"
+    },
+    {
+        "number": "P-123",
+        "patient_code": "PAC-0116",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Dificultad para respirar",
+        "created_at": "2026-11-02 14:50:34",
+        "status": "Atendido",
+        "served_at": "2026-11-02 14:58:06"
+    },
+    {
+        "number": "P-124",
+        "patient_code": "PAC-0117",
+        "care_type": "Prioritaria",
+        "criterion": "Discapacidad",
+        "reason": "Dificultad para respirar",
+        "created_at": "2026-11-02 14:58:56",
+        "status": "Atendido",
+        "served_at": "2026-11-02 15:06:10"
+    },
+    {
+        "number": "P-125",
+        "patient_code": "PAC-0118",
+        "care_type": "Prioritaria",
+        "criterion": "Discapacidad",
+        "reason": "Renovación de receta",
+        "created_at": "2026-11-02 15:08:20",
+        "status": "Atendido",
+        "served_at": "2026-11-02 15:21:03"
+    },
+    {
+        "number": "P-126",
+        "patient_code": "PAC-0119",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Renovación de receta",
+        "created_at": "2026-11-02 15:17:01",
+        "status": "Atendido",
+        "served_at": "2026-11-02 15:42:20"
+    },
+    {
+        "number": "N-127",
+        "patient_code": "PAC-0120",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Alergia en la piel",
+        "created_at": "2026-11-02 15:26:16",
+        "status": "Atendido",
+        "served_at": "2026-11-02 17:20:20"
+    },
+    {
+        "number": "P-128",
+        "patient_code": "PAC-0102",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Control de niño sano",
+        "created_at": "2026-11-02 15:26:49",
+        "status": "Atendido",
+        "served_at": "2026-11-02 15:52:45"
+    },
+    {
+        "number": "N-130",
+        "patient_code": "PAC-0121",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de garganta",
+        "created_at": "2026-11-02 15:37:01",
+        "status": "Atendido",
+        "served_at": "2026-11-02 17:26:28"
+    },
+    {
+        "number": "N-131",
+        "patient_code": "PAC-0122",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor lumbar",
+        "created_at": "2026-11-02 15:46:46",
+        "status": "Atendido",
+        "served_at": "2026-11-02 17:32:16"
+    },
+    {
+        "number": "N-132",
+        "patient_code": "PAC-0123",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Esguince de tobillo",
+        "created_at": "2026-11-02 15:55:08",
+        "status": "Atendido",
+        "served_at": "2026-11-02 17:40:27"
+    },
+    {
+        "number": "N-133",
+        "patient_code": "PAC-0124",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de garganta",
+        "created_at": "2026-11-02 16:04:56",
+        "status": "Atendido",
+        "served_at": "2026-11-02 17:47:42"
+    },
+    {
+        "number": "N-134",
+        "patient_code": "PAC-0125",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor en el pecho",
+        "created_at": "2026-11-02 16:14:13",
+        "status": "Atendido",
+        "served_at": "2026-11-02 17:52:33"
+    },
+    {
+        "number": "N-135",
+        "patient_code": "PAC-0126",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Alergia en la piel",
+        "created_at": "2026-11-02 16:23:29",
+        "status": "Atendido",
+        "served_at": "2026-11-02 17:56:17"
+    },
+    {
+        "number": "P-136",
+        "patient_code": "PAC-0013",
+        "care_type": "Prioritaria",
+        "criterion": "Embarazo",
+        "reason": "Control prenatal",
+        "created_at": "2026-11-02 16:31:03",
+        "status": "Atendido",
+        "served_at": "2026-11-02 16:39:41"
+    },
+    {
+        "number": "N-137",
+        "patient_code": "PAC-0127",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Revisión de resultados de laboratorio",
+        "created_at": "2026-11-02 16:32:17",
+        "status": "Atendido",
+        "served_at": "2026-11-02 18:01:13"
+    },
+    {
+        "number": "N-138",
+        "patient_code": "PAC-0128",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Esguince de tobillo",
+        "created_at": "2026-11-02 16:42:53",
+        "status": "Atendido",
+        "served_at": "2026-11-02 18:05:18"
+    },
+    {
+        "number": "N-139",
+        "patient_code": "PAC-0129",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Alergia en la piel",
+        "created_at": "2026-11-02 16:52:09",
+        "status": "Atendido",
+        "served_at": "2026-11-02 18:09:51"
+    },
+    {
+        "number": "P-140",
+        "patient_code": "PAC-0130",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Certificado médico",
+        "created_at": "2026-11-03 07:02:28",
+        "status": "Atendido",
+        "served_at": "2026-11-03 07:15:51"
+    },
+    {
+        "number": "N-141",
+        "patient_code": "PAC-0131",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Mareos frecuentes",
+        "created_at": "2026-11-03 07:09:45",
+        "status": "Atendido",
+        "served_at": "2026-11-03 07:23:50"
+    },
+    {
+        "number": "N-142",
+        "patient_code": "PAC-0132",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de muelas",
+        "created_at": "2026-11-03 07:19:06",
+        "status": "Atendido",
+        "served_at": "2026-11-03 08:05:33"
+    },
+    {
+        "number": "P-143",
+        "patient_code": "PAC-0133",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Dificultad para respirar",
+        "created_at": "2026-11-03 07:28:11",
+        "status": "Atendido",
+        "served_at": "2026-11-03 07:33:46"
+    },
+    {
+        "number": "P-144",
+        "patient_code": "PAC-0134",
+        "care_type": "Prioritaria",
+        "criterion": "Urgencia",
+        "reason": "Corte en la mano",
+        "created_at": "2026-11-03 07:39:00",
+        "status": "Atendido",
+        "served_at": "2026-11-03 07:44:31"
+    },
+    {
+        "number": "N-145",
+        "patient_code": "PAC-0135",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Alergia en la piel",
+        "created_at": "2026-11-03 07:47:39",
+        "status": "Atendido",
+        "served_at": "2026-11-03 08:11:10"
+    },
+    {
+        "number": "N-146",
+        "patient_code": "PAC-0136",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor en el pecho",
+        "created_at": "2026-11-03 07:57:40",
+        "status": "Atendido",
+        "served_at": "2026-11-03 08:23:25"
+    },
+    {
+        "number": "N-147",
+        "patient_code": "PAC-0137",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Mareos frecuentes",
+        "created_at": "2026-11-03 08:06:00",
+        "status": "Atendido",
+        "served_at": "2026-11-03 08:38:51"
+    },
+    {
+        "number": "N-148",
+        "patient_code": "PAC-0138",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor en el pecho",
+        "created_at": "2026-11-03 08:16:34",
+        "status": "Atendido",
+        "served_at": "2026-11-03 08:56:23"
+    },
+    {
+        "number": "N-149",
+        "patient_code": "PAC-0139",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control de presión arterial",
+        "created_at": "2026-11-03 08:25:30",
+        "status": "Atendido",
+        "served_at": "2026-11-03 09:09:51"
+    },
+    {
+        "number": "N-150",
+        "patient_code": "PAC-0140",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de garganta",
+        "created_at": "2026-11-03 08:35:16",
+        "status": "Atendido",
+        "served_at": "2026-11-03 09:15:57"
+    },
+    {
+        "number": "P-151",
+        "patient_code": "PAC-0141",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Dolor de oído",
+        "created_at": "2026-11-03 08:44:12",
+        "status": "Atendido",
+        "served_at": "2026-11-03 08:51:00"
+    },
+    {
+        "number": "N-152",
+        "patient_code": "PAC-0142",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de oído",
+        "created_at": "2026-11-03 08:52:35",
+        "status": "Atendido",
+        "served_at": "2026-11-03 09:29:09"
+    },
+    {
+        "number": "N-153",
+        "patient_code": "PAC-0143",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de garganta",
+        "created_at": "2026-11-03 09:01:57",
+        "status": "Atendido",
+        "served_at": "2026-11-03 09:39:21"
+    },
+    {
+        "number": "N-154",
+        "patient_code": "PAC-0144",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor lumbar",
+        "created_at": "2026-11-03 09:11:33",
+        "status": "Atendido",
+        "served_at": "2026-11-03 09:45:59"
+    },
+    {
+        "number": "N-155",
+        "patient_code": "PAC-0145",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Infección urinaria",
+        "created_at": "2026-11-03 09:21:53",
+        "status": "Atendido",
+        "served_at": "2026-11-03 09:54:20"
+    },
+    {
+        "number": "N-156",
+        "patient_code": "PAC-0146",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Alergia en la piel",
+        "created_at": "2026-11-03 09:31:50",
+        "status": "Atendido",
+        "served_at": "2026-11-03 10:03:09"
+    },
+    {
+        "number": "N-157",
+        "patient_code": "PAC-0147",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control prenatal",
+        "created_at": "2026-11-03 09:41:06",
+        "status": "Atendido",
+        "served_at": "2026-11-03 10:24:52"
+    },
+    {
+        "number": "N-158",
+        "patient_code": "PAC-0148",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dificultad para respirar",
+        "created_at": "2026-11-03 09:49:15",
+        "status": "Cancelado",
+        "served_at": null
+    },
+    {
+        "number": "N-159",
+        "patient_code": "PAC-0149",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Revisión de resultados de laboratorio",
+        "created_at": "2026-11-03 09:59:36",
+        "status": "Atendido",
+        "served_at": "2026-11-03 11:19:12"
+    },
+    {
+        "number": "N-160",
+        "patient_code": "PAC-0150",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Revisión de resultados de laboratorio",
+        "created_at": "2026-11-03 10:08:13",
+        "status": "Atendido",
+        "served_at": "2026-11-03 11:46:29"
+    },
+    {
+        "number": "N-161",
+        "patient_code": "PAC-0151",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control prenatal",
+        "created_at": "2026-11-03 10:17:03",
+        "status": "Atendido",
+        "served_at": "2026-11-03 11:55:09"
+    },
+    {
+        "number": "P-162",
+        "patient_code": "PAC-0152",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Dolor de oído",
+        "created_at": "2026-11-03 10:26:33",
+        "status": "Atendido",
+        "served_at": "2026-11-03 10:30:45"
+    },
+    {
+        "number": "P-163",
+        "patient_code": "PAC-0153",
+        "care_type": "Prioritaria",
+        "criterion": "Embarazo",
+        "reason": "Control prenatal",
+        "created_at": "2026-11-03 10:35:55",
+        "status": "Atendido",
+        "served_at": "2026-11-03 10:39:24"
+    },
+    {
+        "number": "P-164",
+        "patient_code": "PAC-0154",
+        "care_type": "Prioritaria",
+        "criterion": "Urgencia",
+        "reason": "Corte en la mano",
+        "created_at": "2026-11-03 10:45:48",
+        "status": "Atendido",
+        "served_at": "2026-11-03 10:51:36"
+    },
+    {
+        "number": "P-165",
+        "patient_code": "PAC-0155",
+        "care_type": "Prioritaria",
+        "criterion": "Embarazo",
+        "reason": "Control prenatal",
+        "created_at": "2026-11-03 10:55:18",
+        "status": "Atendido",
+        "served_at": "2026-11-03 10:59:27"
+    },
+    {
+        "number": "P-166",
+        "patient_code": "PAC-0156",
+        "care_type": "Prioritaria",
+        "criterion": "Discapacidad",
+        "reason": "Corte en la mano",
+        "created_at": "2026-11-03 11:05:09",
+        "status": "Atendido",
+        "served_at": "2026-11-03 11:09:46"
+    },
+    {
+        "number": "N-167",
+        "patient_code": "PAC-0157",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Mareos frecuentes",
+        "created_at": "2026-11-03 11:13:44",
+        "status": "Atendido",
+        "served_at": "2026-11-03 12:05:31"
+    },
+    {
+        "number": "P-168",
+        "patient_code": "PAC-0158",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Revisión de la vista",
+        "created_at": "2026-11-03 11:24:22",
+        "status": "Atendido",
+        "served_at": "2026-11-03 11:39:49"
+    },
+    {
+        "number": "N-169",
+        "patient_code": "PAC-0159",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de cabeza",
+        "created_at": "2026-11-03 11:33:07",
+        "status": "Atendido",
+        "served_at": "2026-11-03 12:14:55"
+    },
+    {
+        "number": "N-170",
+        "patient_code": "PAC-0160",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Fiebre alta desde ayer",
+        "created_at": "2026-11-03 11:41:23",
+        "status": "Atendido",
+        "served_at": "2026-11-03 12:27:13"
+    },
+    {
+        "number": "N-171",
+        "patient_code": "PAC-0161",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control de diabetes",
+        "created_at": "2026-11-03 11:51:04",
+        "status": "Atendido",
+        "served_at": "2026-11-03 12:35:19"
+    },
+    {
+        "number": "N-172",
+        "patient_code": "PAC-0162",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de garganta",
+        "created_at": "2026-11-03 12:01:00",
+        "status": "Atendido",
+        "served_at": "2026-11-03 12:43:28"
+    },
+    {
+        "number": "N-173",
+        "patient_code": "PAC-0163",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor lumbar",
+        "created_at": "2026-11-03 12:10:59",
+        "status": "Atendido",
+        "served_at": "2026-11-03 13:29:07"
+    },
+    {
+        "number": "N-174",
+        "patient_code": "PAC-0164",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control de niño sano",
+        "created_at": "2026-11-03 12:20:13",
+        "status": "Atendido",
+        "served_at": "2026-11-03 14:16:38"
+    },
+    {
+        "number": "N-175",
+        "patient_code": "PAC-0165",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control de presión arterial",
+        "created_at": "2026-11-03 12:28:50",
+        "status": "Atendido",
+        "served_at": "2026-11-03 14:56:29"
+    },
+    {
+        "number": "N-176",
+        "patient_code": "PAC-0166",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control de niño sano",
+        "created_at": "2026-11-03 12:39:01",
+        "status": "Atendido",
+        "served_at": "2026-11-03 15:01:18"
+    },
+    {
+        "number": "P-177",
+        "patient_code": "PAC-0167",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Esguince de tobillo",
+        "created_at": "2026-11-03 12:47:14",
+        "status": "Atendido",
+        "served_at": "2026-11-03 13:01:26"
+    },
+    {
+        "number": "N-178",
+        "patient_code": "PAC-0168",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Alergia en la piel",
+        "created_at": "2026-11-03 12:57:53",
+        "status": "Atendido",
+        "served_at": "2026-11-03 15:22:55"
+    },
+    {
+        "number": "P-179",
+        "patient_code": "PAC-0169",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Revisión de la vista",
+        "created_at": "2026-11-03 13:05:39",
+        "status": "Atendido",
+        "served_at": "2026-11-03 13:20:15"
+    },
+    {
+        "number": "N-180",
+        "patient_code": "PAC-0170",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Infección urinaria",
+        "created_at": "2026-11-03 13:15:21",
+        "status": "Atendido",
+        "served_at": "2026-11-03 16:01:07"
+    },
+    {
+        "number": "N-181",
+        "patient_code": "PAC-0171",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Vacunación",
+        "created_at": "2026-11-03 13:24:31",
+        "status": "Atendido",
+        "served_at": "2026-11-03 16:18:34"
+    },
+    {
+        "number": "P-182",
+        "patient_code": "PAC-0172",
+        "care_type": "Prioritaria",
+        "criterion": "Urgencia",
+        "reason": "Dificultad para respirar",
+        "created_at": "2026-11-03 13:34:25",
+        "status": "Atendido",
+        "served_at": "2026-11-03 13:51:52"
+    },
+    {
+        "number": "N-183",
+        "patient_code": "PAC-0173",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Fiebre alta desde ayer",
+        "created_at": "2026-11-03 13:44:34",
+        "status": "Atendido",
+        "served_at": "2026-11-03 16:37:59"
+    },
+    {
+        "number": "P-184",
+        "patient_code": "PAC-0174",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Dolor de oído",
+        "created_at": "2026-11-03 13:52:36",
+        "status": "Atendido",
+        "served_at": "2026-11-03 13:59:28"
+    },
+    {
+        "number": "N-185",
+        "patient_code": "PAC-0175",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor lumbar",
+        "created_at": "2026-11-03 14:02:39",
+        "status": "Cancelado",
+        "served_at": null
+    },
+    {
+        "number": "N-186",
+        "patient_code": "PAC-0176",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dificultad para respirar",
+        "created_at": "2026-11-03 14:12:10",
+        "status": "Atendido",
+        "served_at": "2026-11-03 16:47:06"
+    },
+    {
+        "number": "P-187",
+        "patient_code": "PAC-0177",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Dolor lumbar",
+        "created_at": "2026-11-03 14:21:28",
+        "status": "Atendido",
+        "served_at": "2026-11-03 14:28:31"
+    },
+    {
+        "number": "P-188",
+        "patient_code": "PAC-0178",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Tos persistente",
+        "created_at": "2026-11-03 14:30:53",
+        "status": "Atendido",
+        "served_at": "2026-11-03 14:37:17"
+    },
+    {
+        "number": "P-189",
+        "patient_code": "PAC-0179",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Tos persistente",
+        "created_at": "2026-11-03 14:40:01",
+        "status": "Atendido",
+        "served_at": "2026-11-03 14:47:59"
+    },
+    {
+        "number": "N-190",
+        "patient_code": "PAC-0180",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor en el pecho",
+        "created_at": "2026-11-03 14:50:15",
+        "status": "Atendido",
+        "served_at": "2026-11-03 17:05:42"
+    },
+    {
+        "number": "N-191",
+        "patient_code": "PAC-0181",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de oído",
+        "created_at": "2026-11-03 14:58:19",
+        "status": "Atendido",
+        "served_at": "2026-11-03 17:10:18"
+    },
+    {
+        "number": "P-192",
+        "patient_code": "PAC-0182",
+        "care_type": "Prioritaria",
+        "criterion": "Urgencia",
+        "reason": "Dolor en el pecho",
+        "created_at": "2026-11-03 15:08:57",
+        "status": "Atendido",
+        "served_at": "2026-11-03 15:14:41"
+    },
+    {
+        "number": "N-193",
+        "patient_code": "PAC-0183",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Vacunación",
+        "created_at": "2026-11-03 15:17:23",
+        "status": "Atendido",
+        "served_at": "2026-11-03 17:13:30"
+    },
+    {
+        "number": "P-194",
+        "patient_code": "PAC-0184",
+        "care_type": "Prioritaria",
+        "criterion": "Urgencia",
+        "reason": "Dolor en el pecho",
+        "created_at": "2026-11-03 15:27:22",
+        "status": "Atendido",
+        "served_at": "2026-11-03 15:44:05"
+    },
+    {
+        "number": "P-195",
+        "patient_code": "PAC-0185",
+        "care_type": "Prioritaria",
+        "criterion": "Embarazo",
+        "reason": "Control prenatal",
+        "created_at": "2026-11-03 15:36:59",
+        "status": "Atendido",
+        "served_at": "2026-11-03 15:49:53"
+    },
+    {
+        "number": "N-196",
+        "patient_code": "PAC-0186",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Fiebre alta desde ayer",
+        "created_at": "2026-11-03 15:45:17",
+        "status": "Atendido",
+        "served_at": "2026-11-03 17:19:12"
+    },
+    {
+        "number": "N-197",
+        "patient_code": "PAC-0187",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control prenatal",
+        "created_at": "2026-11-03 15:54:33",
+        "status": "Atendido",
+        "served_at": "2026-11-03 17:25:04"
+    },
+    {
+        "number": "P-198",
+        "patient_code": "PAC-0188",
+        "care_type": "Prioritaria",
+        "criterion": "Embarazo",
+        "reason": "Control prenatal",
+        "created_at": "2026-11-03 16:05:21",
+        "status": "Atendido",
+        "served_at": "2026-11-03 16:10:18"
+    },
+    {
+        "number": "N-199",
+        "patient_code": "PAC-0189",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor lumbar",
+        "created_at": "2026-11-03 16:13:19",
+        "status": "Atendido",
+        "served_at": "2026-11-03 17:29:29"
+    },
+    {
+        "number": "P-200",
+        "patient_code": "PAC-0169",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Control de presión arterial",
+        "created_at": "2026-11-03 16:18:51",
+        "status": "Atendido",
+        "served_at": "2026-11-03 16:30:57"
+    },
+    {
+        "number": "N-201",
+        "patient_code": "PAC-0190",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Mareos frecuentes",
+        "created_at": "2026-11-03 16:23:06",
+        "status": "Atendido",
+        "served_at": "2026-11-03 17:36:29"
+    },
+    {
+        "number": "N-202",
+        "patient_code": "PAC-0191",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de oído",
+        "created_at": "2026-11-03 16:32:06",
+        "status": "Atendido",
+        "served_at": "2026-11-03 17:42:34"
+    },
+    {
+        "number": "N-203",
+        "patient_code": "PAC-0192",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control de presión arterial",
+        "created_at": "2026-11-03 16:41:41",
+        "status": "Atendido",
+        "served_at": "2026-11-03 17:48:41"
+    },
+    {
+        "number": "P-204",
+        "patient_code": "PAC-0193",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Vómitos y diarrea",
+        "created_at": "2026-11-03 16:52:13",
+        "status": "Atendido",
+        "served_at": "2026-11-03 16:58:23"
+    },
+    {
+        "number": "N-205",
+        "patient_code": "PAC-0194",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dificultad para respirar",
+        "created_at": "2026-11-04 07:02:38",
+        "status": "Atendido",
+        "served_at": "2026-11-04 07:07:48"
+    },
+    {
+        "number": "N-206",
+        "patient_code": "PAC-0195",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Tos persistente",
+        "created_at": "2026-11-04 07:10:11",
+        "status": "Atendido",
+        "served_at": "2026-11-04 07:14:21"
+    },
+    {
+        "number": "P-207",
+        "patient_code": "PAC-0196",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Revisión de la vista",
+        "created_at": "2026-11-04 07:18:55",
+        "status": "Atendido",
+        "served_at": "2026-11-04 07:43:58"
+    },
+    {
+        "number": "N-208",
+        "patient_code": "PAC-0089",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Vacunación",
+        "created_at": "2026-11-04 07:19:27",
+        "status": "Atendido",
+        "served_at": "2026-11-04 08:05:36"
+    },
+    {
+        "number": "N-209",
+        "patient_code": "PAC-0197",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Revisión de resultados de laboratorio",
+        "created_at": "2026-11-04 07:29:24",
+        "status": "Atendido",
+        "served_at": "2026-11-04 08:42:05"
+    },
+    {
+        "number": "N-210",
+        "patient_code": "PAC-0198",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor abdominal",
+        "created_at": "2026-11-04 07:37:34",
+        "status": "Atendido",
+        "served_at": "2026-11-04 08:49:07"
+    },
+    {
+        "number": "P-211",
+        "patient_code": "PAC-0199",
+        "care_type": "Prioritaria",
+        "criterion": "Urgencia",
+        "reason": "Dificultad para respirar",
+        "created_at": "2026-11-04 07:48:41",
+        "status": "Atendido",
+        "served_at": "2026-11-04 07:55:51"
+    },
+    {
+        "number": "N-212",
+        "patient_code": "PAC-0200",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Esguince de tobillo",
+        "created_at": "2026-11-04 07:58:05",
+        "status": "Atendido",
+        "served_at": "2026-11-04 08:59:21"
+    },
+    {
+        "number": "P-213",
+        "patient_code": "PAC-0201",
+        "care_type": "Prioritaria",
+        "criterion": "Urgencia",
+        "reason": "Corte en la mano",
+        "created_at": "2026-11-04 08:06:30",
+        "status": "Atendido",
+        "served_at": "2026-11-04 08:10:30"
+    },
+    {
+        "number": "N-214",
+        "patient_code": "PAC-0202",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control prenatal",
+        "created_at": "2026-11-04 08:15:31",
+        "status": "Atendido",
+        "served_at": "2026-11-04 09:09:20"
+    },
+    {
+        "number": "P-215",
+        "patient_code": "PAC-0203",
+        "care_type": "Prioritaria",
+        "criterion": "Embarazo",
+        "reason": "Control prenatal",
+        "created_at": "2026-11-04 08:24:27",
+        "status": "Atendido",
+        "served_at": "2026-11-04 08:30:04"
+    },
+    {
+        "number": "N-216",
+        "patient_code": "PAC-0204",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Revisión de la vista",
+        "created_at": "2026-11-04 08:33:48",
+        "status": "Atendido",
+        "served_at": "2026-11-04 09:18:20"
+    },
+    {
+        "number": "N-217",
+        "patient_code": "PAC-0205",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Alergia en la piel",
+        "created_at": "2026-11-04 08:43:10",
+        "status": "Atendido",
+        "served_at": "2026-11-04 09:34:18"
+    },
+    {
+        "number": "N-218",
+        "patient_code": "PAC-0206",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Tos persistente",
+        "created_at": "2026-11-04 08:52:46",
+        "status": "Atendido",
+        "served_at": "2026-11-04 09:46:03"
+    },
+    {
+        "number": "N-219",
+        "patient_code": "PAC-0207",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control de diabetes",
+        "created_at": "2026-11-04 09:02:06",
+        "status": "Atendido",
+        "served_at": "2026-11-04 09:56:35"
+    },
+    {
+        "number": "N-220",
+        "patient_code": "PAC-0146",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Mareos frecuentes",
+        "created_at": "2026-11-04 09:09:51",
+        "status": "Cancelado",
+        "served_at": null
+    },
+    {
+        "number": "N-221",
+        "patient_code": "PAC-0208",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor lumbar",
+        "created_at": "2026-11-04 09:11:15",
+        "status": "Atendido",
+        "served_at": "2026-11-04 10:33:27"
+    },
+    {
+        "number": "P-222",
+        "patient_code": "PAC-0209",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Dolor lumbar",
+        "created_at": "2026-11-04 09:20:50",
+        "status": "Atendido",
+        "served_at": "2026-11-04 09:26:17"
+    },
+    {
+        "number": "N-223",
+        "patient_code": "PAC-0210",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor lumbar",
+        "created_at": "2026-11-04 09:30:58",
+        "status": "Atendido",
+        "served_at": "2026-11-04 10:49:54"
+    },
+    {
+        "number": "N-224",
+        "patient_code": "PAC-0211",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Alergia en la piel",
+        "created_at": "2026-11-04 09:39:46",
+        "status": "Atendido",
+        "served_at": "2026-11-04 11:02:14"
+    },
+    {
+        "number": "N-225",
+        "patient_code": "PAC-0212",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Certificado médico",
+        "created_at": "2026-11-04 09:49:14",
+        "status": "Atendido",
+        "served_at": "2026-11-04 11:31:13"
+    },
+    {
+        "number": "P-226",
+        "patient_code": "PAC-0003",
+        "care_type": "Prioritaria",
+        "criterion": "Discapacidad",
+        "reason": "Control de presión arterial",
+        "created_at": "2026-11-04 09:56:53",
+        "status": "Atendido",
+        "served_at": "2026-11-04 10:06:47"
+    },
+    {
+        "number": "P-227",
+        "patient_code": "PAC-0213",
+        "care_type": "Prioritaria",
+        "criterion": "Discapacidad",
+        "reason": "Esguince de tobillo",
+        "created_at": "2026-11-04 09:59:31",
+        "status": "Atendido",
+        "served_at": "2026-11-04 10:15:24"
+    },
+    {
+        "number": "P-228",
+        "patient_code": "PAC-0214",
+        "care_type": "Prioritaria",
+        "criterion": "Urgencia",
+        "reason": "Dificultad para respirar",
+        "created_at": "2026-11-04 10:07:34",
+        "status": "Atendido",
+        "served_at": "2026-11-04 10:23:31"
+    },
+    {
+        "number": "N-229",
+        "patient_code": "PAC-0215",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de oído",
+        "created_at": "2026-11-04 10:18:00",
+        "status": "Atendido",
+        "served_at": "2026-11-04 11:39:34"
+    },
+    {
+        "number": "N-230",
+        "patient_code": "PAC-0216",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Mareos frecuentes",
+        "created_at": "2026-11-04 10:26:55",
+        "status": "Atendido",
+        "served_at": "2026-11-04 11:49:59"
+    },
+    {
+        "number": "P-231",
+        "patient_code": "PAC-0217",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Tos persistente",
+        "created_at": "2026-11-04 10:37:28",
+        "status": "Atendido",
+        "served_at": "2026-11-04 10:44:51"
+    },
+    {
+        "number": "N-232",
+        "patient_code": "PAC-0092",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor en el pecho",
+        "created_at": "2026-11-04 10:44:59",
+        "status": "Atendido",
+        "served_at": "2026-11-04 12:16:13"
+    },
+    {
+        "number": "N-233",
+        "patient_code": "PAC-0218",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor abdominal",
+        "created_at": "2026-11-04 10:45:06",
+        "status": "Atendido",
+        "served_at": "2026-11-04 12:27:53"
+    },
+    {
+        "number": "N-234",
+        "patient_code": "PAC-0219",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de garganta",
+        "created_at": "2026-11-04 10:55:19",
+        "status": "Atendido",
+        "served_at": "2026-11-04 12:32:27"
+    },
+    {
+        "number": "P-235",
+        "patient_code": "PAC-0220",
+        "care_type": "Prioritaria",
+        "criterion": "Embarazo",
+        "reason": "Control prenatal",
+        "created_at": "2026-11-04 11:04:45",
+        "status": "Atendido",
+        "served_at": "2026-11-04 11:08:31"
+    },
+    {
+        "number": "N-236",
+        "patient_code": "PAC-0169",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control de diabetes",
+        "created_at": "2026-11-04 11:08:53",
+        "status": "Atendido",
+        "served_at": "2026-11-04 12:52:40"
+    },
+    {
+        "number": "N-237",
+        "patient_code": "PAC-0221",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Revisión de resultados de laboratorio",
+        "created_at": "2026-11-04 11:14:38",
+        "status": "Atendido",
+        "served_at": "2026-11-04 13:24:21"
+    },
+    {
+        "number": "N-238",
+        "patient_code": "PAC-0222",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de cabeza",
+        "created_at": "2026-11-04 11:23:43",
+        "status": "Atendido",
+        "served_at": "2026-11-04 13:33:14"
+    },
+    {
+        "number": "N-239",
+        "patient_code": "PAC-0223",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Infección urinaria",
+        "created_at": "2026-11-04 11:32:17",
+        "status": "Atendido",
+        "served_at": "2026-11-04 14:01:11"
+    },
+    {
+        "number": "N-240",
+        "patient_code": "PAC-0224",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Corte en la mano",
+        "created_at": "2026-11-04 11:42:12",
+        "status": "Atendido",
+        "served_at": "2026-11-04 15:35:00"
+    },
+    {
+        "number": "P-241",
+        "patient_code": "PAC-0225",
+        "care_type": "Prioritaria",
+        "criterion": "Urgencia",
+        "reason": "Dolor en el pecho",
+        "created_at": "2026-11-04 11:52:26",
+        "status": "Atendido",
+        "served_at": "2026-11-04 11:56:53"
+    },
+    {
+        "number": "N-242",
+        "patient_code": "PAC-0226",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Renovación de receta",
+        "created_at": "2026-11-04 12:00:25",
+        "status": "Atendido",
+        "served_at": "2026-11-04 16:01:06"
+    },
+    {
+        "number": "N-243",
+        "patient_code": "PAC-0227",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Alergia en la piel",
+        "created_at": "2026-11-04 12:11:04",
+        "status": "Atendido",
+        "served_at": "2026-11-04 16:13:06"
+    },
+    {
+        "number": "N-244",
+        "patient_code": "PAC-0228",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Esguince de tobillo",
+        "created_at": "2026-11-04 12:20:24",
+        "status": "Atendido",
+        "served_at": "2026-11-04 16:36:13"
+    },
+    {
+        "number": "N-245",
+        "patient_code": "PAC-0134",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Mareos frecuentes",
+        "created_at": "2026-11-04 12:28:06",
+        "status": "Atendido",
+        "served_at": "2026-11-04 16:57:59"
+    },
+    {
+        "number": "N-246",
+        "patient_code": "PAC-0229",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de cabeza",
+        "created_at": "2026-11-04 12:28:21",
+        "status": "Atendido",
+        "served_at": "2026-11-04 17:02:00"
+    },
+    {
+        "number": "P-247",
+        "patient_code": "PAC-0230",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Mareos frecuentes",
+        "created_at": "2026-11-04 12:38:35",
+        "status": "Atendido",
+        "served_at": "2026-11-04 12:43:10"
+    },
+    {
+        "number": "N-248",
+        "patient_code": "PAC-0231",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Renovación de receta",
+        "created_at": "2026-11-04 12:47:42",
+        "status": "Atendido",
+        "served_at": "2026-11-04 17:07:11"
+    },
+    {
+        "number": "P-249",
+        "patient_code": "PAC-0232",
+        "care_type": "Prioritaria",
+        "criterion": "Urgencia",
+        "reason": "Dolor en el pecho",
+        "created_at": "2026-11-04 12:56:45",
+        "status": "Atendido",
+        "served_at": "2026-11-04 13:01:13"
+    },
+    {
+        "number": "P-250",
+        "patient_code": "PAC-0233",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Dolor abdominal",
+        "created_at": "2026-11-04 13:06:20",
+        "status": "Atendido",
+        "served_at": "2026-11-04 13:13:44"
+    },
+    {
+        "number": "N-251",
+        "patient_code": "PAC-0234",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor en el pecho",
+        "created_at": "2026-11-04 13:16:50",
+        "status": "Atendido",
+        "served_at": "2026-11-04 17:14:41"
+    },
+    {
+        "number": "N-252",
+        "patient_code": "PAC-0235",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de garganta",
+        "created_at": "2026-11-04 13:25:07",
+        "status": "Atendido",
+        "served_at": "2026-11-04 17:22:10"
+    },
+    {
+        "number": "N-253",
+        "patient_code": "PAC-0236",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control de niño sano",
+        "created_at": "2026-11-04 13:35:17",
+        "status": "Cancelado",
+        "served_at": null
+    },
+    {
+        "number": "P-254",
+        "patient_code": "PAC-0237",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Alergia en la piel",
+        "created_at": "2026-11-04 13:43:09",
+        "status": "Atendido",
+        "served_at": "2026-11-04 13:48:12"
+    },
+    {
+        "number": "N-255",
+        "patient_code": "PAC-0238",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor abdominal",
+        "created_at": "2026-11-04 13:54:07",
+        "status": "Atendido",
+        "served_at": "2026-11-04 17:25:45"
+    },
+    {
+        "number": "P-256",
+        "patient_code": "PAC-0239",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Dolor en el pecho",
+        "created_at": "2026-11-04 14:02:34",
+        "status": "Atendido",
+        "served_at": "2026-11-04 14:08:48"
+    },
+    {
+        "number": "N-257",
+        "patient_code": "PAC-0032",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Alergia en la piel",
+        "created_at": "2026-11-04 14:09:19",
+        "status": "Atendido",
+        "served_at": "2026-11-04 17:34:16"
+    },
+    {
+        "number": "P-258",
+        "patient_code": "PAC-0240",
+        "care_type": "Prioritaria",
+        "criterion": "Discapacidad",
+        "reason": "Vómitos y diarrea",
+        "created_at": "2026-11-04 14:12:29",
+        "status": "Atendido",
+        "served_at": "2026-11-04 14:17:36"
+    },
+    {
+        "number": "P-260",
+        "patient_code": "PAC-0241",
+        "care_type": "Prioritaria",
+        "criterion": "Discapacidad",
+        "reason": "Control de diabetes",
+        "created_at": "2026-11-04 14:21:42",
+        "status": "Atendido",
+        "served_at": "2026-11-04 14:37:53"
+    },
+    {
+        "number": "P-261",
+        "patient_code": "PAC-0183",
+        "care_type": "Prioritaria",
+        "criterion": "Discapacidad",
+        "reason": "Control de niño sano",
+        "created_at": "2026-11-04 14:21:58",
+        "status": "Atendido",
+        "served_at": "2026-11-04 15:04:22"
+    },
+    {
+        "number": "N-262",
+        "patient_code": "PAC-0242",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Mareos frecuentes",
+        "created_at": "2026-11-04 14:30:41",
+        "status": "Atendido",
+        "served_at": "2026-11-04 17:41:39"
+    },
+    {
+        "number": "P-263",
+        "patient_code": "PAC-0243",
+        "care_type": "Prioritaria",
+        "criterion": "Discapacidad",
+        "reason": "Dolor de cabeza",
+        "created_at": "2026-11-04 14:40:41",
+        "status": "Atendido",
+        "served_at": "2026-11-04 15:14:46"
+    },
+    {
+        "number": "N-264",
+        "patient_code": "PAC-0244",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control de presión arterial",
+        "created_at": "2026-11-04 14:49:28",
+        "status": "Atendido",
+        "served_at": "2026-11-04 17:48:32"
+    },
+    {
+        "number": "P-265",
+        "patient_code": "PAC-0245",
+        "care_type": "Prioritaria",
+        "criterion": "Discapacidad",
+        "reason": "Control prenatal",
+        "created_at": "2026-11-04 14:59:55",
+        "status": "Atendido",
+        "served_at": "2026-11-04 15:22:33"
+    },
+    {
+        "number": "N-266",
+        "patient_code": "PAC-0246",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Certificado médico",
+        "created_at": "2026-11-04 15:07:56",
+        "status": "Atendido",
+        "served_at": "2026-11-04 17:53:10"
+    },
+    {
+        "number": "N-267",
+        "patient_code": "PAC-0247",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dificultad para respirar",
+        "created_at": "2026-11-04 15:18:01",
+        "status": "Atendido",
+        "served_at": "2026-11-04 17:59:06"
+    },
+    {
+        "number": "N-268",
+        "patient_code": "PAC-0248",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de oído",
+        "created_at": "2026-11-04 15:27:55",
+        "status": "Atendido",
+        "served_at": "2026-11-04 18:05:22"
+    },
+    {
+        "number": "N-269",
+        "patient_code": "PAC-0249",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control de presión arterial",
+        "created_at": "2026-11-04 15:36:12",
+        "status": "Atendido",
+        "served_at": "2026-11-04 18:09:13"
+    },
+    {
+        "number": "N-270",
+        "patient_code": "PAC-0250",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Revisión de la vista",
+        "created_at": "2026-11-04 15:45:58",
+        "status": "Atendido",
+        "served_at": "2026-11-04 18:15:52"
+    },
+    {
+        "number": "N-271",
+        "patient_code": "PAC-0251",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Certificado médico",
+        "created_at": "2026-11-04 15:56:04",
+        "status": "Atendido",
+        "served_at": "2026-11-04 18:20:43"
+    },
+    {
+        "number": "N-272",
+        "patient_code": "PAC-0252",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control de presión arterial",
+        "created_at": "2026-11-04 16:05:08",
+        "status": "Atendido",
+        "served_at": "2026-11-04 18:27:20"
+    },
+    {
+        "number": "N-273",
+        "patient_code": "PAC-0253",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Vómitos y diarrea",
+        "created_at": "2026-11-04 16:14:37",
+        "status": "Atendido",
+        "served_at": "2026-11-04 18:31:25"
+    },
+    {
+        "number": "N-274",
+        "patient_code": "PAC-0254",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control de presión arterial",
+        "created_at": "2026-11-04 16:22:41",
+        "status": "Atendido",
+        "served_at": "2026-11-04 18:35:46"
+    },
+    {
+        "number": "N-275",
+        "patient_code": "PAC-0255",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de muelas",
+        "created_at": "2026-11-04 16:32:37",
+        "status": "Atendido",
+        "served_at": "2026-11-04 18:39:24"
+    },
+    {
+        "number": "P-276",
+        "patient_code": "PAC-0256",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Dolor de oído",
+        "created_at": "2026-11-04 16:42:04",
+        "status": "Atendido",
+        "served_at": "2026-11-04 16:46:19"
+    },
+    {
+        "number": "N-277",
+        "patient_code": "PAC-0257",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Certificado médico",
+        "created_at": "2026-11-04 16:50:43",
+        "status": "Atendido",
+        "served_at": "2026-11-04 18:43:56"
+    },
+    {
+        "number": "N-278",
+        "patient_code": "PAC-0258",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Certificado médico",
+        "created_at": "2026-11-05 07:01:22",
+        "status": "Atendido",
+        "served_at": "2026-11-05 07:07:47"
+    },
+    {
+        "number": "P-279",
+        "patient_code": "PAC-0259",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Corte en la mano",
+        "created_at": "2026-11-05 07:09:50",
+        "status": "Atendido",
+        "served_at": "2026-11-05 07:17:20"
+    },
+    {
+        "number": "N-280",
+        "patient_code": "PAC-0260",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Vacunación",
+        "created_at": "2026-11-05 07:20:25",
+        "status": "Atendido",
+        "served_at": "2026-11-05 07:27:44"
+    },
+    {
+        "number": "P-281",
+        "patient_code": "PAC-0261",
+        "care_type": "Prioritaria",
+        "criterion": "Urgencia",
+        "reason": "Dolor en el pecho",
+        "created_at": "2026-11-05 07:28:29",
+        "status": "Atendido",
+        "served_at": "2026-11-05 07:35:42"
+    },
+    {
+        "number": "N-282",
+        "patient_code": "PAC-0262",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Revisión de resultados de laboratorio",
+        "created_at": "2026-11-05 07:39:21",
+        "status": "Atendido",
+        "served_at": "2026-11-05 07:44:20"
+    },
+    {
+        "number": "N-283",
+        "patient_code": "PAC-0263",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Mareos frecuentes",
+        "created_at": "2026-11-05 07:48:00",
+        "status": "Atendido",
+        "served_at": "2026-11-05 07:54:14"
+    },
+    {
+        "number": "P-284",
+        "patient_code": "PAC-0264",
+        "care_type": "Prioritaria",
+        "criterion": "Discapacidad",
+        "reason": "Dolor lumbar",
+        "created_at": "2026-11-05 07:57:16",
+        "status": "Atendido",
+        "served_at": "2026-11-05 08:01:43"
+    },
+    {
+        "number": "N-285",
+        "patient_code": "PAC-0015",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Esguince de tobillo",
+        "created_at": "2026-11-05 08:02:18",
+        "status": "Atendido",
+        "served_at": "2026-11-05 08:11:31"
+    },
+    {
+        "number": "N-286",
+        "patient_code": "PAC-0265",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control de diabetes",
+        "created_at": "2026-11-05 08:05:46",
+        "status": "Atendido",
+        "served_at": "2026-11-05 08:22:21"
+    },
+    {
+        "number": "N-287",
+        "patient_code": "PAC-0266",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control de diabetes",
+        "created_at": "2026-11-05 08:16:31",
+        "status": "Atendido",
+        "served_at": "2026-11-05 08:30:25"
+    },
+    {
+        "number": "N-288",
+        "patient_code": "PAC-0267",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Tos persistente",
+        "created_at": "2026-11-05 08:24:55",
+        "status": "Cancelado",
+        "served_at": null
+    },
+    {
+        "number": "P-289",
+        "patient_code": "PAC-0158",
+        "care_type": "Prioritaria",
+        "criterion": "Urgencia",
+        "reason": "Dolor en el pecho",
+        "created_at": "2026-11-05 08:31:03",
+        "status": "Atendido",
+        "served_at": "2026-11-05 08:42:17"
+    },
+    {
+        "number": "N-290",
+        "patient_code": "PAC-0268",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Fiebre alta desde ayer",
+        "created_at": "2026-11-05 08:34:29",
+        "status": "Atendido",
+        "served_at": "2026-11-05 09:36:50"
+    },
+    {
+        "number": "P-291",
+        "patient_code": "PAC-0269",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Dolor abdominal",
+        "created_at": "2026-11-05 08:43:16",
+        "status": "Atendido",
+        "served_at": "2026-11-05 08:48:03"
+    },
+    {
+        "number": "P-292",
+        "patient_code": "PAC-0270",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Vómitos y diarrea",
+        "created_at": "2026-11-05 08:53:00",
+        "status": "Atendido",
+        "served_at": "2026-11-05 09:00:08"
+    },
+    {
+        "number": "P-293",
+        "patient_code": "PAC-0271",
+        "care_type": "Prioritaria",
+        "criterion": "Urgencia",
+        "reason": "Dolor en el pecho",
+        "created_at": "2026-11-05 09:03:29",
+        "status": "Atendido",
+        "served_at": "2026-11-05 09:08:33"
+    },
+    {
+        "number": "P-294",
+        "patient_code": "PAC-0272",
+        "care_type": "Prioritaria",
+        "criterion": "Discapacidad",
+        "reason": "Certificado médico",
+        "created_at": "2026-11-05 09:11:27",
+        "status": "Atendido",
+        "served_at": "2026-11-05 09:14:36"
+    },
+    {
+        "number": "P-295",
+        "patient_code": "PAC-0273",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Dolor en el pecho",
+        "created_at": "2026-11-05 09:21:29",
+        "status": "Atendido",
+        "served_at": "2026-11-05 09:24:50"
+    },
+    {
+        "number": "N-296",
+        "patient_code": "PAC-0274",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control prenatal",
+        "created_at": "2026-11-05 09:31:13",
+        "status": "Atendido",
+        "served_at": "2026-11-05 10:14:40"
+    },
+    {
+        "number": "N-297",
+        "patient_code": "PAC-0275",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Alergia en la piel",
+        "created_at": "2026-11-05 09:40:09",
+        "status": "Atendido",
+        "served_at": "2026-11-05 10:30:58"
+    },
+    {
+        "number": "N-298",
+        "patient_code": "PAC-0276",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Vómitos y diarrea",
+        "created_at": "2026-11-05 09:49:35",
+        "status": "Atendido",
+        "served_at": "2026-11-05 10:52:02"
+    },
+    {
+        "number": "P-299",
+        "patient_code": "PAC-0277",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Control de presión arterial",
+        "created_at": "2026-11-05 09:58:46",
+        "status": "Atendido",
+        "served_at": "2026-11-05 10:04:48"
+    },
+    {
+        "number": "N-300",
+        "patient_code": "PAC-0122",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control de niño sano",
+        "created_at": "2026-11-05 10:05:19",
+        "status": "Atendido",
+        "served_at": "2026-11-05 11:02:20"
+    },
+    {
+        "number": "N-301",
+        "patient_code": "PAC-0278",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de cabeza",
+        "created_at": "2026-11-05 10:08:37",
+        "status": "Atendido",
+        "served_at": "2026-11-05 11:17:44"
+    },
+    {
+        "number": "P-302",
+        "patient_code": "PAC-0279",
+        "care_type": "Prioritaria",
+        "criterion": "Urgencia",
+        "reason": "Corte en la mano",
+        "created_at": "2026-11-05 10:17:56",
+        "status": "Atendido",
+        "served_at": "2026-11-05 10:21:26"
+    },
+    {
+        "number": "N-303",
+        "patient_code": "PAC-0280",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor abdominal",
+        "created_at": "2026-11-05 10:27:12",
+        "status": "Atendido",
+        "served_at": "2026-11-05 11:28:34"
+    },
+    {
+        "number": "N-304",
+        "patient_code": "PAC-0281",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Alergia en la piel",
+        "created_at": "2026-11-05 10:37:10",
+        "status": "Atendido",
+        "served_at": "2026-11-05 11:36:37"
+    },
+    {
+        "number": "N-305",
+        "patient_code": "PAC-0282",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de garganta",
+        "created_at": "2026-11-05 10:45:48",
+        "status": "Atendido",
+        "served_at": "2026-11-05 11:48:22"
+    },
+    {
+        "number": "N-306",
+        "patient_code": "PAC-0283",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de garganta",
+        "created_at": "2026-11-05 10:56:21",
+        "status": "Atendido",
+        "served_at": "2026-11-05 11:55:12"
+    },
+    {
+        "number": "P-307",
+        "patient_code": "PAC-0284",
+        "care_type": "Prioritaria",
+        "criterion": "Discapacidad",
+        "reason": "Dolor en el pecho",
+        "created_at": "2026-11-05 11:04:32",
+        "status": "Atendido",
+        "served_at": "2026-11-05 11:09:22"
+    },
+    {
+        "number": "N-308",
+        "patient_code": "PAC-0285",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de oído",
+        "created_at": "2026-11-05 11:13:24",
+        "status": "Atendido",
+        "served_at": "2026-11-05 12:08:29"
+    },
+    {
+        "number": "N-309",
+        "patient_code": "PAC-0286",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Control de diabetes",
+        "created_at": "2026-11-05 11:23:27",
+        "status": "Atendido",
+        "served_at": "2026-11-05 12:14:32"
+    },
+    {
+        "number": "N-310",
+        "patient_code": "PAC-0287",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de oído",
+        "created_at": "2026-11-05 11:32:47",
+        "status": "Atendido",
+        "served_at": "2026-11-05 12:27:17"
+    },
+    {
+        "number": "N-311",
+        "patient_code": "PAC-0288",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de oído",
+        "created_at": "2026-11-05 11:42:26",
+        "status": "Atendido",
+        "served_at": "2026-11-05 12:32:12"
+    },
+    {
+        "number": "N-312",
+        "patient_code": "PAC-0147",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Vacunación",
+        "created_at": "2026-11-05 11:48:46",
+        "status": "Pendiente",
+        "served_at": null
+    },
+    {
+        "number": "N-313",
+        "patient_code": "PAC-0289",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de garganta",
+        "created_at": "2026-11-05 11:51:09",
+        "status": "Pendiente",
+        "served_at": null
+    },
+    {
+        "number": "N-314",
+        "patient_code": "PAC-0290",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de oído",
+        "created_at": "2026-11-05 12:01:44",
+        "status": "Pendiente",
+        "served_at": null
+    },
+    {
+        "number": "N-315",
+        "patient_code": "PAC-0291",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Renovación de receta",
+        "created_at": "2026-11-05 12:10:23",
+        "status": "Pendiente",
+        "served_at": null
+    },
+    {
+        "number": "N-316",
+        "patient_code": "PAC-0292",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Certificado médico",
+        "created_at": "2026-11-05 12:20:27",
+        "status": "Pendiente",
+        "served_at": null
+    },
+    {
+        "number": "N-317",
+        "patient_code": "PAC-0293",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Tos persistente",
+        "created_at": "2026-11-05 12:28:25",
+        "status": "Pendiente",
+        "served_at": null
+    },
+    {
+        "number": "N-318",
+        "patient_code": "PAC-0294",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Vacunación",
+        "created_at": "2026-11-05 12:39:35",
+        "status": "Pendiente",
+        "served_at": null
+    },
+    {
+        "number": "N-319",
+        "patient_code": "PAC-0295",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor de garganta",
+        "created_at": "2026-11-05 12:47:53",
+        "status": "Pendiente",
+        "served_at": null
+    },
+    {
+        "number": "N-320",
+        "patient_code": "PAC-0296",
+        "care_type": "Normal",
+        "criterion": null,
+        "reason": "Dolor lumbar",
+        "created_at": "2026-11-05 12:57:58",
+        "status": "Pendiente",
+        "served_at": null
+    },
+    {
+        "number": "P-321",
+        "patient_code": "PAC-0297",
+        "care_type": "Prioritaria",
+        "criterion": "Adulto mayor",
+        "reason": "Fiebre alta desde ayer",
+        "created_at": "2026-11-05 13:07:32",
+        "status": "Pendiente",
+        "served_at": null
+    }
+]

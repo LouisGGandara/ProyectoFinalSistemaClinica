@@ -632,6 +632,131 @@ class TestUsers(SystemTestCase):
                                     "Administrador")
 
 
+class TestChangePassword(SystemTestCase):
+    """The administrator changes others' passwords (RF-43); everyone changes their own (RF-44)."""
+
+    def test_admin_changes_receptionist_password(self):
+        self.login_admin()
+        self.system.change_password("recepcion", "Nueva123", "Nueva123")
+        action = self.system.last_action()
+        self.assertEqual(action.action_type, USER_MANAGEMENT)
+        self.assertEqual(
+            action.description, "Se cambió la contraseña del usuario recepcion."
+        )
+        self.assertNotIn("Nueva123", action.description)
+        self.assertNotIn("Nueva123", str(action.data))
+        self.assertFalse(self.system.can_undo())
+        self.system.logout()
+        with self.assertRaises(InvalidCredentialsError):
+            self.system.login(*RECEPTION)
+        self.assertEqual(self.system.login("recepcion", "Nueva123").username,
+                         "recepcion")
+
+    def test_admin_cannot_change_own_password_from_users(self):
+        self.login_admin()
+        with self.assertRaises(ValidationError) as caught:
+            self.system.change_password("admin", "Nueva123", "Nueva123")
+        self.assertEqual(
+            str(caught.exception),
+            "Para cambiar tu propia contraseña usa Archivo > Cambiar mi contraseña.",
+        )
+
+    def test_receptionist_cannot_change_others(self):
+        self.login_reception()
+        with self.assertRaises(PermissionDeniedError):
+            self.system.change_password("admin", "Nueva123", "Nueva123")
+        self.system.logout()
+        self.assertEqual(self.login_admin().username, "admin")
+
+    def test_confirmation_must_match(self):
+        self.login_admin()
+        with self.assertRaises(ValidationError) as caught:
+            self.system.change_password("recepcion", "Nueva123", "Nueva124")
+        self.assertEqual(
+            str(caught.exception),
+            "La contraseña nueva y su confirmación no coinciden.",
+        )
+
+    def test_empty_fields_are_named(self):
+        self.login_admin()
+        cases = (
+            (("recepcion", "", "Nueva123"), "Completa el campo Nueva contraseña."),
+            (("recepcion", "Nueva123", "  "), "Completa el campo Confirmar contraseña."),
+        )
+        for args, message in cases:
+            with self.assertRaises(ValidationError) as caught:
+                self.system.change_password(*args)
+            self.assertEqual(str(caught.exception), message)
+
+    def test_unknown_user(self):
+        self.login_admin()
+        with self.assertRaises(NotFoundError):
+            self.system.change_password("nadie", "Nueva123", "Nueva123")
+
+    def test_receptionist_changes_own_password(self):
+        self.login_reception()
+        self.system.change_own_password("Recep123", "Nueva123", "Nueva123")
+        self.system.logout()
+        system = self.reopen()
+        self.assertEqual(system.login("recepcion", "Nueva123").username, "recepcion")
+
+    def test_own_change_is_evidence_in_the_history(self):
+        self.login_reception()
+        self.system.change_own_password("Recep123", "Nueva123", "Nueva123")
+        self.system.logout()
+        self.login_admin()
+        changes = [a for a in self.system.action_history()
+                   if a.action_type == USER_MANAGEMENT]
+        self.assertEqual(len(changes), 1)
+        self.assertEqual(changes[0].description,
+                         "Recepcionista General cambió su contraseña.")
+        self.assertEqual(changes[0].username, "recepcion")
+        self.assertFalse(changes[0].is_undoable)
+
+    def test_wrong_current_password_changes_nothing(self):
+        self.login_reception()
+        with self.assertRaises(ValidationError) as caught:
+            self.system.change_own_password("recep123", "Nueva123", "Nueva123")
+        self.assertEqual(
+            str(caught.exception), "La contraseña actual no es correcta."
+        )
+        self.system.logout()
+        self.assertEqual(self.login_reception().username, "recepcion")
+
+    def test_own_change_checks_the_fields_first(self):
+        self.login_reception()
+        cases = (
+            (("", "Nueva123", "Nueva123"), "Completa el campo Contraseña actual."),
+            (("Recep123", "Nueva123", "Otra1234"),
+             "La contraseña nueva y su confirmación no coinciden."),
+            (("Recep123", "123", "123"),
+             "La contraseña debe tener al menos 6 caracteres."),
+            (("Recep123", "Recep123", "Recep123"),
+             "La contraseña nueva debe ser distinta de la actual."),
+        )
+        for args, message in cases:
+            with self.assertRaises(ValidationError) as caught:
+                self.system.change_own_password(*args)
+            self.assertEqual(str(caught.exception), message)
+        # A mismatch is reported even when the current password is wrong too.
+        with self.assertRaises(ValidationError) as caught:
+            self.system.change_own_password("mala", "Nueva123", "Otra1234")
+        self.assertIn("no coinciden", str(caught.exception))
+
+    def test_own_change_needs_a_session(self):
+        with self.assertRaises(PermissionDeniedError) as caught:
+            self.system.change_own_password("Admin123", "Nueva123", "Nueva123")
+        self.assertEqual(str(caught.exception), "Inicia sesión para continuar.")
+
+    def test_admin_changes_own_password(self):
+        self.login_admin()
+        self.system.change_own_password("Admin123", "Nueva123", "Nueva123")
+        self.system.logout()
+        with self.assertRaises(InvalidCredentialsError):
+            self.login_admin()
+        self.assertEqual(self.system.login("admin", "Nueva123").role, "Administrador")
+
+
 class TestFullWalkthrough(SystemTestCase):
     """Login, registration, care, cancellation, undo, search, stats and restart."""
 

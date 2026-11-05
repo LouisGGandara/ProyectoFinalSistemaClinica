@@ -66,6 +66,24 @@ class User(Person, ABC):
         # character differs, so the timing gives no hint about the hash.
         return hmac.compare_digest(typed_hash, self.__password_hash)
 
+    def change_password(self, new_password: str) -> None:
+        """Replace the password, with a new salt, after validating it.
+
+        Only this method can change the hash, because __password_hash is
+        private. The new password must follow the same rule as a new user
+        and must differ from the current one; if either check fails, the
+        user keeps the old password. A new salt means the old hash says
+        nothing about the new one.
+        """
+        new_password = Validator.password(new_password)
+        if self.verify_password(new_password):
+            raise ValidationError(
+                "La contraseña nueva debe ser distinta de la actual."
+            )
+        salt = secrets.token_hex(self.SALT_BYTES)
+        self.__password_hash = self._compute_hash(new_password, salt)
+        self._salt = salt
+
     @staticmethod
     def _compute_hash(password: str, salt: str) -> str:
         """Return the SHA-256 hash of salt plus password, as hex text."""

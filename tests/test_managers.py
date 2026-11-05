@@ -252,6 +252,30 @@ class TestDeleteUser(UserManagerTestCase):
             self.manager.delete_user("nadie", self.admin)
 
 
+class TestChangePasswordInManager(UserManagerTestCase):
+    def test_change_is_saved_to_the_file(self):
+        self.manager.change_password("recepcion", "Nueva123")
+        manager = self.reloaded()
+        self.assertEqual(manager.login("recepcion", "Nueva123").username, "recepcion")
+        with self.assertRaises(InvalidCredentialsError):
+            manager.login("recepcion", "Recep123")
+
+    def test_file_never_holds_the_password(self):
+        self.manager.change_password("recepcion", "Nueva123")
+        text = (self.folder / UserManager.FILE).read_text(encoding="utf-8")
+        self.assertNotIn("Nueva123", text)
+
+    def test_invalid_password_changes_nothing_in_the_file(self):
+        before = self.read_json(UserManager.FILE)
+        with self.assertRaises(ValidationError):
+            self.manager.change_password("recepcion", "123")
+        self.assertEqual(self.read_json(UserManager.FILE), before)
+
+    def test_unknown_user_is_not_found(self):
+        with self.assertRaises(NotFoundError):
+            self.manager.change_password("nadie", "Nueva123")
+
+
 # -------------------------------------------------------------- patients
 
 

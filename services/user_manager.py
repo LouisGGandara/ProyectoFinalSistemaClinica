@@ -138,6 +138,20 @@ class UserManager:
         del self._users[user.username]
         self._save()
 
+    def change_password(self, username: str, new_password: str) -> User:
+        """Give a user a new password, save it and return the user.
+
+        ClinicSystem decides who may ask for the change; this method only
+        finds the user and saves. If the new password is not valid,
+        User.change_password raises before anything is saved.
+        """
+        user = self._users.get(username)
+        if user is None:
+            raise NotFoundError(f"No existe el usuario «{username}».")
+        user.change_password(new_password)
+        self._save()
+        return user
+
     def list_all(self) -> list[User]:
         """Return the users sorted by username."""
         return sorted(self._users.values(), key=lambda user: user.username.casefold())

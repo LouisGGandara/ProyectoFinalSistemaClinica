@@ -41,7 +41,10 @@ class App(tk.Tk):
     EXIT_QUESTION = "¿Seguro que quieres salir del sistema?"
 
     def __init__(
-        self, data_folder: str = "data", log_path: str | Path = "errors.log"
+        self,
+        data_folder: str = "data",
+        log_path: str | Path = "errors.log",
+        system: ClinicSystem | None = None,
     ) -> None:
         """Build the window and load the system.
 
@@ -49,6 +52,11 @@ class App(tk.Tk):
         ticket written twice by hand, the window shows the message and closes
         before the login appears. Nobody can work, so nothing gets saved
         over the file that has to be fixed (section 3.11).
+
+        system receives a ClinicSystem that is already loaded, and then
+        data_folder is not used. tests/bulk_demo.py passes one with a full
+        action history, which lives only in memory (section 3.8) and would
+        be lost if App created its own. main.py does not pass it.
         """
         super().__init__()
         self._log_path = Path(log_path)
@@ -61,7 +69,10 @@ class App(tk.Tk):
         self._configure_style()
         self.protocol("WM_DELETE_WINDOW", self.request_exit)
 
-        self._system = self._start_system(data_folder)
+        if system is not None:
+            self._system = system
+        else:
+            self._system = self._start_system(data_folder)
         if self._system is None:
             self.destroy()
             return

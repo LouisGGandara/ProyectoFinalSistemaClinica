@@ -4,7 +4,9 @@ Only the administrator sees this tab (section 3.1). The form creates users
 (RF-06), the table lists them with their role (RF-08) and Eliminar
 seleccionado deletes the selected one after asking (RF-07). The rules of
 RN-12, such as not deleting one's own account or the last administrator,
-are checked by ClinicSystem; the tab shows its message.
+are checked by ClinicSystem; the tab shows its message. Cambiar contraseña
+gives the selected user a new password (RF-43); the administrator's own
+password is changed from Archivo > Cambiar mi contraseña instead.
 """
 
 import tkinter as tk
@@ -14,6 +16,7 @@ from tkinter import ttk
 from models.permissions import Permission
 from services.clinic_system import ClinicSystem
 from ui.base_tab import BaseTab
+from ui.password_dialog import PasswordDialog
 from ui.widgets import (
     FRAME_PADDING,
     GAP,
@@ -45,12 +48,16 @@ class UsersTab(BaseTab):
     CREATE_TEXT = "Crear usuario"
     CLEAR_TEXT = "Limpiar"
     DELETE_TEXT = "Eliminar seleccionado"
+    PASSWORD_TEXT = "Cambiar contraseña"
 
     FORM_HINT = (
         "Usuario: de 4 a 20 letras, números o guion bajo.\n"
         "Contraseña: al menos 6 caracteres."
     )
-    OWN_ACCOUNT_HINT = "Tu cuenta ({username}) no se puede eliminar desde aquí."
+    OWN_ACCOUNT_HINT = (
+        "Tu cuenta ({username}) no se puede eliminar, y su contraseña se "
+        "cambia en Archivo > Cambiar mi contraseña."
+    )
     NO_SELECTION_HINT = "Selecciona un usuario en la tabla para ver lo que puede hacer."
     PERMISSIONS_OF = "{username} ({role}) puede:"
 
@@ -61,6 +68,10 @@ class UsersTab(BaseTab):
         "Ya no podrá iniciar sesión, y esta acción no se puede deshacer."
     )
     DELETED_MESSAGE = "Se eliminó el usuario {username}."
+    PASSWORD_TITLE = "Cambiar contraseña"
+    PASSWORD_CHANGED_MESSAGE = (
+        "Se cambió la contraseña de {username}. Desde ahora entra con la nueva."
+    )
 
     PASSWORD_MASK = "•"
 
@@ -200,15 +211,21 @@ class UsersTab(BaseTab):
         bottom.grid(row=1, column=0, sticky="ew", pady=(GAP, 0))
         bottom.columnconfigure(0, weight=1)
         username = self._system.current_user.username
+        # The note takes its own row, so the two buttons do not squeeze it.
         ttk.Label(
             bottom,
             text=self.OWN_ACCOUNT_HINT.format(username=username),
             foreground=HINT_COLOR,
-        ).grid(row=0, column=0, sticky="w")
+            wraplength=560,
+        ).grid(row=0, column=0, columnspan=3, sticky="w", pady=(0, SMALL_GAP))
+        self._password_button = ttk.Button(
+            bottom, text=self.PASSWORD_TEXT, command=self._change_password
+        )
+        self._password_button.grid(row=1, column=1, sticky="e", padx=(GAP, 0))
         self._delete_button = ttk.Button(
             bottom, text=self.DELETE_TEXT, command=self._delete_user
         )
-        self._delete_button.grid(row=0, column=1, sticky="e")
+        self._delete_button.grid(row=1, column=2, sticky="e", padx=(GAP, 0))
 
     # -------------------------------------------------------------- refresh
 
@@ -220,16 +237,17 @@ class UsersTab(BaseTab):
         self._on_user_selected()
 
     def _on_user_selected(self) -> None:
-        """Update the permission list and the delete button for the selected row.
+        """Update the permission list and the two buttons for the selected row.
 
-        Eliminar seleccionado is disabled while one's own account is
-        selected, so the administrator is not asked to confirm something
-        that will be refused. ClinicSystem still refuses it (RN-12) if the
-        call arrives some other way.
+        Eliminar seleccionado and Cambiar contraseña are disabled while
+        one's own account is selected, so the administrator is not sent
+        into something that will be refused. ClinicSystem still refuses
+        both (RN-12, RF-44) if the call arrives some other way.
         """
         self._show_permissions()
         own = self._table.selected_id() == self._system.current_user.username
-        self._delete_button.state(["disabled"] if own else ["!disabled"])
+        for button in (self._delete_button, self._password_button):
+            button.state(["disabled"] if own else ["!disabled"])
 
     def _show_permissions(self) -> None:
         """Fill the list with the permissions of the selected user.
@@ -297,6 +315,35 @@ class UsersTab(BaseTab):
                 self.DELETED_MESSAGE.format(username=username), parent=self
             ),
         )
+
+    def _change_password(self) -> None:
+        """Cambiar contraseña (RF-43): open the dialog for the selected user.
+
+        The administrator does not type the user's current password, which
+        they do not know; ClinicSystem only lets them do this for others.
+        """
+        username = self._selected_or_warn(self._table, self.SELECT_USER_MESSAGE)
+        if username is None:
+            return
+        user = self._users[username]
+        PasswordDialog(
+            self,
+            title=self.PASSWORD_TITLE,
+            user_label=f"{user.username} ({user.full_name})",
+            ask_current=False,
+            on_submit=lambda dialog, _current, new, confirmation: self._run(
+                self._system.change_password,
+                username,
+                new,
+                confirmation,
+                on_success=lambda _user: self._after_password_change(dialog, username),
+                parent=dialog,
+            ),
+        )
+
+    def _after_password_change(self, dialog: PasswordDialog, username: str) -> None:
+        dialog.close()
+        show_info(self.PASSWORD_CHANGED_MESSAGE.format(username=username), parent=self)
 
     def _clear_form(self) -> None:
         """Empty the four fields and put the cursor back in Nombre completo."""
