@@ -120,7 +120,8 @@ ProyectoFinalSistemaClinica/
     ├── entrega1_analisis/    primera entrega: análisis
     ├── entrega2_diseno/      segunda entrega: diagrama de clases inicial
     └── entrega_final/        diagrama de clases final (classes.puml y uml/),
-                              manual de usuario, tablas de pruebas y capturas
+                              manual de usuario, tablas de pruebas, capturas
+                              y presentación
 ```
 
 Git ignora dos cosas que la aplicación o los scripts crean solos: `errors.log`, donde la aplicación anota el detalle de un error no previsto, y `backups/`, con las copias de `data/`.
